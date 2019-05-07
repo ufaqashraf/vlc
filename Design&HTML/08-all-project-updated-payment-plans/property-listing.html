@@ -1,0 +1,1286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="generator" content="">
+<title>Property Listing Page</title>
+
+<!-- Open Sans Font CSS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css" rel="stylesheet">
+
+<!--All styles-->
+<link rel="stylesheet" href="css/style.css">
+
+<!--Responsive styles-->
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<header>
+  <div class="header-holder desktopHideOnMobile">
+    <div class="container-fluid mainWrapper">
+      <div class="row">
+        <div class="col-md-4 responsiveOrder-2">
+          <ul class="list-unstyled socialIcons">
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-facebook"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-twitter"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-instagram"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-pinterest"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-youtube"></i> </a> </li>
+          </ul>
+        </div>
+        <div class="col-md-8 responsiveOrder-1">
+          <div class="d-flex responsive-country justify-content-end">
+            <div class="languangeSelect"> <i class="fa fa-language" aria-hidden="true"></i>
+              <select class="form-control selectpicker selectClassic">
+                <option value="">Select Languange</option>
+                <option value="">English</option>
+                <option value="">Arabic</option>
+                <option value="">Russian</option>
+                <option value="">Chines</option>
+              </select>
+            </div>
+            <div class="countrySelect"> <i class="fa fa-globe" aria-hidden="true"></i>
+              <select class="form-control selectpicker selectClassic">
+                <option value="">Pakistan</option>
+                <option value="">England</option>
+                <option value="">Russia</option>
+              </select>
+            </div>
+            <a href="javascript:void(0)" class="btn btn-login-signup"> <i class="fa fa-key" aria-hidden="true"></i> LogIn or SignUp </a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo-holder">
+    <div class="container-fluid mainWrapper">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="d-flex responsive-logo-holder">
+            <div class="logo"> <a href="javascript:void(0)"> <img src="images/logo.png" alt="Logo"> </a> </div>
+            <div class="ml-auto adBtns"> <a href="javascript:void(0)"> <i class="fa fa-plus-circle" aria-hidden="true"></i> submit buying leads </a> <a href="javascript:void(0)"> <i class="fa fa-plus-circle" aria-hidden="true"></i> post free ad </a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mainWrapper">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="desktopHideOnMobile">
+          <ul class="nav-holder">
+            <li class="nav-item"> <a class="nav-link active" href="javascript:void(0)"> <i class="fa fa-car" aria-hidden="true"></i> Autos</a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Used Cars <span> - 435 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Spare Parts <span> - 435 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Boats <span> - 435 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Heavy Vehicles <span> - 435 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Motorcycle <span> - 435 </span> </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-home" aria-hidden="true"></i> Property For Sale </a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Land For Sale <span> - 248 </span> </a> </li>
+                  <li> <a href="javascript:void(0)/"> Commercial For Sale <span> - 109 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Building For Sale <span> - 16 </span> </a> </li>
+                  <li> <a href="javascript:void(0)/"> Hotel For Sale <span> - 2 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Office For Sale <span> - 91 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Villa/House For Sale <span> - 338 </span> </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-building" aria-hidden="true"></i> Property For Rent </a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> House For Rent <span> - 183 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Building For Rent <span> - 3 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Commercial Site For Rent <span> - 29 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Hotel For Rent <span> - 3 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Land For Rent <span> - 2 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Office For Rent <span> - 40 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Room For Rent <span> - 91 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Rental Wanted <span> - 7 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Rooms Wanted <span> - 1 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Flat For Rent <span> - 151 </span> </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-tag" aria-hidden="true"></i> Classified </a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Baby Items <span> - 342 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Business &amp; Industrial <span> - 63 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Cameras &amp; Imaging <span> - 216 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Clothing &amp; Accessories <span> - 479 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Collectibles <span> - 39 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> DVDs &amp; Movies <span> - 35 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Electronics <span> - 582 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Free Stuff <span> - 10 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Furniture, Home &amp; Garden <span> - 550 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Gaming <span> - 148 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Jewelry &amp; Watches <span> - 357 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Lost/Found </a> </li>
+                  <li> <a href="javascript:void(0)"> Misc <span> - 32 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Musical Instruments <span> - 70 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Pets <span> - 1121 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Sports Equipment <span> - 301 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Stuff Wanted </a> </li>
+                  <li> <a href="javascript:void(0)"> Tickets &amp; Vouchers <span> - 4 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Others <span> - 87 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Used Mobiles <span> - 165 </span> </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item megaMenu"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-user" aria-hidden="true"></i> Jobs </a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Accounting <span> - 113 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Architecture/Engineering <span> - 8 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Art/Design <span> - 18 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Call Center <span> - 86 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Business Development <span> - 1 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Clerical <span> - 10 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Content Writer <span> - 6 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Construction <span> - 21 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Consulting <span> - 5 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Customer Services <span> - 121 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Domestic <span> - 48 </span> </a> </li>
+                </ul>
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Education <span> - 122 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Executive <span> - 11 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Hospitality/Healthcare <span> - 5 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Hotel <span> - 47 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Humen Resource <span> - 76 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Airlines &amp; Aviation </a> </li>
+                  <li> <a href="javascript:void(0)"> Architecture Design </a> </li>
+                  <li> <a href="javascript:void(0)"> Art &amp; Entertainment </a> </li>
+                  <li> <a href="javascript:void(0)"> Automotive </a> </li>
+                  <li> <a href="javascript:void(0)"> Banking &amp; Finance <span> - 3 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Beauty </a> </li>
+                </ul>
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Supplies &amp; Equipment </a> </li>
+                  <li> <a href="javascript:void(0)"> Customer Service <span> - 2 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Engineering <span> - 6 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Environmental Services </a> </li>
+                  <li> <a href="javascript:void(0)"> Event Management </a> </li>
+                  <li> <a href="javascript:void(0)"> Fashion <span> - 11 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Food &amp; Beverages <span> - 3 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Graphic Design <span> - 26 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Hospitality &amp; Restaurants <span> - 1 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> HR &amp; Recruitment <span> - 20 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Import &amp; Export </a> </li>
+                </ul>
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Industrial &amp; Manufacturing <span> - 40 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Database Administrator <span> - 42 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Internet <span> - 8 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Legal Services </a> </li>
+                  <li> <a href="javascript:void(0)"> Logistics &amp; Distribution </a> </li>
+                  <li> <a href="javascript:void(0)"> Marketing &amp; Advertising <span> - 146 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Media <span> - 5 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Medical &amp; Healthcare <span> - 43 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Oil, Gas &amp; Energy </a> </li>
+                  <li> <a href="javascript:void(0)"> Online Media <span> - 10 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Pharmaceuticals <span> - 3 </span> </a> </li>
+                </ul>
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Public Relations </a> </li>
+                  <li> <a href="javascript:void(0)"> Real Estate </a> </li>
+                  <li> <a href="javascript:void(0)"> Research &amp; Development </a> </li>
+                  <li> <a href="javascript:void(0)"> Retail &amp; Consumer Goods <span> - 5 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Safety &amp; Security </a> </li>
+                  <li> <a href="javascript:void(0)"> Sales <span> - 94 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Secretarial <span> - 10 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Sports &amp; Fitness </a> </li>
+                  <li> <a href="javascript:void(0)"> Telecommunications <span> - 4 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Transportation <span> - 4 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Travel &amp; Tourism <span> - 26 </span> </a> </li>
+                </ul>
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Veterinary &amp; Animals </a> </li>
+                  <li> <a href="javascript:void(0)"> Wholesale <span> - 1 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Information Technology <span> - 94 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Others <span> - 89 </span> </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-briefcase" aria-hidden="true"></i> Jobs Wanted </a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Jobs Wanted </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-cog" aria-hidden="true"></i> Services </a>
+              <div class="dropdownHolderMain">
+                <ul class="dropdownHolder">
+                  <li> <a href="javascript:void(0)"> Tablets &amp; Ipad <span> - 280 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Accessories <span> - 271 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Family &amp; Care <span> - 95 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Legal, Finance &amp; Insurance <span> - 156 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Computers Repairing <span> - 229 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Transportation <span> - 179 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Design &amp; Photography <span> - 134 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Property <span> - 92 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Beauty &amp; Health <span> - 740 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Car Lifts <span> - 61 </span> </a> </li>
+                  <li> <a href="javascript:void(0)"> Education/Learning <span> - 667 </span> </a> </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-buysellads" aria-hidden="true"></i> Buying Leads </a> </li>
+            <li class="nav-item"> <a class="nav-link" href="javascript:void(0)"> <i class="fa fa-handshake-o" aria-hidden="true"></i> Seller Leads </a> </li>
+          </ul>
+        </div>
+        <div class="mobileHideOnDesktop">
+          <ul class="nav-holder">
+            <li class="nav-item"> <a class="nav-link ico-auto" href="javascript:void(0)"> Autos </a> </li>
+            <li class="nav-item"> <a class="nav-link ico-property" href="javascript:void(0)"> Property</a> </li>
+            <li class="nav-item"> <a class="nav-link ico-jobs" href="javascript:void(0)"> Jobs </a> </li>
+            <li class="nav-item"> <a class="nav-link ico-classified" href="javascript:void(0)"> Classified</a> </li>
+            <li class="nav-item"> <a class="nav-link ico-services" href="javascript:void(0)"> Services </a> </li>
+            <li class="nav-item"> <a class="nav-link ico-buying" href="javascript:void(0)"> Buying Leads </a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="main-section">
+  <div class="propery-searchSection">
+    <div class="container-fluid mainWrapper">
+    <form method="POST" action="javascript:void(0)">
+      <fieldset>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="searchStack">
+              <div class="iconHolder"> <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <select class="form-control selectpicker">
+                  <option>Select Your City</option>
+                  <option>Your Country Abc</option>
+                  <option>Your Country abcd</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="textField">
+              <input type="text" class="form-control" placeholder="Enter Neighborhood or Building e.g. Ocean Heights">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle">Select Bedrooms:</span>
+              <div class="qty"> <span class="minus bg-dark">-</span>
+                <input type="number" class="count" name="qty" value="1" placeholder="No of Bedrooms">
+                <span class="plus bg-dark">+</span> </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle"> Select Bath:</span>
+              <div class="qty"> <span class="minus2 bg-dark">-</span>
+                <input type="number" class="count2" name="qty" value="1">
+                <span class="plus2 bg-dark">+</span> </div>
+            </div>
+          </div>
+          <div class="col-md-3 manage-spaceLeft">
+            <div class="searchStack"><span class="sidebarTitle"> Select Time: </span>
+              <div class="iconHolder spl"> 
+                
+                <!-- <select class="form-control selectpicker">
+                      <option>Time Period</option>
+                      <option>Abc</option>
+                      <option> abcd</option>
+                    </select>-->
+                <select class="selectpicker " multiple data-live-search="true" data-actions-box="true">
+                <!--<select class="selectpicker " multiple data-live-search="true">-->
+                  <option>Time Period</option>
+                  <option>abc</option>
+                  <option>def</option>
+                  <option>ghi</option>
+                  <option>jkl</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle"> Select Price: </span>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="textField">
+                    <input type="text" class="form-control" placeholder="Min. Price">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="textField">
+                    <input type="text" class="form-control" placeholder="Max. Price">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row manage-icons collapse advanceSection">
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle"> Select Buy Type:</span>
+              <div class="iconHolder">
+                <select class="form-control selectpicker">
+                  <option>Rent</option>
+                  <option>Rent Abc</option>
+                  <option>Rent abcd</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle"> Your Amenities:</span>
+              <div class="iconHolder">
+                <select class="form-control selectpicker">
+                  <option>Air Conditioning</option>
+                  <option>Abc</option>
+                  <option>abcd</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle"> Frunished? </span>
+              <div class="iconHolder">
+                <select class="form-control selectpicker">
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option> Between</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="searchStack"><span class="sidebarTitle"> Select Area: </span>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="textField">
+                    <input type="text" class="form-control" placeholder="Min Area">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="textField">
+                    <input type="text" class="form-control" placeholder="Max Area">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row manage-icons">
+          <div class="search-btn col-md-3 col-lg-2">
+            <input class="search-me" type="submit" value="Search Now">
+          </div>
+          <div class="col-md-3 col-lg-2">
+            <div class="textField searchBtnsAction">
+              <button class="btn"> <i class="fa cross-icon" aria-hidden="true"></i> Reset search </button>
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-2">
+            <div class="textField searchBtnsAction">
+              <button class="btn"> <i class="fa fa-heart-o" aria-hidden="true"></i> save search </button>
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-6"> <span class="advnc-search"><a id="advnce-ser" data-toggle="collapse" data-target=".advanceSection" href="javascript:;"><i class="fa fa-plus-circle"></i>Advance Search</a></span> </div>
+        </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  
+  <div class="container-fluid mainWrapper listingMain">
+    <div class="row">
+      <div class="col-md-8 col-lg-9 propertyListingPage">
+        <div class="row sellerHolder">
+          <div class="col-md-8">
+            <span class="adTitle">2,161 Apartments for sale in Dubai, UAE  </span>
+            <em class="adTitleSub">Change country from Top Menu to See Ads of different countries.</em>
+          </div>
+          <div class="col-md-4 pl-md-0">
+            <ul class="saveSearch list-unstyled">
+              <li>
+                <a href="javascript:void(0)"> save search
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="stackHolder tags bgGrey">
+          <div class="row m-0">
+            <div class="col-md-7 col-lg-8 pl-sm-0">
+              <div class="breadcrumbHolder">
+                <span>Browse result in:</span>
+                <ul class="breadcrumbNav list-unstyled">
+                  <li>
+                    <span href="javascript:void(0)">Dubai
+                      <i class="fa faClose-icon" aria-hidden="true"></i>
+                    </span>
+                  </li>
+                  <li>
+                    <span href="javascript:void(0)">Classified
+                      <i class="fa faClose-icon" aria-hidden="true"></i>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-5 col-lg-4 pr-sm-0 pl-lg-5">
+                <div class="bestSeller-field">
+                  <span class="sortBy">Sort by:</span>
+                  <select class="form-control selectpicker">
+                    <option>Best Seller</option>
+                    <option>Best Seller One</option>
+                    <option>Best Seller two</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+          <!-- <ul class="saveSearch list-unstyled">
+            <li>
+              <a href="javascript:void(0)"> save search
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <i class="fa fa-heart" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul> -->
+        </div>
+        <div class="categoryHolderMain">
+          <div class="holder">
+            <ul class="categoryHolder list-unstyled clearfix">
+              <li>
+                <a href="javascript:void(0)"> Acura </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Ford </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> BMW </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Hyundai </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Land Rover </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Mitsubishi </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Porsche </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Toyota </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Nissan </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Chevrolet </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Volkswagen </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Audi </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Acura </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Ford </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> BMW </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Hyundai </a>
+                <em>(13)</em>
+              </li>
+            </ul>
+            <ul class="categoryHolder collapse collapseRadio4 list-unstyled clearfix">
+              <li>
+                <a href="javascript:void(0)"> Acura </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Ford </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> BMW </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Hyundai </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Land Rover </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Mitsubishi </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Porsche </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Toyota </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Nissan </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Chevrolet </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Volkswagen </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Audi </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Acura </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Ford </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> BMW </a>
+                <em>(13)</em>
+              </li>
+              <li>
+                <a href="javascript:void(0)"> Hyundai </a>
+                <em>(13)</em>
+              </li>
+            </ul>
+            <div class="text-center">
+              <a href="javascript:void(0)" class="showMore" data-toggle="collapse" data-target=".collapseRadio4"> Show More
+                <i class="fa categoryArrowDown" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0)" class="showMore showLess" data-toggle="collapse" data-target=".collapseRadio4"> Show Less
+                <i class="fa categoryArrowUp" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="stackHolder bgGrey">
+            <div class="checkboxHolder">
+              <label class="checkboxStyle"> photo
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkboxStyle"> price only
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkboxStyle"> premium
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkboxStyle"> urgent ads only
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <ul class="listNav list-unstyled">
+              <li>
+                <a href="javascript:void(0)" class="listView"></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="gridView"></a>
+              </li>
+            </ul>
+          </div>
+        <div class="gridViewCat property-grid">
+          <a href="javascipt:void(0)" class="adImageLeft">
+            <img src="images/adImg1.jpg" alt="Image">
+          </a>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="holder">
+                <a href="javascript:void(0)" class="catLink">
+                  <img src="images/property-img.jpg" class="img-fluid">
+                  <span class="catFilter"></span>
+                </a>
+                <a href="javascript:void(0)" class="promotedStack">Premium</a>
+                <a href="javascript:void(0)" class="totalCat"> 10
+                  <i class="fa fa-camera" aria-hidden="true"></i>
+                </a>
+                <div class="catImgInfo">
+                  <a href="javascript:void(0)">Full Golf Course View | Upgraded</a>
+                  <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                  <span class="priceTag">32,000,000 PKR</span>
+                  
+                  <div class="propIcons">
+                    <p><span>3 <em class="fabed" >Bed</em></span>
+                    	<span>2 <em class="fabath" >bath</em></span>
+                        
+                        <span>450 Sqft</span>
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="catTypeSame">
+                    <img src="images/zco-logo.jpg">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="holder">
+                <a href="javascript:void(0)" class="catLink">
+                  <img src="images/property-img.jpg" class="img-fluid">
+                  <span class="catFilter"></span>
+                </a>
+                <a href="javascript:void(0)" class="promotedStack">Premium</a>
+                <a href="javascript:void(0)" class="totalCat"> 10
+                  <i class="fa fa-camera" aria-hidden="true"></i>
+                </a>
+                <div class="catImgInfo">
+                  <a href="javascript:void(0)">Agency Warranty! GMC Terrain AWD De...</a>
+                  <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                  <span class="priceTag">32,000,000 PKR</span>
+                  <div class="propIcons">
+                    <p><span>3 <em class="fabed" >Bed</em></span>
+                    	<span>2 <em class="fabath" >bath</em></span>
+                        
+                        <span>450 Sqft</span>
+                    </p>
+                  </div>
+                  
+                  <a href="javascript:void(0)" class="catTypeSame">
+                    <img src="images/catBottom-icon.png">
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="listViewCat manage-ViewCat">
+          <div class="row">
+            <!-- List View Column -->
+            <div class="col-md-12">
+              <div class="holder">
+               
+                
+                <div class="lisViewtCatHolder clearfix">
+                  <div class="lisViewtCatCol"> <a href="javascript:void(0)" class="promotedStack">featured</a>
+                    <a href="javascript:void(0)" class="lisViewtCatLink">
+                      <img src="images/proprt-lng.jpg" alt="Car">
+                    </a>
+                    <a href="javascript:void(0)" class="totalCat"> 10
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="lisViewtCatDetail">
+                    <h3>Full Golf Course View | Vacant | Upgraded</h3>
+                    <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                    
+                    <span class="priceTag">32,000,000 PKR</span>
+                    
+                    <div class="propIcons">
+                    <p><span><a href="#">3 <em class="fabed" >Bed</em></a></span>
+                    	<span><a href="#">2 <em class="fabath" >bath</em></a></span>
+                        
+                        <span><a href="#">450 Sqft</a></span>
+                    </p>
+                  </div>
+                    
+                    <div class="call-to-action-btns">
+                    <ul class="list-unstyled clearfix catActionBtns">
+                    <li>
+                        <a href="javascript:void(0)" class="reportNow">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span> Email Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="callNow">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span> Call Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="saveNow">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <span> Save now </span>
+                        </a>
+                      </li>
+                      
+                      <li class="auto">
+                          <a href="javascript:void(0)" class="flagIcon"> Flag </a>
+                        </li>
+                        <li class="auto">
+                            <a href="javascript:void(0)" class="shareNow"> share Now </a>
+                          </li>
+                    </ul>
+                  </div>
+                  </div>
+                  <a href="javascript:void(0)" class="shortLogo">
+                    <img src="images/catBottom-icon.png">
+                  </a>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- List View Column -->
+            <div class="col-md-12">
+              <div class="holder">
+               
+                
+                <div class="lisViewtCatHolder clearfix">
+                  <div class="lisViewtCatCol"> <a href="javascript:void(0)" class="promotedStack">featured</a>
+                    <a href="javascript:void(0)" class="lisViewtCatLink">
+                      <img src="images/proprt-lng.jpg" alt="Car">
+                    </a>
+                    <a href="javascript:void(0)" class="totalCat"> 10
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="lisViewtCatDetail">
+                    <h3>Full Golf Course View | Vacant | Upgraded</h3>
+                    <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                    
+                    <span class="priceTag">32,000,000 PKR</span>
+                    
+                    <div class="propIcons">
+                    <p><span><a href="#">3 <em class="fabed" >Bed</em></a></span>
+                    	<span><a href="#">2 <em class="fabath" >bath</em></a></span>
+                        
+                        <span><a href="#">450 Sqft</a></span>
+                    </p>
+                  </div>
+                    
+                    <div class="call-to-action-btns">
+                    <ul class="list-unstyled clearfix catActionBtns">
+                    <li>
+                        <a href="javascript:void(0)" class="reportNow">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span> Email Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="callNow">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span> Call Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="saveNow">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <span> Save now </span>
+                        </a>
+                      </li>
+                      
+                      <li class="auto">
+                          <a href="javascript:void(0)" class="flagIcon"> Flag </a>
+                        </li>
+                        <li class="auto">
+                            <a href="javascript:void(0)" class="shareNow"> share Now </a>
+                          </li>
+                    </ul>
+                  </div>
+                  </div>
+                  <a href="javascript:void(0)" class="shortLogo">
+                    <img src="images/catBottom-icon.png">
+                  </a>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- List View Column -->
+            <div class="col-md-12">
+              <div class="holder">
+               
+                
+                <div class="lisViewtCatHolder clearfix">
+                  <div class="lisViewtCatCol"> <a href="javascript:void(0)" class="promotedStack">featured</a>
+                    <a href="javascript:void(0)" class="lisViewtCatLink">
+                      <img src="images/proprt-lng.jpg" alt="Car">
+                    </a>
+                    <a href="javascript:void(0)" class="totalCat"> 10
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="lisViewtCatDetail">
+                    <h3>Full Golf Course View | Vacant | Upgraded</h3>
+                    <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                    
+                    <span class="priceTag">32,000,000 PKR</span>
+                    
+                    <div class="propIcons">
+                    <p><span><a href="#">3 <em class="fabed" >Bed</em></a></span>
+                    	<span><a href="#">2 <em class="fabath" >bath</em></a></span>
+                        
+                        <span><a href="#">450 Sqft</a></span>
+                    </p>
+                  </div>
+                    
+                    <div class="call-to-action-btns">
+                    <ul class="list-unstyled clearfix catActionBtns">
+                    <li>
+                        <a href="javascript:void(0)" class="reportNow">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span> Email Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="callNow">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span> Call Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="saveNow">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <span> Save now </span>
+                        </a>
+                      </li>
+                      
+                      <li class="auto">
+                          <a href="javascript:void(0)" class="flagIcon"> Flag </a>
+                        </li>
+                        <li class="auto">
+                            <a href="javascript:void(0)" class="shareNow"> share Now </a>
+                          </li>
+                    </ul>
+                  </div>
+                  </div>
+                  <a href="javascript:void(0)" class="shortLogo">
+                    <img src="images/catBottom-icon.png">
+                  </a>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- List View Column -->
+            <div class="col-md-12">
+              <div class="holder">
+               
+                
+                <div class="lisViewtCatHolder clearfix">
+                  <div class="lisViewtCatCol"> <a href="javascript:void(0)" class="promotedStack">featured</a>
+                    <a href="javascript:void(0)" class="lisViewtCatLink">
+                      <img src="images/proprt-lng.jpg" alt="Car">
+                    </a>
+                    <a href="javascript:void(0)" class="totalCat"> 10
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="lisViewtCatDetail">
+                    <h3>Full Golf Course View | Vacant | Upgraded</h3>
+                    <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                    
+                    <span class="priceTag">32,000,000 PKR</span>
+                    
+                    <div class="propIcons">
+                    <p><span><a href="#">3 <em class="fabed" >Bed</em></a></span>
+                    	<span><a href="#">2 <em class="fabath" >bath</em></a></span>
+                        
+                        <span><a href="#">450 Sqft</a></span>
+                    </p>
+                  </div>
+                    
+                    <div class="call-to-action-btns">
+                    <ul class="list-unstyled clearfix catActionBtns">
+                    <li>
+                        <a href="javascript:void(0)" class="reportNow">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span> Email Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="callNow">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span> Call Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="saveNow">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <span> Save now </span>
+                        </a>
+                      </li>
+                      
+                      <li class="auto">
+                          <a href="javascript:void(0)" class="flagIcon"> Flag </a>
+                        </li>
+                        <li class="auto">
+                            <a href="javascript:void(0)" class="shareNow"> share Now </a>
+                          </li>
+                    </ul>
+                  </div>
+                  </div>
+                  <a href="javascript:void(0)" class="shortLogo">
+                    <img src="images/catBottom-icon.png">
+                  </a>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- List View Column -->
+            <div class="col-md-12">
+              <div class="holder">
+               
+                
+                <div class="lisViewtCatHolder clearfix">
+                  <div class="lisViewtCatCol"> <a href="javascript:void(0)" class="promotedStack">featured</a>
+                    <a href="javascript:void(0)" class="lisViewtCatLink">
+                      <img src="images/proprt-lng.jpg" alt="Car">
+                    </a>
+                    <a href="javascript:void(0)" class="totalCat"> 10
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="lisViewtCatDetail">
+                    <h3>Full Golf Course View | Vacant | Upgraded</h3>
+                    <p class="loc-point"><i class="fa fa-map-marker" aria-hidden="true"></i> Dubai Style, North Village, Al Furjan, Dubai</p>
+                    
+                    <span class="priceTag">32,000,000 PKR</span>
+                    
+                    <div class="propIcons">
+                    <p><span>3 <em class="fabed" >Bed</em></span>
+                    	<span>2 <em class="fabath" >bath</em></span>
+                        
+                        <span>450 Sqft</span>
+                    </p>
+                  </div>
+                    
+                    <div class="call-to-action-btns">
+                    <ul class="list-unstyled clearfix catActionBtns">
+                    <li>
+                        <a href="javascript:void(0)" class="reportNow">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <span> Email Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="callNow">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <span> Call Now </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" class="saveNow">
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <span> Save now </span>
+                        </a>
+                      </li>
+                      
+                      <li class="auto">
+                          <a href="javascript:void(0)" class="flagIcon"> Flag </a>
+                        </li>
+                        <li class="auto">
+                            <a href="javascript:void(0)" class="shareNow"> share Now </a>
+                          </li>
+                    </ul>
+                  </div>
+                  </div>
+                  <a href="javascript:void(0)" class="shortLogo">
+                    <img src="images/catBottom-icon.png">
+                  </a>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="paginationHolder">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link previous-last" href="javascript:void(0)"></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link page-link-previous" href="javascript:void(0)"></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">4</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">5</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">6</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">7</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0)">8</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link page-link-next" href="javascript:void(0)"></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link next-last" href="javascript:void(0)"></a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Featured Ads -->
+        <div class="featuredADs">
+          <div class="row">
+            <div class="col-md-4">
+              <a href="javascript:void(0)" class="carAdLinkHolder">
+                <img src="images/car-img-ad1.jpg" alt="Image">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <div class="featuredAdsContent">
+                <span class="title">Selling a Car? - Sell your Car in just 1 Visit - CarFirst.com</span>
+                <p>Fastest And Most Secure Way To Sell a Car In Pakistan. 
+                  Thousands of Happy Clients Every Month. Book Free Inspection. Book your appointment 
+                  now. Instant Payment. Free RC Transfer. Value Bidding. </p>
+                <div class="text-left">
+                  <a href="javascript:void(0)" class="adLinkTitle">
+                    <span>Ad</span>
+                    www.carfirst.com/Sell_Car </a>
+                </div>
+                <div class="text-left">
+                  <a href="javascript:void(0)" class="visitwebLink"> Visit Website </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <a href="javascript:void(0)" class="carAdLinkHolder">
+                <img src="images/car-img-ad2.jpg" alt="Image">
+              </a>
+            </div>
+            <div class="col-md-8">
+              <div class="featuredAdsContent">
+                <span class="title">Selling a Car? - Sell your Car in just 1 Visit - CarFirst.com</span>
+                <p>Fastest And Most Secure Way To Sell a Car In Pakistan. 
+                  Thousands of Happy Clients Every Month. Book Free Inspection. Book your appointment 
+                  now. Instant Payment. Free RC Transfer. Value Bidding. </p>
+                <div class="text-left">
+                  <a href="javascript:void(0)" class="adLinkTitle">
+                    <span>Ad</span>
+                    www.carfirst.com/Sell_Car </a>
+                </div>
+                <div class="text-left">
+                  <a href="javascript:void(0)" class="visitwebLink"> Visit Website </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sell Anything Section -->
+        <div class="sellanythingSection">
+          <div class="row">
+            <div class="col-md-12">
+              <span class="sellanythingTitle"> Sell Anything on VolgoPoint </span>
+              <ul class="list-unstyled sellAdNav">
+                <li>
+                  <a  href="javascript:void(0)">
+                    <span class="icon propertyIcon"></span>
+                    Property </a>
+                </li>
+                <li>
+                  <a  href="javascript:void(0)">
+                    <span class="icon classifiedIcon"></span>
+                    Classified </a>
+                </li>
+                <li>
+                  <a  href="javascript:void(0)">
+                    <span class="icon jobIcon"></span>
+                    Jobs </a>
+                </li>
+                <li>
+                  <a  href="javascript:void(0)">
+                    <span class="icon servicesIcon"></span>
+                    Services </a>
+                </li>
+                <li>
+                  <a  href="javascript:void(0)">
+                    <span class="icon leadsIcon"></span>
+                    Leads </a>
+                </li>
+                <li>
+                  <a  href="javascript:void(0)">
+                    <span class="icon motorsIcon"></span>
+                    Motors </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Post Free Ad button -->
+        <div class="text-center postfreeHolder">
+          <a href="javascript:void(0)" class="postfreeButton"> post free ad </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3 new-sidebar">
+        <div class="sidebarSearch">
+          <div class="holder">
+            <h2>Popular Searches</h2>
+            	
+                <ul class="search-links">
+                	<li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Properties for sale</a></li>
+                    <li><a href="#">Apartments for</a></li>
+                    <li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Hotel apartments for sale</a></li>
+                    <li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Villas for sale</a></li>
+                    
+                     <li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Hotel apartments for sale</a></li>
+                    <li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Villas for sale</a></li>
+                    
+                    
+                    
+                </ul>
+                
+          </div>
+        </div>
+        
+        <div class="sidebarSearch">
+          <div class="holder">
+            <h2>Nearby Areas</h2>
+            	
+                <ul class="search-links">
+                	<li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Properties for sale</a></li>
+                    <li><a href="#">Apartments for</a></li>
+                    <li><a href="#">Villas for sale</a></li>
+                    <li><a href="#">Hotel apartments for sale</a></li>
+                   
+                </ul>
+                
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+</section>
+<footer id="footer" class="footer-holder">
+  <div class="container footer-holder-inner desktopHideOnMobile">
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="logo footer-logo"> <a href="javascript:void(0)"> <img src="images/logo.png" alt="Logo"> </a> </div>
+        <p class="footer-title">Volgo Point International&nbsp;was founded with a large portfolio 
+          of different business categories including Online shopping and Global B2B Classified marketplace.&nbsp;</p>
+        <a href="javascript:void(0" class="footer-readmore">Read More &gt;&gt;</a> </div>
+      <div class="col-sm-6 col-md-3"> <span class="footerTitle">About</span>
+        <ul class="footer-nav">
+          <li> <a href="javascript:void(0)">About Us</a> </li>
+          <li> <a href="javascript:void(0)">Privacy Policy</a> </li>
+          <li> <a href="javascript:void(0)">Careers</a> </li>
+          <li> <a href="javascript:void(0)">Contact Us</a> </li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-md-3"> <span class="footerTitle">Information</span>
+        <ul class="footer-nav">
+          <li> <a href="javascript:void(0)">Easy Payment Plans</a> </li>
+          <li> <a href="javascript:void(0)">Advertise with us</a> </li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-md-3"> <span class="footerTitle">Contact Us</span>
+        <ul class="footer-nav">
+          <li> <i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@volgopoint.com">info@volgopoint.com</a> </li>
+        </ul>
+        <button class="btn btn-primary btn-msg">leave the message</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-outer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="allright text-center text-sm-left"> © volgopoint.com 2019 All Rights Reserved.</p>
+        </div>
+        <div class="col-sm-6">
+          <ul class="social-icone-footer">
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-facebook"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i class="fa fa-linkedin" aria-hidden="true"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-twitter"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-instagram"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-pinterest"></i> </a> </li>
+            <li> <a href="javascript:void(0)" target="_blank"> <i aria-hidden="true" class="fa fa-youtube"></i> </a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+ crossorigin="anonymous"></script> --> 
+<script src=" https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> 
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script> 
+
+<!--custom JS --> 
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>

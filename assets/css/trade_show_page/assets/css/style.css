@@ -1,0 +1,248 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700');
+
+/*		CSS styles for 404 page start		*/
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.bg-cover {
+	background: url(../images/Error404_cover.jpg);
+	width: 100vw;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	padding: 50px 0;
+}
+.mainWrapper {
+	max-width: 1140px;
+}
+.error-logo {
+	background: url(../images/Error404_logo.png);
+	max-width: 320px;
+	min-height: 130px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.error-content {
+	max-width: 555px;
+	min-height: 317px;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	border-radius: 4px;
+}
+.orange-text {
+	color: #e85527;
+	font-size: 81.75pt;
+	font-weight: bold;
+	line-height: 1;
+}
+.error-content p {
+	font-size: 14pt;
+}
+.error-content > p.thick {
+	font-size: 18pt;
+	font-weight: 600;
+}
+.orange-bg {
+	background: #e75327;
+	color: #fff;
+	font-weight: bold;
+	font-size: 13pt;
+	width: 200px;
+	height: 40px;
+	padding: 0;
+	line-height: 40px;
+}
+.orange-bg:hover {
+	color: #fff;
+}
+
+/*		CSS styles for 404 page end		*/
+
+
+/*		CSS styles for report page start		*/
+
+.grey-bg {
+	background: #f4f4f4;
+	padding: 50px 0;
+}
+.report {
+	max-width: 550px;
+	background: #fff;
+}
+.report .head-title {
+	height: 80px;
+	background: #007cdc;
+	color: #fff;
+	font-size: 28pt;
+	font-weight: bold;
+	line-height: 80px;
+}
+.report form, .advertise form {
+	padding: 15px 30px 0;
+}
+.report form p:first-child {
+	font-size: 20pt;
+	font-weight: 600;
+}
+.report form input, .advertise form input {
+	padding: 0 12px;
+	height: 35px;
+}
+.report form .form-control {
+	box-shadow: 0px 0px 5px 1px #ccc;
+}
+.report form label, .advertise form label {
+	font-weight: 600;
+	font-size: 14pt;
+}
+.all-listing-btn {
+	padding: 0 30px 30px;
+}
+.orange-bg:hover, .all-listing-btn .orange-bg:hover {
+	color: #fff;
+}
+.txtarea-btn {
+	position: absolute;
+	bottom: 30px;
+	margin-left: 15px;
+}
+.txtarea-btn .orange-bg {
+	font-size: 12px;
+	font-weight: 600;
+	width: 128px;
+	height: 30px;
+	line-height: 30px;
+}
+.report textarea::-webkit-input-placeholder {
+	color: blue !important;
+}
+
+/*		CSS styles for report page end		*/
+
+
+/*		CSS styles for advertise form page start		*/
+
+.big-image-holder {
+	background: url(../images/AdvertiseForm_03.png);
+	width: 100%;
+	position: absolute;
+	height: 602px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 13%;
+	top: 18%;
+}
+.advertise {
+	max-width: 550px;
+	background: #fff;
+	position: relative;
+}
+.advertise p:first-child {
+	font-size: 26pt;
+  font-weight: 500;
+}
+.advertise form .form-control {
+	background: #f2f2f2;
+	font-style: italic;
+}
+.auto-generated-text {
+	color: #6a6a6a;
+	font-size: 30px;
+	padding-left: 40px;
+	line-height: 1;
+}
+@media (max-width: 1023px) {
+	.big-image-holder {
+		display: none;
+	}
+	.advertise {
+		margin: 0 auto !important;
+	}
+}
+
+/*		CSS styles for advertise form page end		*/
+
+
+/*		CSS styles for trade show page start		*/
+
+.trade-show .main-heading {
+	font-size: 35pt;
+	color: #444;
+	font-weight: 600;
+	line-height: 1;
+}
+.trade-show .sub-heading {
+	font-size: 16pt;
+	color: #666;
+	margin-bottom: 50px;
+}
+.trade-show .spacing {
+	padding: 0 15px 0 45px;
+}
+.trade-show .item-box {
+	border: 1px solid #ccc;
+	padding: 30px;
+}
+.trade-show .item-box .position-relative.d-flex {
+	left: -60px;
+  top: -60px;
+}
+.trade-show .item-box .event-date {
+	flex: 0 0 202px;
+	height: 67px;
+	-ms-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	color: #fff;
+	margin: 68px -70px 0;
+	/* padding-top: 8px; */
+	/* float: left; */
+	/* width: 338px !important; */
+	font-size: 23pt;
+	font-weight: 600;
+	text-align: center;
+	line-height: 67px;
+}
+.trade-show .item-box .purple {
+	background: #4d1864;
+}
+.trade-show .item-box .navy-blue {
+	background: #2f577b;
+}
+.trade-show .item-box .event-img {
+	flex: 1 1 auto;
+	height: 202px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.trade-show .item-box .content {
+	margin-top: -40px;
+}
+.trade-show .item-box .content .title {
+	font-size: 24pt;
+	font-weight: 600;
+}
+.trade-show .item-box .content .post-by {
+	font-size: 12pt;
+	font-weight: 600;
+}
+.trade-show .item-box .content .post-by a {
+	text-decoration: none;
+	color: #007cdc;
+}
+.trade-show .item-box .content .description, .trade-show .item-box .content .date-venue {
+	font-size: 14pt;
+	color: #999;
+}
+.trade-show .item-box .content .date-venue .date, .trade-show .item-box .content .date-venue .venue {
+	color: #007cdc;
+}
+
+
+/*		CSS styles for trade show page end		*/

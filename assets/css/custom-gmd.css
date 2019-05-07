@@ -1,0 +1,8 @@
+.tabsHolder #dynamic-header-form .row
+{
+	margin:0;
+}
+.tabsHolder #dynamic-header-form .row .sidebarTitle, .tabsHolder #dynamic-header-form .form-check-label
+{
+	color:#fff;
+}

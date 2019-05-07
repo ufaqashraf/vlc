@@ -1,0 +1,119 @@
+[33ma9c211d[m[33m ([m[1;36mHEAD -> [m[1;32mbr-#40-adnan[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33ma9c211d[m[33m ([m[1;36mHEAD -> [m[1;32mbr-#40-adnan[m[33m)[m HEAD@{1}: pull origin development: Merge made by the 'recursive' strategy.
+[33mc87686a[m HEAD@{2}: pull origin development: Merge made by the 'recursive' strategy.
+[33me82df70[m[33m ([m[1;31morigin/br-#40-adnan[m[33m)[m HEAD@{3}: commit: dashboard cleared
+[33m37655d2[m HEAD@{4}: commit: listing autos
+[33m0097b0c[m HEAD@{5}: pull origin development: Fast-forward
+[33mf792041[m HEAD@{6}: pull origin development: Fast-forward
+[33md1e6536[m HEAD@{7}: commit: sidebarlisting issues
+[33m127f8e7[m HEAD@{8}: pull origin development: Merge made by the 'recursive' strategy.
+[33m7297306[m HEAD@{9}: commit: siderbar fall down issue resoleve
+[33m85a4fec[m HEAD@{10}: commit: favvorite lagic
+[33m4aa8470[m HEAD@{11}: pull origin development: Fast-forward
+[33m5bdc023[m HEAD@{12}: commit: fav icon
+[33m492bda4[m HEAD@{13}: pull origin development: Merge made by the 'recursive' strategy.
+[33mbe6691b[m HEAD@{14}: pull origin development: Merge made by the 'recursive' strategy.
+[33mefde2cc[m HEAD@{15}: commit: search bar
+[33mfa9188b[m HEAD@{16}: pull origin development: Fast-forward
+[33m8ff2cbb[m HEAD@{17}: commit: advance search
+[33m6a241e7[m HEAD@{18}: commit: console.log removed
+[33mebbbba1[m HEAD@{19}: commit: working with the basic search
+[33m13b4789[m HEAD@{20}: commit: listing search
+[33ma59b734[m HEAD@{21}: pull origin development: Merge made by the 'recursive' strategy.
+[33m05c47b5[m HEAD@{22}: commit: header search working
+[33mfbbaf52[m HEAD@{23}: pull origin development: Fast-forward
+[33mfffdf7d[m HEAD@{24}: commit: on going listing
+[33m66ce8ee[m HEAD@{25}: pull origin development: Fast-forward
+[33m4e6480c[m HEAD@{26}: commit: count header set
+[33m52365be[m HEAD@{27}: pull origin development: Fast-forward
+[33mb182b6d[m HEAD@{28}: commit: listing query added
+[33m8edc0f5[m HEAD@{29}: checkout: moving from Developement to br-#40-adnan
+[33me4c03f1[m[33m ([m[1;31morigin/Developement[m[33m)[m HEAD@{30}: commit: slug seted
+[33m41b0524[m HEAD@{31}: commit: pushing style to dev
+[33m8edc0f5[m HEAD@{32}: checkout: moving from br-#40-adnan to Developement
+[33m8edc0f5[m HEAD@{33}: commit: listing slug # set if empty
+[33m19d5279[m HEAD@{34}: commit: listing pages issues removed
+[33mf658979[m HEAD@{35}: commit: images also updated
+[33m17d5385[m HEAD@{36}: pull origin development: Fast-forward
+[33mf61bbac[m HEAD@{37}: commit: volgonoimage
+[33m8896d78[m HEAD@{38}: commit: this is listing property error removed
+[33m51c782f[m HEAD@{39}: pull origin development: Fast-forward
+[33mefcb14a[m HEAD@{40}: commit: count set for listin
+[33m853ba6d[m HEAD@{41}: pull origin development: Fast-forward
+[33me725561[m HEAD@{42}: pull origin development: Fast-forward
+[33m132c655[m HEAD@{43}: commit: lisitng pagination set by country
+[33m0e81dad[m HEAD@{44}: pull origin development: Fast-forward
+[33m712d9fc[m HEAD@{45}: pull origin development: Fast-forward
+[33ma5ba5d7[m HEAD@{46}: pull origin development: Merge made by the 'recursive' strategy.
+[33m61df3e0[m HEAD@{47}: commit: dasboard issue removed
+[33m8d7ef3a[m HEAD@{48}: pull origin development: Merge made by the 'recursive' strategy.
+[33mc4f6c1d[m HEAD@{49}: commit: listing pagination done
+[33m9d78fb2[m HEAD@{50}: pull origin development: Merge made by the 'recursive' strategy.
+[33m76d9759[m HEAD@{51}: commit: listing autos
+[33m6da1948[m HEAD@{52}: pull origin development: Merge made by the 'recursive' strategy.
+[33mb89cae0[m HEAD@{53}: pull origin development: Merge made by the 'recursive' strategy.
+[33mc174e81[m HEAD@{54}: commit: dashboard done
+[33m33620d3[m HEAD@{55}: pull origin development: Fast-forward
+[33mb14a136[m HEAD@{56}: commit (merge): head removed
+[33m62efa2e[m HEAD@{57}: commit: error removed
+[33m8b42392[m HEAD@{58}: commit: error removed for country ajax
+[33m50f52c7[m HEAD@{59}: pull origin development: Fast-forward
+[33mbf791c8[m HEAD@{60}: pull origin development: Fast-forward
+[33m31a6fb9[m HEAD@{61}: commit: remove todo
+[33mafd7b9e[m HEAD@{62}: commit: fav adds done
+[33mc420029[m HEAD@{63}: commit (merge): dashboard save add function added on going
+[33m13558d7[m HEAD@{64}: commit: dashboard listing
+[33mbe9fa83[m HEAD@{65}: pull origin development: Fast-forward
+[33m888e998[m HEAD@{66}: pull origin development: Fast-forward
+[33mf351fa1[m HEAD@{67}: commit: Account setting updated and deployed
+[33mef0870b[m HEAD@{68}: commit: follow and follower deployed to dashboard
+[33md5c205a[m HEAD@{69}: pull origin development: Fast-forward
+[33mf27bad6[m HEAD@{70}: pull origin development: Fast-forward
+[33m838ae99[m HEAD@{71}: commit: follow unfollow logic deployed
+[33m396ec9c[m HEAD@{72}: commit: working on follow module\
+[33m8f11943[m HEAD@{73}: pull origin development: Fast-forward
+[33m985aadb[m HEAD@{74}: pull origin development: Fast-forward
+[33m8673436[m HEAD@{75}: commit: single enter line
+[33maa7f806[m HEAD@{76}: pull origin development: Merge made by the 'recursive' strategy.
+[33m430eff2[m HEAD@{77}: pull origin development: Merge made by the 'recursive' strategy.
+[33ma3212aa[m HEAD@{78}: commit: dashboard edit and delete updated
+[33m5f5540b[m HEAD@{79}: pull origin development: Fast-forward
+[33m9274e9c[m HEAD@{80}: pull origin development: Fast-forward
+[33m643f3f3[m HEAD@{81}: commit: dynamic slug view
+[33m49bfc61[m HEAD@{82}: pull origin development: Fast-forward
+[33m592be36[m HEAD@{83}: commit: routes updated for listing
+[33mc8c1ce7[m HEAD@{84}: pull origin development: Fast-forward
+[33m55139de[m HEAD@{85}: commit: lisiting count bug fiexed
+[33m93e4d19[m HEAD@{86}: pull origin development: Fast-forward
+[33m52bd08d[m HEAD@{87}: pull origin development: Fast-forward
+[33mb9ce91e[m HEAD@{88}: commit: Dashboard view set plus dynamic data
+[33m7f49901[m HEAD@{89}: pull origin development: Fast-forward
+[33mf17db4d[m[33m ([m[1;32mbr-#25-adnan[m[33m)[m HEAD@{90}: checkout: moving from br-#25-adnan to br-#40-adnan
+[33mf17db4d[m[33m ([m[1;32mbr-#25-adnan[m[33m)[m HEAD@{91}: pull origin development: Fast-forward
+[33m35c4542[m[33m ([m[1;31morigin/br-#25-adnan[m[33m)[m HEAD@{92}: commit (merge): all letest commit
+[33m3c9373a[m HEAD@{93}: commit: services and classified
+[33m465eb98[m HEAD@{94}: commit: head removed
+[33m1f1ed1b[m HEAD@{95}: pull origin development: Fast-forward
+[33m33c35ca[m HEAD@{96}: pull origin development: Fast-forward
+[33m3ec33ec[m HEAD@{97}: commit (merge): head removed
+[33m59fe8ee[m HEAD@{98}: commit: single detail page integrated
+[33m6a8b596[m HEAD@{99}: pull origin development: Fast-forward
+[33md6f87de[m HEAD@{100}: commit: lisitng pagination set done
+[33mc9a488c[m HEAD@{101}: pull origin development: Fast-forward
+[33m040f53c[m HEAD@{102}: pull origin development: Fast-forward
+[33m3904898[m HEAD@{103}: pull origin development: Fast-forward
+[33m1e871f6[m HEAD@{104}: pull origin development: Fast-forward
+[33m21f96cd[m HEAD@{105}: commit: listing pages done
+[33m3f8fdda[m HEAD@{106}: pull origin development: Fast-forward
+[33m2730642[m HEAD@{107}: commit: property listing done
+[33m8aab594[m HEAD@{108}: commit: Listing autos Page markup
+[33m8f32954[m HEAD@{109}: pull origin development: Fast-forward
+[33mb05f67a[m HEAD@{110}: commit: lisitng classified added
+[33m8069ecc[m HEAD@{111}: commit: listing jobs done
+[33mf6ce906[m HEAD@{112}: pull origin development: Merge made by the 'recursive' strategy.
+[33m7fc5142[m HEAD@{113}: commit: updatted listing pages
+[33m8488dd1[m[33m ([m[1;32mbr-#16-adnan[m[33m)[m HEAD@{114}: checkout: moving from br-#16-adnan to br-#25-adnan
+[33m8488dd1[m[33m ([m[1;32mbr-#16-adnan[m[33m)[m HEAD@{115}: reset: moving to HEAD
+[33m8488dd1[m[33m ([m[1;32mbr-#16-adnan[m[33m)[m HEAD@{116}: pull origin development: Fast-forward
+[33m76994d0[m[33m ([m[1;31morigin/br-#16-adnan[m[33m)[m HEAD@{117}: commit: removed head
+[33ma8c3688[m HEAD@{11

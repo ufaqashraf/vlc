@@ -1,0 +1,194 @@
+@media only screen and (max-width: 1199px) {
+.logo {
+	width: 150px;
+	height: 60px;
+	background-size: 150px;
+}
+.adBtns {
+	margin-top: 32px;
+}
+.footerTitle {
+	padding-bottom: 10px;
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+}
+.bannerInner {
+	top: 50%;
+	margin-top: -73px;
+	left: 50%;
+	margin-left: -465px;
+}
+.bannerHolder {
+	padding: 0;
+}
+.bannerHolder .img-fluid {
+	position: relative;
+}
+}
+ @media only screen and (max-width: 1140px) {
+/* .grid2 .grid-item {
+    width: auto;
+    margin: 5px;
+} */
+/* .masonryHolder {
+	padding-left: 50px;
+    padding-right: 50px;
+}
+.masonryHolder .positionStatic {
+	padding-left: 0;
+} */
+}
+ @media only screen and (max-width: 1110px) {
+.nav-holder .megaMenu .dropdownHolderMain {
+	min-width: 960px;
+	left: calc(960px / -2);
+}
+}
+@media only screen and (max-width: 991px) {
+.languangeSelect {
+	margin-left: 15px;
+}
+.countrySelect {
+	margin-left: 15px;
+}
+.btn-msg {
+	width: auto;
+	display: block;
+	margin: 10px 0;
+	font-size: 12px;
+}
+.tabsHolder .nav .nav-link {
+	padding: 15px 10px;
+}
+.tradeHolder {
+	margin-bottom: 15px;
+}
+.nav-holder > .nav-item > .nav-link {
+	font-size: 14px;
+}
+.nav-holder .megaMenu .dropdownHolderMain {
+	min-width: 760px;
+	left: calc(760px / -2);
+}
+}
+@media only screen and (max-width: 960px) {
+.bannerInner {
+	margin-left: -375px;
+	max-width: 750px;
+}
+.tabsHolder .nav .nav-link {
+	padding: 15px 0px;
+}
+}
+@media only screen and (max-width: 930px) {
+.nav-holder > .nav-item > .nav-link > .fa {
+	font-size: 24px;
+	margin-bottom: 6px;
+}
+.nav-holder > .nav-item > .nav-link {
+	font-size: 13px;
+	line-height: 16px;
+}
+}
+ @media only screen and (max-width: 800px) {
+.bannerInner {
+	margin-left: -350px;
+	max-width: 700px;
+}
+}
+@media only screen and (min-width: 769px) {
+.mobileHideOnDesktop {
+	display: none;
+}
+}
+@media only screen and (max-width: 768px) {
+.responsive-logo-holder {
+	display: block !important;
+}
+.responsive-logo-holder .logo {
+	margin: 10px auto 15px;
+}
+.adBtns {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+.allright {
+	font-size: 12px;
+}
+.social-icone-footer > li > a {
+	height: 24px;
+	padding: 2px;
+	width: 24px;
+}
+.containerBanner {
+	display: none;
+}
+.desktopHideOnMobile {
+	display: none;
+}
+.footer-holder {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+}
+@media only screen and (max-width: 575px) {
+.allright {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.social-icone-footer {
+	float: none;
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.social-icone-footer > li {
+	float: none;
+	display: inline-block;
+}
+.footer-outer {
+	padding: 10px 0 0;
+}
+}
+@media only screen and (max-width: 550px) {
+.responsive-country {
+	flex-direction: column;
+}
+.responsive-country .languangeSelect {
+	width: auto;
+	margin-bottom: 10px;
+}
+.responsive-country .countrySelect {
+	width: auto;
+	margin-bottom: 10px;
+}
+.tradebyDetail {
+	float: none;
+	width: 100%;
+	border-left: none;
+}
+.tradeHolderImg {
+	width: 100%;
+	float: none;
+	border-bottom: 1px solid #ddd;
+	margin-right: 0;
+	border-right: none;
+}
+}
+@media only screen and (max-width: 380px) {
+.adBtns > a {
+	display: block;
+	position: relative;
+	margin: 0 auto 15px;
+}
+.adBtns > a .fa {
+	position: absolute;
+	left: 6px;
+	top: 7px;
+	text-align: left;
+}
+}

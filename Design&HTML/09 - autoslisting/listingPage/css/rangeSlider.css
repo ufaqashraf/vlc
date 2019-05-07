@@ -1,0 +1,65 @@
+.ui-widget-header {
+    border: 1px solid #007cdc;
+    background: #007cdc;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -4px;
+}
+.ui-state-default, 
+.ui-widget-content .ui-state-default, 
+.ui-widget-header .ui-state-default, 
+.ui-button, 
+html .ui-button.ui-state-disabled:hover, 
+html .ui-button.ui-state-disabled:active {
+    border: 2px solid #007cdc;
+    background: #fff;
+}
+.ui-slider .ui-slider-handle {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.rangeHolder {
+    position: relative;
+    padding-top: 25px;
+}
+.rangeHolder .slider-range, 
+.rangeHolder .slider-range-date, 
+.rangeHolder .slider-range2 {
+    height: 7px;
+    margin-left: 8px;
+    margin-right: 1px;
+    margin-bottom: 15px;
+}
+.ui-widget-content {
+    border: 1px solid #ccc;
+    background: #adadad;
+    border-radius: 0 !important;
+}
+
+.rangeHolder .amount1.textFieldRange,
+.rangeHolder .amount3.textFieldRange,
+.rangeHolder .amount5.textFieldRange {
+    left: 0;
+    text-align: left;
+}
+
+.rangeHolder .amount2.textFieldRange, 
+.rangeHolder .amount4.textFieldRange,
+.rangeHolder .amount6.textFieldRange {
+    right: 0;
+    text-align: right;
+}
+
+.rangeHolder .textFieldRange {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 12px;
+    width: auto;
+    min-width: inherit;
+    position: absolute;
+    top: 0;
+    outline: none;
+}
