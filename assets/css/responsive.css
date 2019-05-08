@@ -522,13 +522,13 @@
 
 .qty .plus, .qty .plus2 {
     height: 38px;
-    right: 0.5px;
+    right: 1px;
     top: 1px;
     border-radius: 0;
 }
 
 .qty .count, .qty .count2 {
-    border-radius: 3px;
+    border-radius: 0;
 }
 
 .priceTag {

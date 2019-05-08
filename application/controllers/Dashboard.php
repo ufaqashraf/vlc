@@ -425,15 +425,6 @@ class Dashboard extends CI_Controller
 
 	public function fav_add()
 	{
-
-		if ($_POST["userid"] == 0) {
-
-			echo json_encode("nolog");
-			exit();
-		}
-		if (!empty($_POST["listing_id"]) && !empty($_POST["userid"])) {
-
-
 			$listing_id = $this->input->post('listing_id');
 			$loged_in_userid = $this->input->post('userid');
 
@@ -441,7 +432,7 @@ class Dashboard extends CI_Controller
 
 			echo json_encode($fav_adss);
 			exit();
-		}
+
 
 	}
 	public function follow_add()
@@ -465,26 +456,37 @@ class Dashboard extends CI_Controller
 		}
 
 	}
-	public function remove_fav()
-	{
 
-		if ($_POST["userid"] == 0) {
-
-			return "nolog";
-		}
-		if (!empty($_POST["listing_id"]) && !empty($_POST["userid"])) {
-
+	public function remove_fav(){
 
 			$listing_id = $this->input->post('listing_id');
 			$loged_in_userid = $this->input->post('userid');
+			$this->Basic_Model->basicDeleteTwo('b2b_user_meta','user_id',$loged_in_userid,'meta_value',$listing_id );
 
-			$remove = $this->Dashboard_Model->remove_fav_add($listing_id, $loged_in_userid);
-
-			echo json_encode($remove);
-			exit();
+			echo ("removed");
+			exit;
 		}
 
-	}
+//	public function remove_fav()
+//	{
+//
+//		if ($_POST["userid"] == 0) {
+//
+//			return "nolog";
+//		}
+//		if (!empty($_POST["listing_id"]) && !empty($_POST["userid"])) {
+//
+//
+//			$listing_id = $this->input->post('listing_id');
+//			$loged_in_userid = $this->input->post('userid');
+//
+//			$remove = $this->Dashboard_Model->remove_fav_add($listing_id, $loged_in_userid);
+//
+//			echo json_encode($remove);
+//			exit();
+//		}
+//
+//	}
 
 	public function remove_follow()
 	{
@@ -691,6 +693,16 @@ class Dashboard extends CI_Controller
 
 		if (!$full) $string = array_slice($string, 0, 1);
 		return $string ? implode(', ', $string) . ' ago' : 'just now';
+
 	}
+
+	function delete_dashboard_search(){
+		$id = $this->input->post('del_id');
+		$this->Basic_Model->basicDelete('b2b_user_meta','id',$id);
+		echo ("removed");
+		exit;
+
+	}
+
 
 }

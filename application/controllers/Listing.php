@@ -930,6 +930,31 @@ class Listing extends CI_Controller
 		echo json_encode($response);
 		exit(); 
 	}
+	// remove search
+	public function removesearch(){
+		parse_str($_POST['data'], $data);
+		$raw_data = $this->input->post('data');
+		$parent_cat = $this->Listingquery_Model->get_id_of_cat($data['parent_cat']);
+		$parent_cat = isset($parent_cat) ? $parent_cat[0]->id : '';
+		$loged_in_user_id = volgo_get_logged_in_user_id();
+		if(!empty($loged_in_user_id)){
+			$result = $this->Listings_Model->removesearch($raw_data,$loged_in_user_id,$parent_cat);
+			if($result){
+				$response = [
+					'success' => true,
+					'msg' => 'Your search have been remove',
+				];
+			}else{
+				$response = [
+					'success' => false,
+					'msg' => 'Something went wrong',
+				];
+			}
+		}
+		
+		echo json_encode($response);
+		exit(); 
+	}
 
 
 

@@ -85,7 +85,6 @@
 							<div class="bestSeller-field">
 								<span class="sortBy">Sort by:</span>
 								<select class="form-control selectpicker sorting_select" name="sorting" >
-                                    <option value="default">Choose sort</option>
                                     <option <?php if(!empty($_GET['sorting']) && $_GET['sorting'] == 'desc'){echo 'selected';} ?> value="desc">Newest to Oldest</option>
                                     <option <?php if(!empty($_GET['sorting']) && $_GET['sorting'] == 'asc'){echo 'selected';} ?> value="asc">Oldest to Newest</option>
                                     <option <?php if(!empty($_GET['sorting']) && $_GET['sorting'] == 'price-desc'){echo 'selected';} ?> value="price-desc">Price Highest to Lowest</option>

@@ -118,8 +118,19 @@
                                     <select class="form-control selectpicker" name="amenities">
                                         <option value="">Please select</option>
                                         <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'air-conditioning'){echo 'selected';} ?> value="air-conditioning">Air Conditioning</option>
-                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'abc'){echo 'selected';} ?> value="abc">Abc</option>
-                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'abcd'){echo 'selected';} ?> value="abcd">abcd</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'heating'){echo 'selected';} ?> value="heating">Heating</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'balcony'){echo 'selected';} ?> value="balcony">Balcony</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'elevator'){echo 'selected';} ?> value="elevator">Elevator</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'garden'){echo 'selected';} ?> value="garden">Garden</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'garage-garking'){echo 'selected';} ?> value="garage-garking">Garage/Parking</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'maid-room'){echo 'selected';} ?> value="maid-room">Maid Room</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'laundry-room'){echo 'selected';} ?> value="laundry-room">Laundry Room</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'nearby-facilities'){echo 'selected';} ?> value="nearby-facilities">Nearby Facilities</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'security'){echo 'selected';} ?> value="security">Security</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'built-in-wardrobes'){echo 'selected';} ?> value="built-in-wardrobes">Built in Wardrobes</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'swimming-pool'){echo 'selected';} ?> value="swimming-pool">Swimming Pool</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'solar-panels'){echo 'selected';} ?> value="solar-panels">Solar Panels</option>
+                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'doublepane-windows'){echo 'selected';} ?> value="doublepane-windows">Doublepane Windows</option>
                                     </select>
                                 </div>
                             </div>
@@ -168,11 +179,15 @@
                         <div class="col-md-3 col-lg-2">
                             <div class="textField searchBtnsAction">
                                 <button class="btn save_search_"> <i class="fa fa-heart-o" aria-hidden="true"></i> save search </button>
+                                <button class="btn remove_search_" style="display:none"> <i class="fa fa-heart" aria-hidden="true"></i> remove search </button>
                             </div>
                         </div>
                         <div class="col-md-3 col-lg-6"> <span class="advnc-search"><a id="advnce-ser1" data-toggle="collapse" aria-expanded="false" href="#"><i class="fa fa-plus-circle"></i>Advance Search</a></span> </div>
                     </div>
         </fieldset>
+            <div class="spinner-loader-wrapper" style="display: none;">
+                <div class="spinner-loader fa fa-spinner fa-spin fa-2x fa-fw"></div>
+            </div>
         </form>
         </div>
     </div>

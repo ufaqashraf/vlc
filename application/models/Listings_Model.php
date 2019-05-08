@@ -1713,6 +1713,34 @@ class Listings_Model extends CI_Model
 			);
 		}
 		return $is_inserted;
+    }
+    
+    // remove search
+    public function removesearch($raw_data,$user_id,$parent_cat){
+        parse_str($_POST['data'], $get_data);
+        // var_dump($raw_data);die;
+        // countries
+		$country_id = volgo_get_country_info_from_session();
+		$country_id = $country_id['country_id'];
+		if (isset($country_id)) {
+			$country_id = $country_id;
+		} else {
+			$country_id = 166;
+		}
+		// fetch data
+		$search_history_data = "select * from search_history where query_title = '{$get_data['search_query']}' and category_id = {$parent_cat} and country_id = {$country_id} and users_id = {$user_id} limit 1";
+		$total_searchs = $this->db->query($search_history_data);
+		$search_result = $total_searchs->result();
+
+		// var_dump($search_result[0]->id);
+		if(!empty($total_searchs->num_rows())){
+			$this->db->where('id', $search_result[0]->id);
+			$is_inserted =	$this->db->delete('search_history');
+
+		}else{
+            $is_inserted = false;
+        }
+		return $is_inserted;
 	}
 
 
