@@ -19,35 +19,35 @@
 						<ul class="saveBtn list-unstyled ">
 							<li>
 								<?php
-								$user_id = volgo_get_logged_in_user_id();
+								//                                $user_id = volgo_get_logged_in_user_id();
 
-								if (isset($user_id)) {
-									$user_id = $user_id;
-								} else {
-									$user_id = 0;
-								}
-								?>
-
-								<?php
-								$idoflisting = [];
-
-								if (!empty($listing_save_search)) {
-									foreach ($listing_save_search as $single_listing) {
-										print_r($single_listing);
-										exit;
-										$idoflisting[] = $single_listing->meta_value;
-										$user_id_retrived = $single_listing->user_id;
-									}
-								}
-								if (isset($user_id_retrived)) {
-									$user_id_retrived = $user_id_retrived;
-								} else {
-									$user_id_retrived = "no fav search";
-								}
-
-
-								if ($user_id_retrived == $user_id):?>
-								<?php else: ?>
+								//                                if (isset($user_id)) {
+								//                                    $user_id = $user_id;
+								//                                } else {
+								//                                    $user_id = 0;
+								//                                }
+								//                                ?>
+								<!---->
+								<!--                                --><?php
+								//                                $idoflisting = [];
+								//
+								//                                if (!empty($listing_save_search)) {
+								//                                    foreach ($listing_save_search as $single_listing) {
+								//                                        print_r($single_listing);
+								//                                        exit;
+								//                                        $idoflisting[] = $single_listing->meta_value;
+								//                                        $user_id_retrived = $single_listing->user_id;
+								//                                    }
+								//                                }
+								//                                if (isset($user_id_retrived)) {
+								//                                    $user_id_retrived = $user_id_retrived;
+								//                                } else {
+								//                                    $user_id_retrived = "no fav search";
+								//                                }
+								//
+								//
+								//                                if ($user_id_retrived == $user_id):?>
+								<!--                                --><?php //else: ?>
 								<!--                                    <a class="saveNow save_search_add"-->
 								<!--                                       data-user_id="--><?php //echo $user_id; ?><!--" href="#"-->
 								<!--                                       style="" >-->
@@ -69,7 +69,7 @@
 							<li>
 								<a class="saveIt save_search_history" id="save_search_history"
 								   data-user_id="<?php if(isset($user_id)){ echo $user_id;} ?>" >
-									<i class="fa fa-spinner paddindIt" style="display: none"></i>
+									<i class="fa fa-spinner paddindIt" style="display: none;"></i>
 									<i class="fa fa-heart-o" aria-hidden="true"></i>
 									<span id="saveSpan">Save</span>
 
@@ -82,7 +82,7 @@
 
 								</a>
 							</li>
-							<?php endif; ?>
+							<!--                            --><?php //endif; ?>
 							</li>
 						</ul>
 					</div>

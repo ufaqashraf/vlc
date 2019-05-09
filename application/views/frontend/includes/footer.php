@@ -811,7 +811,7 @@ foreach ($footer_block as $key => $value) {
 
     $(".remove_save_search_add").click(function (e) {
         e.preventDefault();
-
+        alert("hey")
         var $this = $(this);
         $this.find(".fa-spinner").show();
 
@@ -1058,70 +1058,104 @@ foreach ($footer_block as $key => $value) {
         }
     });
 
+    // ---------------------- Auto populate sidebar search fields using jquery -----------------------------------------
+
+    function getUrlParameter() {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            //let input = $(document).find('#' + sParameterName[0]);
+
+            //console.log($(input));
+
+            var current_id = $("#" + sParameterName[0]);
+            $(current_id).val(decodeURIComponent(sParameterName[1]));
+            /*if($(current_id).is("select")) {
+                $(current_id).val(decodeURIComponent(sParameterName[1]));
+            }else if($(current_id).is("input")) {
+
+            }*/
+        }
+    }
+
+    getUrlParameter();
+
+    // ---------------------- Auto populate sidebar search fields using jquery - Ends -----------------------------------------
+
 
 </script>
 
 <script>
     // save search history start
 
+   
     $(".save_search_history").click(function(e) {
-
-        var $this = $(this);
-        var userid = $this.data("user_id");
-        $this.find(".fa-spinner").show();
-        if (userid == 0) {
-            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('dashboard/save_search_history'); ?>",
-                success: function (msg) {
+        e.preventDefault();
+var $this = $(this);
+var userid = $this.data("user_id");
+$this.find(".fa-spinner").show();
+if (userid == 0) {
+    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+} else {
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('dashboard/save_search_history'); ?>",
+        success: function (msg) {
 //                alert(msg);
-                    var obj = JSON.parse(msg);
-                    var resultArray = new Array();
-                    for (var i in obj)
-                        resultArray[i] = obj[i];
+            var obj = JSON.parse(msg);
+            var resultArray = new Array();
+            for (var i in obj)
+                resultArray[i] = obj[i];
 
-                    if (resultArray['insert_id']) {
-                        alert('Search saved successfully');
-                        $this.find(".fa-spinner").hide();
-                        $('.removesrch').removeClass('hide');
-                        $('.save_search_history').addClass('hide');
-                    }
-                }
-            })
-        }
-    });
-
-    //    $(".search-me").click(function() {
-    //        $(".saveIt").css("background-color", "#fff");
-    //        $(".saveIt").css("color", "#666");
-    //        $("#saveSpan").html("");
-    //        $("#saveSpan").html("Save");
-    ////        $("#saveSpan").removeClass("removesrch");
-    ////        $("#save_search_history").removeClass("save_search_history");
-    //    });
-
-
-    $(".removesrch").click(function() {
-        var $this = $(this);
-        $this.find(".fa-heart-o").hide();
-        $this.find(".fa-spinner").show();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
-            success: function (msg) {
-                alert('Removed history successfully');
-                if (msg == "removed") {
-                    $this.find(".fa-spinner").hide();
-                    $('.removesrch').addClass('hide');
-                    $('.save_search_history').removeClass('hide');
-                }
-
+            if (resultArray['insert_id']) {
+               // alert('Search saved successfully');
+                $this.find(".fa-spinner").hide();
+                $('.removesrch').removeClass('hide');
+                $('.save_search_history').addClass('hide');
             }
-        })
+        }
+    })
+}
+});
 
-    });
+//    $(".search-me").click(function() {
+//        $(".saveIt").css("background-color", "#fff");
+//        $(".saveIt").css("color", "#666");
+//        $("#saveSpan").html("");
+//        $("#saveSpan").html("Save");
+////        $("#saveSpan").removeClass("removesrch");
+////        $("#save_search_history").removeClass("save_search_history");
+//    });
+
+
+$(".removesrch").click(function() {
+var $this = $(this);
+$this.find(".fa-heart-o").hide();
+$this.find(".fa-spinner").show();
+$.ajax({
+    type: "POST",
+    url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
+    success: function (msg) {
+       // alert('Removed history successfully');
+        if (msg == "removed") {
+            $this.find(".fa-spinner").hide();
+            $('.removesrch').addClass('hide');
+            $('.save_search_history').removeClass('hide');
+        }
+
+    }
+})
+
+});
+
+
+
+
 
 
     $(".del_this_one").click(function() {
