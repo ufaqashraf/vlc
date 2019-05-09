@@ -175,7 +175,6 @@ class Listing extends CI_Controller
 			$this->load->view('frontend/listing_detail_pages/listingjobs', $listing);
 		}else if($cat_name === 'buying-leads' || $parent_cat_name === 'buying-leads' || $cat_name === 'seller-leads' || $parent_cat_name === 'seller-leads'){
 			if(!empty($loged_in_user_id)){
-				$listing['parent_cat_name'] = $parent_cat_name;
 				$listing['user_membership'] = $this->Listings_Model->user_membership_check($loged_in_user_id);
 			}
 			$this->load->view('frontend/listing_detail_pages/listingleads', $listing);
@@ -931,31 +930,6 @@ class Listing extends CI_Controller
 		echo json_encode($response);
 		exit(); 
 	}
-	// remove search
-	public function removesearch(){
-		parse_str($_POST['data'], $data);
-		$raw_data = $this->input->post('data');
-		$parent_cat = $this->Listingquery_Model->get_id_of_cat($data['parent_cat']);
-		$parent_cat = isset($parent_cat) ? $parent_cat[0]->id : '';
-		$loged_in_user_id = volgo_get_logged_in_user_id();
-		if(!empty($loged_in_user_id)){
-			$result = $this->Listings_Model->removesearch($raw_data,$loged_in_user_id,$parent_cat);
-			if($result){
-				$response = [
-					'success' => true,
-					'msg' => 'Your search have been remove',
-				];
-			}else{
-				$response = [
-					'success' => false,
-					'msg' => 'Something went wrong',
-				];
-			}
-		}
-		
-		echo json_encode($response);
-		exit(); 
-	}
 
 
 
@@ -1190,6 +1164,7 @@ class Listing extends CI_Controller
 						'msg' => 'Your membership connects per day limits has been reached'
 					];
 				}
+				
 			}else{
 				$response = [
 					'success' => false,
@@ -1197,12 +1172,9 @@ class Listing extends CI_Controller
 				];
 			}
 		}
+		
 		echo json_encode($response);
 		exit();
-	}
 
-	// reset membership
-	public function reset_membership(){
-		$this->Listings_Model->reset_membership();
 	}
 }

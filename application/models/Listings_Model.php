@@ -1221,9 +1221,10 @@ class Listings_Model extends CI_Model
                     $listing_meta_info = $result;
 
                 }
+
                 foreach ($listing_meta_info as $listing_meta) {
                     $new_arr[$type][$old_key]['metas'][] = [
-                        'listing_meta_id' => (int)$listing_meta->listing_meta_id,
+                        'listing_meta_id' => $listing_meta->listing_meta_id,
                         'meta_key' => $listing_meta->meta_key,
                         'meta_value' => $listing_meta->meta_value,
                     ];
@@ -1636,7 +1637,7 @@ class Listings_Model extends CI_Model
 		}
     }
     // get parent category
-	public function parent_cat_id($cat_id){
+	private function parent_cat_id($cat_id){
         
 		$query = "select parent_ids from categories where id = {$cat_id}";
         $result = $this->db->query($query);
@@ -1712,45 +1713,15 @@ class Listings_Model extends CI_Model
 			);
 		}
 		return $is_inserted;
-    }
-    
-    // remove search
-    public function removesearch($raw_data,$user_id,$parent_cat){
-        parse_str($_POST['data'], $get_data);
-        // var_dump($raw_data);die;
-        // countries
-		$country_id = volgo_get_country_info_from_session();
-		$country_id = $country_id['country_id'];
-		if (isset($country_id)) {
-			$country_id = $country_id;
-		} else {
-			$country_id = 166;
-		}
-		// fetch data
-		$search_history_data = "select * from search_history where query_title = '{$get_data['search_query']}' and category_id = {$parent_cat} and country_id = {$country_id} and users_id = {$user_id} limit 1";
-		$total_searchs = $this->db->query($search_history_data);
-		$search_result = $total_searchs->result();
-
-		// var_dump($search_result[0]->id);
-		if(!empty($total_searchs->num_rows())){
-			$this->db->where('id', $search_result[0]->id);
-			$is_inserted =	$this->db->delete('search_history');
-
-		}else{
-            $is_inserted = false;
-        }
-		return $is_inserted;
 	}
 
 
     // check membership
 	public function user_membership_check($user_id){
-        $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id
+        $query = "select o.id as id,u.id as user_id,o.available_connect,o.packages_id
         from b2b_users u
         left join orders o on o.user_id = u.id
-        left join orders_meta om on om.order_id = o.id
-        where u.id = {$user_id} and o.status = 'paid' and o.order_date < DATE_ADD(o.order_date, INTERVAL 1 YEAR)";
-        $this->db->cache_off();
+        where u.id = {$user_id} and o.status = 'paid'";
         $result = $this->db->query($query);
         return $result->result(); 
     }
@@ -1758,43 +1729,12 @@ class Listings_Model extends CI_Model
     public function update_connects($id,$package_id,$connects){
         if($package_id != 3){
             $update = array(
-                'meta_value' => $connects-1,
+                'available_connect' => $connects-1,
             );
-            $this->db->where('order_id', $id);
-            $this->db->update('orders_meta', $update);
+    
+            $this->db->where('id', $id);
+            $this->db->update('orders', $update);
         }
     }
-    // reset membership
-	public function reset_membership(){
-        $query = "select id, packages_id from orders where status = 'paid' and order_date < DATE_ADD(order_date, INTERVAL 1 YEAR)";
-        $this->db->cache_off();
-        $result = $this->db->query($query);
-        $data = $result->result(); 
-
-        if($result->num_rows() > 0){
-            foreach($data as $item){ 
-                $connects = -1;
-                if($item->packages_id === '1' ){
-                    $connects = 10;
-                }else if($item->packages_id === '2'){
-                    $connects = 20;
-                }
-                if(isset($connects)){
-                    // delete meta
-                    $this->db->where('order_id', $item->id);
-                    $this->db->delete('orders_meta');
-                    // insert meta
-                    $insert = [
-                        'order_id' => $item->id,
-                        'meta_key' => 'available_connect',
-                        'meta_value' => $connects,
-                        'orders_id' => $item->id
-                    ];
-                    $this->db->set($insert);
-                    $this->db->insert('orders_meta');
-                }
-            }
-        }
-	}
 }
 

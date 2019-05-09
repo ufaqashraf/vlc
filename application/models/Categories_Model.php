@@ -230,25 +230,25 @@ class Categories_Model extends CI_Model
 		return $result;
 	}
 
-	public function get_parent_categories_for_add_post($order_by_column = '', $direction = "")
-	{
-		$direction = empty($direction) ? 'asc' : $direction;
+    public function get_parent_categories_for_add_post($order_by_column = '', $direction = "")
+    {
+        $direction = empty($direction) ? 'asc' : $direction;
 
-		$this->db->cache_on();
-		$this->db->select('c1.id as cat_id, c1.parent_ids, c1.name as cat_name, c1.image_icon, c1.slug');
-		$this->db->from($this->tablename . ' as c1');
-		$this->db->where('c1.parent_ids', 'uncategorised');
+        $this->db->cache_on();
+        $this->db->select('c1.id as cat_id, c1.parent_ids, c1.name as cat_name, c1.image_icon, c1.slug');
+        $this->db->from($this->tablename . ' as c1');
+        $this->db->where('c1.parent_ids', 'uncategorised');
 		$this->db->where('c1.category_type', 'category');
 
-		if (! empty($order_by_column))
-			$this->db->order_by($order_by_column, $direction);
+        if (! empty($order_by_column))
+            $this->db->order_by($order_by_column, $direction);
 
-		$query = $this->db->get();
-		$result = ($query->result());
-		$this->db->cache_off();
+        $query = $this->db->get();
+        $result = ($query->result());
+        $this->db->cache_off();
 
-		return $result;
-	}
+        return $result;
+    }
 
 	public function get_categories_for_header()
 	{
