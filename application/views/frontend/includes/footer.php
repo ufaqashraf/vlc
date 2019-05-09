@@ -767,58 +767,7 @@ foreach ($footer_block as $key => $value) {
 //        });
 //    });
 
-    $(".fav_add_listing").click(function(e) {
-        e.preventDefault();
-        var $this = $(this);
-        var listing_id = $this.data('lisitngid'); //getter
-        var userid = $this.data("user_id");
-        $this.find(".fa-spinner").show();
-        if (userid == 0) {
-            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-        } else {
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: "<?php echo base_url('dashboard/fav_add'); ?>",
-                data: {listing_id: listing_id, userid: userid},
-                success: function (result) {
 
-                    if (result == 'fav_added') {
-                        alert('Favourite saved successfully');
-                        $this.find(".fa-spinner").hide();
-                        $(".remove_fav_listing").show();
-                        $(".fav_add_listing").hide();
-                    }
-                }
-            })
-        }
-    });
-
-    $(".remove_fav_listing").click(function(e) {
-        e.preventDefault();
-        alert("hey");
-        var $this = $(this);
-        $this.find(".fa-heart-o").hide();
-        $this.find(".fa-spinner").show();
-        var listing_id = $this.data('lisitngid'); //getter
-        var userid = $this.data("user_id");
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url('dashboard/remove_fav'); ?>",
-            data: {listing_id: listing_id, userid: userid},
-
-            success: function (msg) {
-                console.log(msg);
-                alert('Removed history successfully');
-                if (msg == "removed") {
-                    $this.find(".fa-spinner").hide();
-                    $(".remove_fav_listing").addClass('hide');
-                    $(".fav_add_listing").removeClass('hide');
-                }
-            }
-        })
-
-    });
 
 
     // add favrouite and remove favrouite on listing and detail pages end

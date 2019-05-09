@@ -1221,10 +1221,9 @@ class Listings_Model extends CI_Model
                     $listing_meta_info = $result;
 
                 }
-
                 foreach ($listing_meta_info as $listing_meta) {
                     $new_arr[$type][$old_key]['metas'][] = [
-                        'listing_meta_id' => $listing_meta->listing_meta_id,
+                        'listing_meta_id' => (int)$listing_meta->listing_meta_id,
                         'meta_key' => $listing_meta->meta_key,
                         'meta_value' => $listing_meta->meta_value,
                     ];
@@ -1637,7 +1636,7 @@ class Listings_Model extends CI_Model
 		}
     }
     // get parent category
-	private function parent_cat_id($cat_id){
+	public function parent_cat_id($cat_id){
         
 		$query = "select parent_ids from categories where id = {$cat_id}";
         $result = $this->db->query($query);
@@ -1746,10 +1745,12 @@ class Listings_Model extends CI_Model
 
     // check membership
 	public function user_membership_check($user_id){
-        $query = "select o.id as id,u.id as user_id,o.available_connect,o.packages_id
+        $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id
         from b2b_users u
         left join orders o on o.user_id = u.id
-        where u.id = {$user_id} and o.status = 'paid'";
+        left join orders_meta om on om.order_id = o.id
+        where u.id = {$user_id} and o.status = 'paid' and o.order_date < DATE_ADD(o.order_date, INTERVAL 1 YEAR)";
+        $this->db->cache_off();
         $result = $this->db->query($query);
         return $result->result(); 
     }
@@ -1757,12 +1758,43 @@ class Listings_Model extends CI_Model
     public function update_connects($id,$package_id,$connects){
         if($package_id != 3){
             $update = array(
-                'available_connect' => $connects-1,
+                'meta_value' => $connects-1,
             );
-    
-            $this->db->where('id', $id);
-            $this->db->update('orders', $update);
+            $this->db->where('order_id', $id);
+            $this->db->update('orders_meta', $update);
         }
     }
+    // reset membership
+	public function reset_membership(){
+        $query = "select id, packages_id from orders where status = 'paid' and order_date < DATE_ADD(order_date, INTERVAL 1 YEAR)";
+        $this->db->cache_off();
+        $result = $this->db->query($query);
+        $data = $result->result(); 
+
+        if($result->num_rows() > 0){
+            foreach($data as $item){ 
+                $connects = -1;
+                if($item->packages_id === '1' ){
+                    $connects = 10;
+                }else if($item->packages_id === '2'){
+                    $connects = 20;
+                }
+                if(isset($connects)){
+                    // delete meta
+                    $this->db->where('order_id', $item->id);
+                    $this->db->delete('orders_meta');
+                    // insert meta
+                    $insert = [
+                        'order_id' => $item->id,
+                        'meta_key' => 'available_connect',
+                        'meta_value' => $connects,
+                        'orders_id' => $item->id
+                    ];
+                    $this->db->set($insert);
+                    $this->db->insert('orders_meta');
+                }
+            }
+        }
+	}
 }
 

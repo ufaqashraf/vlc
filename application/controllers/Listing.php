@@ -175,6 +175,7 @@ class Listing extends CI_Controller
 			$this->load->view('frontend/listing_detail_pages/listingjobs', $listing);
 		}else if($cat_name === 'buying-leads' || $parent_cat_name === 'buying-leads' || $cat_name === 'seller-leads' || $parent_cat_name === 'seller-leads'){
 			if(!empty($loged_in_user_id)){
+				$listing['parent_cat_name'] = $parent_cat_name;
 				$listing['user_membership'] = $this->Listings_Model->user_membership_check($loged_in_user_id);
 			}
 			$this->load->view('frontend/listing_detail_pages/listingleads', $listing);
@@ -1189,7 +1190,6 @@ class Listing extends CI_Controller
 						'msg' => 'Your membership connects per day limits has been reached'
 					];
 				}
-				
 			}else{
 				$response = [
 					'success' => false,
@@ -1197,9 +1197,12 @@ class Listing extends CI_Controller
 				];
 			}
 		}
-		
 		echo json_encode($response);
 		exit();
+	}
 
+	// reset membership
+	public function reset_membership(){
+		$this->Listings_Model->reset_membership();
 	}
 }
