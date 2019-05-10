@@ -862,7 +862,7 @@ foreach ($footer_block as $key => $value) {
                 console.log(result);
 
                 if (result == 'nolog') {
-                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                    window.location.reload("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
                 }
                 if (result == 'follow_added') {
 
@@ -1068,6 +1068,7 @@ $(".show_leads_details").click(function (e) {
         $this.find(".fa-spinner").show();
         if (userid == 0) {
             window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+            // location.reload();
         } else {
             $.ajax({
                 type: "POST",
@@ -1080,7 +1081,7 @@ $(".show_leads_details").click(function (e) {
                         resultArray[i] = obj[i];
 
                     if (resultArray['insert_id']) {
-                        alert('Search saved successfully');
+                        //alert('Search saved successfully');
                         $this.find(".fa-spinner").hide();
                         $('.removesrch').removeClass('hide');
                         $('.save_search_history').addClass('hide');
@@ -1108,7 +1109,7 @@ $(".show_leads_details").click(function (e) {
             type: "POST",
             url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
             success: function (msg) {
-                alert('Removed history successfully');
+                //alert('Removed history successfully');
                 if (msg == "removed") {
                     $this.find(".fa-spinner").hide();
                     $('.removesrch').addClass('hide');

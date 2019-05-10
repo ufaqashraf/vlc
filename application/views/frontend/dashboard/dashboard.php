@@ -968,33 +968,41 @@
 																		echo $searched_row['link']['country_search'];
 																	}
 																	if(isset($searched_row['link']['select_state']))
-																		echo '|'.$searched_row['link']['select_state'];
+																		echo ('|'.$searched_row['link']['select_state']);
 																		if(isset($searched_row['link']['selected_city']))
-																		echo '|'.$searched_row['link']['selected_city'];
+																		echo ('|'.$searched_row['link']['selected_city']);
 																			else echo "All Cities";
 																	?></h4>
 
 															<ul>
 															<li> <?php
 																	if(isset($searched_row['link']['make']))
-																	echo '|'.$searched_row['link']['make'];
+																	echo $searched_row['link']['make'];
 																	else echo "";	
 																	?>
+															</li>
+															<li>		
 																<?php
 																	if(isset($searched_row['link']['model']))
-																	echo '|'.$searched_row['link']['model'];
+																	echo $searched_row['link']['model'];
 																		else echo "";	
 																?>
+															</li>
+															<li>	
 																<?php
 																	if(isset($searched_row['link']['yearfrom']))
-																	echo '|'.$searched_row['link']['yearfrom'].' - ';
+																	echo '|'.$searched_row['link']['yearfrom'].'-';
+																
+																	
 																	if(isset($searched_row['link']['yearto']))
-																	echo $searched_row['link']['yearto'].'|';
+																	echo ($searched_row['link']['yearto']);
 																		else echo" ";	
 																?>
+															</li>
+															<li>	
 																<?php
 																	if(isset($searched_row['link']['condition']))
-																	echo '|'.$searched_row['link']['condition'].'|';
+																	echo $searched_row['link']['condition'];
 																		else echo "";	
 																?>
 															

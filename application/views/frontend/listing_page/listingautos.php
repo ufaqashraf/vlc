@@ -39,7 +39,7 @@
                                 <?php
                                 $user_id = volgo_get_logged_in_user_id();
 
-                                if (isset($user_id)) {
+                                if (($user_id)) {
                                     $user_id = $user_id;
                                 } else {
                                     $user_id = 0;
