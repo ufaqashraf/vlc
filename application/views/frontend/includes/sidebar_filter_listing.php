@@ -275,6 +275,20 @@
 			padding: 2px 1px 5px 4px;
 		}
 
+		.saveBtn>li>a.saveli {
+			cursor: pointer;
+			color: #007cdc;
+			border: 1px solid #999;
+			width: calc(160% - 5px);
+			float: right;
+			background: #fff;
+			font-size: 15px;
+			color: #666;
+			box-shadow: none !important;
+			text-transform: capitalize;
+			padding-left: 5px;
+			padding: 2px 1px 5px 4px;
+		}
 		.saveBtn>li>a.saveIt:hover {
 			color: #666;
 			background-color: #eee;
@@ -293,7 +307,7 @@
 			color: #fff;
 			cursor: pointer;
 			border: 1px solid #999;
-			width: calc(50% - 5px);
+			width: calc(159% - 5px);
 			float: right;
 			font-size: 15px;
 			box-shadow: none !important;

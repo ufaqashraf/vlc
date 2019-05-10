@@ -18,60 +18,11 @@
 
 
 					</div>
-					<div class="col-md-4 searchBtnsAction">
-<!--						<ul class="saveSearch list-unstyled ">-->
-						<ul class="saveBtn list-unstyled ">
-                            <li>
-                                <?php
-                                $user_id = volgo_get_logged_in_user_id();
-
-                                if (isset($user_id)) {
-                                    $user_id = $user_id;
-                                } else {
-                                    $user_id = 0;
-                                }
-                                ?>
-
-                                <?php
-                                $idoflisting = [];
-
-                                if (!empty($listing_save_search)) {
-                                    foreach ($listing_save_search as $single_listing) {
-                                        print_r($single_listing);
-                                        exit;
-                                        $idoflisting[] = $single_listing->meta_value;
-                                        $user_id_retrived = $single_listing->user_id;
-                                    }
-                                }
-                                if (isset($user_id_retrived)) {
-                                    $user_id_retrived = $user_id_retrived;
-                                } else {
-                                    $user_id_retrived = "no fav search";
-                                }
-
-
-                                if ($user_id_retrived == $user_id):?>
-                                <?php else: ?>
-<!--                                    <a class="saveNow save_search_add"-->
-<!--                                       data-user_id="--><?php //echo $user_id; ?><!--" href="#"-->
-<!--                                       style="" >-->
-<!--                                        <i class="fa fa-spinner"-->
-<!--                                           style="display: none"></i><i-->
-<!--                                                class="fa fa-heart"-->
-<!--                                                aria-hidden="true"></i>-->
-<!--                                        <span> Save Search </span>-->
-<!--                                    </a>-->
-<!--                                    <a class="saveNow remove_save_search_add"-->
-<!--                                       data-user_id="--><?php //echo $user_id; ?><!--" href="#"-->
-<!--                                       style="display: none;">-->
-<!--                                        <i class="fa fa-spinner"-->
-<!--                                           style="display: none"></i><i-->
-<!--                                                class="fa fa-heartbeat-o"-->
-<!--                                                aria-hidden="true"></i>-->
-<!--                                        <span> Save Search </span>-->
-<!--                                    </a>-->
+					<div class="textField searchBtnsAction">
+						<ul class="list-unstyled clearfix saveBtn">
+							
 							<li>
-								<a class="saveIt save_search_history" id="save_search_history"
+								<a class="saveli save_search_history" id="save_search_history"
 								   data-user_id="<?php if(isset($user_id)){ echo $user_id;} ?>" >
 									<i class="fa fa-spinner paddindIt" style="display: none"></i>
 									<i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -80,17 +31,16 @@
 								</a>
 								<a class="removesrch hide" id="removesrch"
 								   data-user_id="<?php if(isset($user_id)){ echo $user_id;} ?>">
-									<i class="fa fa-spinner paddindIt" style="display: none;"></i>
+									<i class="fa fa-spinner paddindIt" style="display: none"></i>
 									<i class="fa fa-heart-o" aria-hidden="true"></i>
 									<span id="removeSpan">Remove</span>
 
 								</a>
 							</li>
-                                <?php endif; ?>
-                            </li>
 						</ul>
 					</div>
 				</div>
+
 				<div class="stackHolder tags bgGrey">
 					<a href="#" class="adImageLeft" target="_blank">
 						<img src="<?php echo base_url('assets/images/adImg1.jpg'); ?>" alt="banner-Image">
@@ -197,21 +147,21 @@
 						</div>
 					</div>
 				<?php endif; ?>
-                <div class="stackHolder bgGrey">
-                    <div class="checkboxHolder ajax-listing-filters">
-                        <label class="checkboxStyle"> Listing with Photo
-                            <input type="checkbox" id="photo_only" value="photo_only" class="photo_only"
-                                   name="photo_only">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkboxStyle"> Listing with Price
-                            <input type="checkbox" id="price_only" value="price_only" class="price_only"
-                                   name="price_only">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+				<div class="stackHolder bgGrey">
+					<div class="checkboxHolder">
+						<label class="checkboxStyle"> photo
+							<input type="checkbox" checked="checked">
+							<span class="checkmark"></span>
+						</label>
+						<label class="checkboxStyle"> price only
+							<input type="checkbox" checked="checked">
+							<span class="checkmark"></span>
+						</label>
+					</div>
+					<ul class="listNav list-unstyled">
 
-                </div>
+					</ul>
+				</div>
 
 				<?php
 
@@ -283,7 +233,7 @@
 											$unserialized_image = unserialize($singleimage);
 
 
-											$total_images = count($unserialized_image);
+											$total_iamges = count($unserialized_image);
 
 											if (isset($unserialized_image[0]))
 												$listing_image = UPLOADS_URL . '/listing_images/' . $unserialized_image[0];
@@ -372,13 +322,18 @@
 												<div class="lisViewtCatCol">
 													<a href="javascript:void(0)" class="lisViewtCatLink">
 														<img
-															src="<?php echo (empty($listing_image)) ? $listing_no_image : $listing_image; ?>"
-															alt="img">
+															src="<?php echo $listing_image; ?>"
+															alt="Car">
 													</a>
 													<a href="javascript:void(0)" class="totalCat">
-                                                        <?php
-                                                            echo (empty($total_images)) ? 'N/A' : $total_images;
-                                                        ?>
+														<?php
+														if (isset($total_iamges) && $total_iamges !== '') {
+															echo $total_iamges;
+															//unset($total_iamges);
+														} else {
+															echo 'N/A';
+														}
+														?>
 														<i class="fa fa-camera" aria-hidden="true"></i>
 													</a>
 												</div>
@@ -690,38 +645,39 @@
 <?php include_once realpath(__DIR__ . '/..') . '/includes/footer.php'; ?>
 <script>
 
-//	$(".save_search").click(function (e) {
-//		e.preventDefault();
-//		var $this = $(this);
-//		$this.find(".fa-heart-o").hide();
-//		$this.find(".fa-spinner").show();
-//
-//		var listing_id = $this.data('lisitngid'); //getter
-//		var userid = $this.data("user_id");
-//
-//		$.ajax({/* THEN THE AJAX CALL */
-//			type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-//			dataType: "json",
-//			url: "<?php //echo base_url('dashboard/remove_search_fav_add'); ?>//", /* PAGE WHERE WE WILL PASS THE DATA */
-//			data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
-//
-//			success: function (result) { /* GET THE TO BE RETURNED DATA */
-//				console.log(result);
-//
-//
-//				if (result == 'search_fav_removed') {
-//
-//
-//					$this.find(".fa-spinner").hide();
-//					$this.find(".fa-heart-o").show();
-//					$this.siblings().show();
-//					$this.hide();
-//
-//				}
-//
-//
-//			}
-//		});
-//	});
+	$(".save_search").click(function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		$this.find(".fa-heart-o").hide();
+		$this.find(".fa-spinner").show();
+
+		var listing_id = $this.data('lisitngid'); //getter
+		var userid = $this.data("user_id");
+
+		$.ajax({/* THEN THE AJAX CALL */
+			type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+			dataType: "json",
+			url: "<?php echo base_url('dashboard/remove_search_fav_add'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+			data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
+
+			success: function (result) { /* GET THE TO BE RETURNED DATA */
+				console.log(result);
+
+
+				if (result == 'search_fav_removed') {
+
+
+					$this.find(".fa-spinner").hide();
+					$this.find(".fa-heart-o").show();
+					$this.siblings().show();
+					$this.hide();
+
+				}
+
+
+			}
+		});
+	});
 
 </script>
+
