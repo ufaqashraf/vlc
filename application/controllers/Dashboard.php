@@ -140,6 +140,17 @@ class Dashboard extends CI_Controller
 							$subcat_id = $get_array['child_cats'];
 							$subcat_name =$this->Categories_Model->get_category_by_id($subcat_id);
 							$get_array['child_cats']=$subcat_name[0]->name;
+							$state_cat_id = $get_array['select_state'];
+							$state_cat_name =$this->Categories_Model->get_state_by_id($state_cat_id);
+							$get_array['select_state']=$state_cat_name[0]->name;
+	//						print_r($get_array);exit;
+							$country_cat_id = $get_array['country_search'];
+							$country_cat_name =$this->Categories_Model->get_country_by_id($country_cat_id);
+							$get_array['country_search']=$country_cat_name[0]->name;
+						
+							$city_cat_id = $get_array['selected_city'];
+							$city_cat_name =$this->Categories_Model->get_city_by_id($city_cat_id);
+							$get_array['selected_city']=$city_cat_name[0]->name;
 						}
 						else
 						{
@@ -425,6 +436,15 @@ class Dashboard extends CI_Controller
 
 	public function fav_add()
 	{
+
+		if ($_POST["userid"] == 0) {
+
+			echo json_encode("nolog");
+			exit();
+		}
+		if (!empty($_POST["listing_id"]) && !empty($_POST["userid"])) {
+
+
 			$listing_id = $this->input->post('listing_id');
 			$loged_in_userid = $this->input->post('userid');
 
@@ -432,7 +452,7 @@ class Dashboard extends CI_Controller
 
 			echo json_encode($fav_adss);
 			exit();
-
+		}
 
 	}
 	public function follow_add()
@@ -456,37 +476,26 @@ class Dashboard extends CI_Controller
 		}
 
 	}
+	public function remove_fav()
+	{
 
-	public function remove_fav(){
+		if ($_POST["userid"] == 0) {
+
+			return "nolog";
+		}
+		if (!empty($_POST["listing_id"]) && !empty($_POST["userid"])) {
+
 
 			$listing_id = $this->input->post('listing_id');
 			$loged_in_userid = $this->input->post('userid');
-			$this->Basic_Model->basicDeleteTwo('b2b_user_meta','user_id',$loged_in_userid,'meta_value',$listing_id );
 
-			echo ("removed");
-			exit;
+			$remove = $this->Dashboard_Model->remove_fav_add($listing_id, $loged_in_userid);
+
+			echo json_encode($remove);
+			exit();
 		}
 
-//	public function remove_fav()
-//	{
-//
-//		if ($_POST["userid"] == 0) {
-//
-//			return "nolog";
-//		}
-//		if (!empty($_POST["listing_id"]) && !empty($_POST["userid"])) {
-//
-//
-//			$listing_id = $this->input->post('listing_id');
-//			$loged_in_userid = $this->input->post('userid');
-//
-//			$remove = $this->Dashboard_Model->remove_fav_add($listing_id, $loged_in_userid);
-//
-//			echo json_encode($remove);
-//			exit();
-//		}
-//
-//	}
+	}
 
 	public function remove_follow()
 	{
@@ -639,7 +648,21 @@ class Dashboard extends CI_Controller
 						$subcat_id = $get_array['child_cats'];
 						$subcat_name =$this->Categories_Model->get_category_by_id($subcat_id);
 						$get_array['child_cats']=$subcat_name[0]->name;
+
+						$state_cat_id = $get_array['select_state'];
+						$state_cat_name =$this->Categories_Model->get_state_by_id($state_cat_id);
+						$get_array['select_state']=$state_cat_name[0]->name;
 //						print_r($get_array);exit;
+						$country_cat_id = $get_array['country_search'];
+						$country_cat_name =$this->Categories_Model->get_country_by_id($country_cat_id);
+						$get_array['country_search']=$country_cat_name[0]->name;
+					
+						$city_cat_id = $get_array['selected_city'];
+						$city_cat_name =$this->Categories_Model->get_city_by_id($city_cat_id);
+						$get_array['selected_city']=$city_cat_name[0]->name;
+					
+
+
 					}
 					else
 					{

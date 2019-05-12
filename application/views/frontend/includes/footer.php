@@ -357,7 +357,7 @@ foreach ($footer_block as $key => $value) {
     /////////////////////////////////////////////////////////////////////
 
     $(".country_select_child").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-        $('.search-loader').show();
+		$('.search-loader').show();
         $(".state_selected").empty();
         var dataString = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
         $.ajax({/* THEN THE AJAX CALL */
@@ -373,7 +373,7 @@ foreach ($footer_block as $key => $value) {
                     $(".state_selected").append("<option value=" + JSON.stringify(result[index].id).replace(/^"(. * )"$/, '$1') + ">" + JSON.stringify(result[index].name).replace(/^"(.*)"$/, '$1') + "</option>");
 
                 });
-                $('.search-loader').hide();
+				$('.search-loader').hide();
 
             },
             error: function (request, status, error) {
@@ -381,7 +381,7 @@ foreach ($footer_block as $key => $value) {
                 var val = request.responseText;
                 console.log("error" + val);
 
-                $('.search-loader').hide();
+				$('.search-loader').hide();
             }
 
         });
@@ -395,7 +395,7 @@ foreach ($footer_block as $key => $value) {
 
     $("#state_selected").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
 
-        $('.search-loader').show();
+		$('.search-loader').show();
 
         $("#city_selection").empty();
         var state_select = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
@@ -415,7 +415,7 @@ foreach ($footer_block as $key => $value) {
 
 
                     $("#city_selection").append("<option value=" + JSON.stringify(result[index].id).replace(/^"(. * )"$/, '$1') + ">" + JSON.stringify(result[index].name).replace(/^"(.*)"$/, '$1') + "</option>");
-                    $('.search-loader').hide();
+					$('.search-loader').hide();
                 });
 
             }
@@ -428,7 +428,7 @@ foreach ($footer_block as $key => $value) {
     /////////////////////////////////////////////////////////////////////
 
     $(".cat_select_child").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-        $('.search-loader').show();
+		$('.search-loader').show();
 
         $(".show_child_cat").empty();
         var cat_select_child = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
@@ -450,7 +450,7 @@ foreach ($footer_block as $key => $value) {
 
                 });
 
-                $('.search-loader').hide();
+				$('.search-loader').hide();
 
             }
         });
@@ -466,7 +466,7 @@ foreach ($footer_block as $key => $value) {
 
     $(".show_child_cat").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
 
-        $('.search-loader').show();
+		$('.search-loader').show();
 
         $(".made_append").empty();
 
@@ -477,17 +477,17 @@ foreach ($footer_block as $key => $value) {
             data: {subcat_id: $(this).val()}, /* THE DATA WE WILL BE PASSING */
             success: function (result) { /* GET THE TO BE RETURNED DATA */
 
-                if (result.length < 1){
-                    $('.search-loader').hide();
-                    return;
-                }
+            	if (result.length < 1){
+					$('.search-loader').hide();
+					return;
+				}
 
                 var all_form = result[0];
 
-                // let return_result = JSON.parse(result);
+				// let return_result = JSON.parse(result);
                 $(".made_append").append("<div class='htmlforms_appended'>" + all_form.meta_value + "</div>");
 
-                $('.search-loader').hide();
+				$('.search-loader').hide();
             }
         });
     });
@@ -538,10 +538,10 @@ foreach ($footer_block as $key => $value) {
             data: {subcat_id: dataString}, /* THE DATA WE WILL BE PASSING */
             success: function (result) { /* GET THE TO BE RETURNED DATA */
 
-                if (result.length < 1){
+            	if (result.length < 1){
 
-                    return;
-                }
+					return;
+				}
 
 
                 var all_form = result[0];
@@ -701,125 +701,71 @@ foreach ($footer_block as $key => $value) {
     // add favrouite and remove favrouite on listing and detail pages start
     // add favrouite and remove favrouite on listing and detail pages start
 
-//    $(".fav_add_listing").click(function (e) {
-//        e.preventDefault();
-//
-//        var $this = $(this);
-//        $this.find(".fa-spinner").show();
-//
-//        var listing_id = $this.data('lisitngid'); //getter
-//        var userid = $this.data("user_id");
-//
-//        $.ajax({/* THEN THE AJAX CALL */
-//            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-//            dataType: "json",
-//            url: "<?php //echo base_url('dashboard/fav_add'); ?>//", /* PAGE WHERE WE WILL PASS THE DATA */
-//            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
-//
-//            success: function (result) { /* GET THE TO BE RETURNED DATA */
-//                console.log(result);
-//
-//                if (result == 'nolog') {
-//                    window.location.replace("<?php //echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>//");
-//                }
-//                if (result == 'fav_added') {
-//
-//                    $this.find(".fa-spinner").hide();
-//
-//
-//                }
-//
-//
-//            }
-//        });
-//    });
-//
-//    $(".remove_fav_listing").click(function (e) {
-//        e.preventDefault();
-//
-//        var $this = $(this);
-//        $this.find(".fa-spinner").show();
-//
-//        var listing_id = $this.data('lisitngid'); //getter
-//        var userid = $this.data("user_id");
-//
-//        $.ajax({/* THEN THE AJAX CALL */
-//            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-//            dataType: "json",
-//            url: "<?php //echo base_url('dashboard/remove_fav'); ?>//", /* PAGE WHERE WE WILL PASS THE DATA */
-//            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
-//
-//            success: function (result) { /* GET THE TO BE RETURNED DATA */
-//                console.log(result);
-//
-//
-//                if (result == 'fav_removed') {
-//
-//
-//                    $this.find(".fa-spinner").hide();
-//                    $this.siblings().show();
-//                    $this.hide();
-//
-//                }
-//
-//
-//            }
-//        });
-//    });
-
-    $(".fav_add_listing").click(function(e) {
+    $(".fav_add_listing").click(function (e) {
         e.preventDefault();
+
         var $this = $(this);
+        $this.find(".fa-spinner").show();
+
         var listing_id = $this.data('lisitngid'); //getter
         var userid = $this.data("user_id");
-        $this.find(".fa-spinner").show();
-        if (userid == 0) {
-            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-        } else {
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: "<?php echo base_url('dashboard/fav_add'); ?>",
-                data: {listing_id: listing_id, userid: userid},
-                success: function (result) {
 
-                    if (result == 'fav_added') {
-                        alert('Favourite saved successfully');
-                        $this.find(".fa-spinner").hide();
-                        $(".remove_fav_listing").show();
-                        $(".fav_add_listing").hide();
-                    }
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('dashboard/fav_add'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
+
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                console.log(result);
+
+                if (result == 'nolog') {
+                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
                 }
-            })
-        }
-    });
+                if (result == 'fav_added') {
 
-    $(".remove_fav_listing").click(function(e) {
-        e.preventDefault();
-        alert("hey");
-        var $this = $(this);
-        $this.find(".fa-heart-o").hide();
-        $this.find(".fa-spinner").show();
-        var listing_id = $this.data('lisitngid'); //getter
-        var userid = $this.data("user_id");
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url('dashboard/remove_fav'); ?>",
-            data: {listing_id: listing_id, userid: userid},
-
-            success: function (msg) {
-                console.log(msg);
-                alert('Removed history successfully');
-                if (msg == "removed") {
                     $this.find(".fa-spinner").hide();
-                    $(".remove_fav_listing").addClass('hide');
-                    $(".fav_add_listing").removeClass('hide');
-                }
-            }
-        })
 
+
+                }
+
+
+            }
+        });
     });
 
+    $(".remove_fav_listing").click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+        $this.find(".fa-spinner").show();
+
+        var listing_id = $this.data('lisitngid'); //getter
+        var userid = $this.data("user_id");
+
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('dashboard/remove_fav'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
+
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                console.log(result);
+
+
+                if (result == 'fav_removed') {
+
+
+                    $this.find(".fa-spinner").hide();
+                    $this.siblings().show();
+                    $this.hide();
+
+                }
+
+
+            }
+        });
+    });
 
     // add favrouite and remove favrouite on listing and detail pages end
 
@@ -866,7 +812,7 @@ foreach ($footer_block as $key => $value) {
         var $this = $(this);
         $this.find(".fa-spinner").show();
 
-        var listing_id = $this.data('lisitngid'); //getter
+            var listing_id = $this.data('lisitngid'); //getter
         var userid = $this.data("user_id");
 
         $.ajax({/* THEN THE AJAX CALL */
@@ -916,7 +862,7 @@ foreach ($footer_block as $key => $value) {
                 console.log(result);
 
                 if (result == 'nolog') {
-                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                    window.location.reload("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
                 }
                 if (result == 'follow_added') {
 
@@ -998,7 +944,7 @@ foreach ($footer_block as $key => $value) {
 
         });
     }
-
+    
 
     // trade show detail page listing detail style start
     if ($("#adListing").length > 0) {
@@ -1031,83 +977,83 @@ foreach ($footer_block as $key => $value) {
     });
 
 
-    // categories value
-    //  $('.parent_cat_name_').val($('.parent_cat').data('parent'));
-    if($('.child_cat').length > 0){
-        $('.child_cat_name_').val($('.child_cat').data('parent'));
-        $('.child_cat').attr('disabled',false);
+	// categories value
+//  $('.parent_cat_name_').val($('.parent_cat').data('parent'));
+ if($('.child_cat').length > 0){
+    $('.child_cat_name_').val($('.child_cat').data('parent'));
+    $('.child_cat').attr('disabled',false);
+ }
+ 
+
+//  reset search
+ $('.reset_search_').on('click',function(e){
+	 e.preventDefault();
+	 window.location.href= $(this).data('href'); 
+ });
+// sorting
+$('.sorting_select').on('change',function(e){
+	e.preventDefault();
+	$('.sorting').val($(this).find(":selected").val());
+	$('.sorting').attr('disabled',false)
+	$('.sorting').closest('form').submit();
+});
+
+// Save search button
+$(".save_search_").click(function (e) {
+    e.preventDefault();
+    var search_query = $(this).closest('form').find('input[name="search_query"]');
+    var message = $('.msg');
+    if(search_query.val() != ''){
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('listing/savesearch'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {data: $(this).closest('form').serialize() }, /* THE DATA WE WILL BE PASSING */
+
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                console.log(result);
+                if(result.success == true){
+                    message.hide().removeClass('error').removeClass('success').addClass('success').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                }else if(result.success == false && result.redirect == 1){
+                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                }else if(result.success == false){
+                    message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                }
+            }
+        });
+    }else{
+        search_query.css('border','1px solid red');
+        message.hide().removeClass('error').removeClass('success').addClass('error').text('Please fill enter query').fadeIn('slow').delay(5000).fadeOut('slow');
     }
+});
+// user membership check
+$(".show_leads_details").click(function (e) {
+    e.preventDefault();
+    var that = $(this);
+    var message = $('.msg');
+    var userid = $(this).data("user_id");
+    if (userid == 0) {
+        window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+    } else {
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('listing/user_membership_check'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {user_id: userid }, /* THE DATA WE WILL BE PASSING */
 
-
-    //  reset search
-    $('.reset_search_').on('click',function(e){
-        e.preventDefault();
-        window.location.href= $(this).data('href');
-    });
-    // sorting
-    $('.sorting_select').on('change',function(e){
-        e.preventDefault();
-        $('.sorting').val($(this).find(":selected").val());
-        $('.sorting').attr('disabled',false)
-        $('.sorting').closest('form').submit();
-    });
-
-    // Save search button
-    $(".save_search_").click(function (e) {
-        e.preventDefault();
-        var search_query = $(this).closest('form').find('input[name="search_query"]');
-        var message = $('.msg');
-        if(search_query.val() != ''){
-            $.ajax({/* THEN THE AJAX CALL */
-                type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-                dataType: "json",
-                url: "<?php echo base_url('listing/savesearch'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
-                data: {data: $(this).closest('form').serialize() }, /* THE DATA WE WILL BE PASSING */
-
-                success: function (result) { /* GET THE TO BE RETURNED DATA */
-                    console.log(result);
-                    if(result.success == true){
-                        message.hide().removeClass('error').removeClass('success').addClass('success').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-                    }else if(result.success == false && result.redirect == 1){
-                        window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-                    }else if(result.success == false){
-                        message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-                    }
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                if(result.success == true ){
+                    $('.leads_block_d .user_details').slideDown();
+                    that.hide();
+                }else if(result.success == false && result.redirect == 1){
+                    window.location.href = "payment-plans";
+                }else if(result.success == 3){
+                    message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
                 }
-            });
-        }else{
-            search_query.css('border','1px solid red');
-            message.hide().removeClass('error').removeClass('success').addClass('error').text('Please fill enter query').fadeIn('slow').delay(5000).fadeOut('slow');
-        }
-    });
-    // user membership check
-    $(".show_leads_details").click(function (e) {
-        e.preventDefault();
-        var that = $(this);
-        var message = $('.msg');
-        var userid = $(this).data("user_id");
-        if (userid == 0) {
-            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-        } else {
-            $.ajax({/* THEN THE AJAX CALL */
-                type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-                dataType: "json",
-                url: "<?php echo base_url('listing/user_membership_check'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
-                data: {user_id: userid }, /* THE DATA WE WILL BE PASSING */
-
-                success: function (result) { /* GET THE TO BE RETURNED DATA */
-                    if(result.success == true ){
-                        $('.leads_block_d .user_details').slideDown();
-                        that.hide();
-                    }else if(result.success == false && result.redirect == 1){
-                        window.location.href = "payment-plans";
-                    }else if(result.success == 3){
-                        message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-                    }
-                }
-            });
-        }
-    });
+            }
+        });
+    }
+});
 
 
 </script>
@@ -1122,6 +1068,7 @@ foreach ($footer_block as $key => $value) {
         $this.find(".fa-spinner").show();
         if (userid == 0) {
             window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+            // location.reload();
         } else {
             $.ajax({
                 type: "POST",
@@ -1134,7 +1081,7 @@ foreach ($footer_block as $key => $value) {
                         resultArray[i] = obj[i];
 
                     if (resultArray['insert_id']) {
-                        alert('Search saved successfully');
+                        //alert('Search saved successfully');
                         $this.find(".fa-spinner").hide();
                         $('.removesrch').removeClass('hide');
                         $('.save_search_history').addClass('hide');
@@ -1162,7 +1109,7 @@ foreach ($footer_block as $key => $value) {
             type: "POST",
             url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
             success: function (msg) {
-                alert('Removed history successfully');
+                //alert('Removed history successfully');
                 if (msg == "removed") {
                     $this.find(".fa-spinner").hide();
                     $('.removesrch').addClass('hide');
@@ -1186,7 +1133,7 @@ foreach ($footer_block as $key => $value) {
                 del_id: del_id,
             },
             success: function (msg) {
-                alert('Removed history successfully');
+                //alert('Removed history successfully');
                 if (msg == "removed") {
                     $('#del_this_one_' + del_id).hide();
                     $("#trash_"  + del_id).hide();
@@ -1201,8 +1148,3 @@ foreach ($footer_block as $key => $value) {
 
 
 </script>
-<style>
-    .hide {
-    display: none;
-    }
-</style>
