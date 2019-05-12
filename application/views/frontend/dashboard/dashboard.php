@@ -971,7 +971,7 @@
 																		echo ('|'.$searched_row['link']['select_state']);
 																		if(isset($searched_row['link']['selected_city']))
 																		echo ('|'.$searched_row['link']['selected_city']);
-																			else echo "All Cities";
+																			else echo " | All Cities";
 																	?></h4>
 
 															<ul>

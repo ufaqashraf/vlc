@@ -1133,7 +1133,7 @@ $(".show_leads_details").click(function (e) {
                 del_id: del_id,
             },
             success: function (msg) {
-                alert('Removed history successfully');
+                //alert('Removed history successfully');
                 if (msg == "removed") {
                     $('#del_this_one_' + del_id).hide();
                     $("#trash_"  + del_id).hide();

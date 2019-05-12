@@ -307,7 +307,7 @@
 			color: #fff;
 			cursor: pointer;
 			border: 1px solid #999;
-			width: calc(159% - 5px);
+			width: calc(50% - 5px);
 			float: right;
 			font-size: 15px;
 			box-shadow: none !important;
