@@ -1223,7 +1223,7 @@ class Listings_Model extends CI_Model
                 }
                 foreach ($listing_meta_info as $listing_meta) {
                     $new_arr[$type][$old_key]['metas'][] = [
-                        'listing_meta_id' => (int)$listing_meta->listing_meta_id,
+                        'listing_meta_id' => isset($listing_meta->listing_meta_id) ? (int) $listing_meta->listing_meta_id : 0,
                         'meta_key' => $listing_meta->meta_key,
                         'meta_value' => $listing_meta->meta_value,
                     ];
@@ -1364,7 +1364,7 @@ class Listings_Model extends CI_Model
 			$counter++;
 
 		}
-
+        unset($metas['buyertype']);
 		// furnished
 		if (isset($metas['furnished']) && !empty($metas['furnished'])) {
 			if ($counter === 0)
@@ -1401,9 +1401,6 @@ class Listings_Model extends CI_Model
 			$counter++;
 		}
 		unset($metas['bathrooms']);
-
-		
-		unset($metas['buyertype']);
 
 		// Area Range
 		if(isset($metas['min_area']) && !empty($metas['min_area'])){
@@ -1444,8 +1441,22 @@ class Listings_Model extends CI_Model
 		unset($metas['time']);
 		unset($metas['sorting']);
 
-			
+        // Amenities
+		if (isset($metas['amenities']) && !empty($metas['amenities'])) {
+            foreach($metas['amenities'] as $item){
+                if ($counter === 0)
+                    $operator = ' WHERE ';
+                else
+                    $operator = ' OR ';
 
+                
+                $where_metas .= "{$operator}  (lm.meta_key = 'amenities' and lm.meta_value = '{$item}' )";
+                $counter++;
+            }
+			
+		}
+		unset($metas['bathrooms']);
+			
 
 		foreach ($metas as $key => $value) {
 			if (is_array($value)){
@@ -1745,11 +1756,11 @@ class Listings_Model extends CI_Model
 
     // check membership
 	public function user_membership_check($user_id){
-        $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id
+        $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id,o.order_date
         from b2b_users u
         left join orders o on o.user_id = u.id
         left join orders_meta om on om.order_id = o.id
-        where u.id = {$user_id} and o.status = 'paid' and o.order_date < DATE_ADD(o.order_date, INTERVAL 1 YEAR)";
+        where u.id = {$user_id} and o.status = 'paid' order by o.order_date DESC limit 1";
         $this->db->cache_off();
         $result = $this->db->query($query);
         return $result->result(); 

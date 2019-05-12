@@ -59,14 +59,13 @@
 		</div>
 	</div>
 </section>
-<?php if(!empty($user_membership) && $user_membership[0]->available_connect == 0):?>
+<?php if(!empty($user_membership)):?>
     <div id="renew_membership" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5>Your membership connects per day limits has been reached</h5>
-                <a href="<?php echo base_url('payment-plans'); ?>" class="btn">Upgrade membership</a>
+                <div class="html"></div>
             </div>
         </div>
     </div>
@@ -86,7 +85,6 @@
     display: inline-block;
     background-image: linear-gradient(to bottom, #F16529, #E44D26);
     color: #fff;
-    width: 178px;
     font-size: 14px;
     border-radius: 5px;
     margin: 0 auto;

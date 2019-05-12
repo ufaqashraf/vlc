@@ -180,7 +180,8 @@
 
                             $count = 0;
 
-                            foreach ($listing_by_cat_recommended as $listing_by_category_single):
+                            foreach ($listing_by_cat_recommended as $k => $listing_by_category_single):
+                                if($k < 2):
                                 $listing_no_image = volgo_get_no_image_url();
                                 foreach ($listing_by_category_single['metas'] as $singlemeta):
 
@@ -329,6 +330,7 @@
                                 </div>
 
                             <?php
+                            endif;
                             endforeach;
                             ?>
 

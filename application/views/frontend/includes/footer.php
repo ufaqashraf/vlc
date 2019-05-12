@@ -701,74 +701,71 @@ foreach ($footer_block as $key => $value) {
     // add favrouite and remove favrouite on listing and detail pages start
     // add favrouite and remove favrouite on listing and detail pages start
 
-//    $(".fav_add_listing").click(function (e) {
-//        e.preventDefault();
-//
-//        var $this = $(this);
-//        $this.find(".fa-spinner").show();
-//
-//        var listing_id = $this.data('lisitngid'); //getter
-//        var userid = $this.data("user_id");
-//
-//        $.ajax({/* THEN THE AJAX CALL */
-//            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-//            dataType: "json",
-//            url: "<?php //echo base_url('dashboard/fav_add'); ?>//", /* PAGE WHERE WE WILL PASS THE DATA */
-//            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
-//
-//            success: function (result) { /* GET THE TO BE RETURNED DATA */
-//                console.log(result);
-//
-//                if (result == 'nolog') {
-//                    window.location.replace("<?php //echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>//");
-//                }
-//                if (result == 'fav_added') {
-//
-//                    $this.find(".fa-spinner").hide();
-//
-//
-//                }
-//
-//
-//            }
-//        });
-//    });
-//
-//    $(".remove_fav_listing").click(function (e) {
-//        e.preventDefault();
-//
-//        var $this = $(this);
-//        $this.find(".fa-spinner").show();
-//
-//        var listing_id = $this.data('lisitngid'); //getter
-//        var userid = $this.data("user_id");
-//
-//        $.ajax({/* THEN THE AJAX CALL */
-//            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-//            dataType: "json",
-//            url: "<?php //echo base_url('dashboard/remove_fav'); ?>//", /* PAGE WHERE WE WILL PASS THE DATA */
-//            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
-//
-//            success: function (result) { /* GET THE TO BE RETURNED DATA */
-//                console.log(result);
-//
-//
-//                if (result == 'fav_removed') {
-//
-//
-//                    $this.find(".fa-spinner").hide();
-//                    $this.siblings().show();
-//                    $this.hide();
-//
-//                }
-//
-//
-//            }
-//        });
-//    });
+    $(".fav_add_listing").click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+        $this.find(".fa-spinner").show();
+
+        var listing_id = $this.data('lisitngid'); //getter
+        var userid = $this.data("user_id");
+
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('dashboard/fav_add'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
+
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                console.log(result);
+
+                if (result == 'nolog') {
+                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                }
+                if (result == 'fav_added') {
+
+                    $this.find(".fa-spinner").hide();
 
 
+                }
 
+
+            }
+        });
+    });
+
+    $(".remove_fav_listing").click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+        $this.find(".fa-spinner").show();
+
+        var listing_id = $this.data('lisitngid'); //getter
+        var userid = $this.data("user_id");
+
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('dashboard/remove_fav'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {listing_id: listing_id, userid: userid}, /* THE DATA WE WILL BE PASSING */
+
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                console.log(result);
+
+
+                if (result == 'fav_removed') {
+
+
+                    $this.find(".fa-spinner").hide();
+                    $this.siblings().show();
+                    $this.hide();
+
+                }
+
+
+            }
+        });
+    });
 
     // add favrouite and remove favrouite on listing and detail pages end
 
@@ -811,7 +808,7 @@ foreach ($footer_block as $key => $value) {
 
     $(".remove_save_search_add").click(function (e) {
         e.preventDefault();
-        alert("hey")
+
         var $this = $(this);
         $this.find(".fa-spinner").show();
 
@@ -1001,12 +998,29 @@ foreach ($footer_block as $key => $value) {
         $('.sorting').closest('form').submit();
     });
 
+        
+    $('input[name="search_query"]').on('keyup',function(){
+        var cookie = $.cookie('query');
+        if(cookie != $(this).val()){
+            $('.save_search_').show();
+            $('.remove_search_').hide();
+        }
+        $(this).css('border','1px solid #999');
+        $(this).siblings('.error').remove();
+    })
     // Save search button
     $(".save_search_").click(function (e) {
         e.preventDefault();
         var search_query = $(this).closest('form').find('input[name="search_query"]');
         var message = $('.msg');
+        var that = $(this);
+        var form = $(this).closest('form');
+
+        // save cookie
+        $.cookie('query', search_query);
+
         if(search_query.val() != ''){
+            form.find('.spinner-loader-wrapper').show();
             $.ajax({/* THEN THE AJAX CALL */
                 type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
                 dataType: "json",
@@ -1014,20 +1028,50 @@ foreach ($footer_block as $key => $value) {
                 data: {data: $(this).closest('form').serialize() }, /* THE DATA WE WILL BE PASSING */
 
                 success: function (result) { /* GET THE TO BE RETURNED DATA */
-                    console.log(result);
                     if(result.success == true){
-                        message.hide().removeClass('error').removeClass('success').addClass('success').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                        that.hide();
+                        that.siblings('.remove_search_').show();
                     }else if(result.success == false && result.redirect == 1){
                         window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
                     }else if(result.success == false){
                         message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
                     }
+                    form.find('.spinner-loader-wrapper').hide();
                 }
+                
             });
         }else{
             search_query.css('border','1px solid red');
-            message.hide().removeClass('error').removeClass('success').addClass('error').text('Please fill enter query').fadeIn('slow').delay(5000).fadeOut('slow');
+            search_query.siblings('.error').remove();
+            search_query.parent().append('<span class="error">Search query required</span>');
         }
+    });
+
+    // remove search button
+    $(".remove_search_").click(function (e) {
+        e.preventDefault();
+        var search_query = $(this).closest('form').find('input[name="search_query"]');
+        var message = $('.msg');
+        var that = $(this);
+        var form = $(this).closest('form');
+        
+        form.find('.spinner-loader-wrapper').show();
+        $.ajax({/* THEN THE AJAX CALL */
+            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+            dataType: "json",
+            url: "<?php echo base_url('listing/removesearch'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            data: {data: $(this).closest('form').serialize() }, /* THE DATA WE WILL BE PASSING */
+
+            success: function (result) { /* GET THE TO BE RETURNED DATA */
+                if(result.success == true){
+                    that.hide();
+                    that.siblings('.save_search_').show();
+                }else if(result.success == false){
+                    message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                }
+                form.find('.spinner-loader-wrapper').hide();
+            } 
+        });
     });
     // user membership check
     $(".show_leads_details").click(function (e) {
@@ -1051,7 +1095,8 @@ foreach ($footer_block as $key => $value) {
                     }else if(result.success == false && result.redirect == 1){
                         window.location.href = "payment-plans";
                     }else if(result.success == 3){
-                        message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                        $('#renew_membership .modal-content .html').html(result.msg)
+                        $('#renew_membership').modal('show');
                     }
                 }
             });
@@ -1093,69 +1138,82 @@ foreach ($footer_block as $key => $value) {
 <script>
     // save search history start
 
-   
     $(".save_search_history").click(function(e) {
         e.preventDefault();
-var $this = $(this);
-var userid = $this.data("user_id");
-$this.find(".fa-spinner").show();
-if (userid == 0) {
-    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-} else {
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('dashboard/save_search_history'); ?>",
-        success: function (msg) {
+        var $this = $(this);
+        var str = window.location.href;
+        var array = str.split("?");
+        
+        var userid = $this.data("user_id");
+        $this.find(".fa-spinner").show();
+
+        // window.location=str;
+       
+        
+        // if (userid == 0) {
+         var  uri = escape(str);  
+    
+        // } else {
+            if (userid == 0) {
+
+                window.location.replace("<?php echo base_url('login?redirected_to=')?>" + unescape(uri));            
+                 } 
+                 else {
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('dashboard/save_search_history'); ?>",
+                success: function (msg) {
+
 //                alert(msg);
-            var obj = JSON.parse(msg);
-            var resultArray = new Array();
-            for (var i in obj)
-                resultArray[i] = obj[i];
+                    var obj = JSON.parse(msg);
+                    var resultArray = new Array();
+                    for (var i in obj)
+                        resultArray[i] = obj[i];  
 
-            if (resultArray['insert_id']) {
-               // alert('Search saved successfully');
-                $this.find(".fa-spinner").hide();
-                $('.removesrch').removeClass('hide');
-                $('.save_search_history').addClass('hide');
+                    if (resultArray['insert_id']) {
+                        //alert('Search saved successfully');
+                        $this.find(".fa-spinner").hide();
+                        $('.removesrch').removeClass('hide');
+                        $('.save_search_history').addClass('hide');
+                    }
+                }
+            })
+        }
+    });
+
+
+
+
+
+    //    $(".search-me").click(function() {
+    //        $(".saveIt").css("background-color", "#fff");
+    //        $(".saveIt").css("color", "#666");
+    //        $("#saveSpan").html("");
+    //        $("#saveSpan").html("Save");
+    ////        $("#saveSpan").removeClass("removesrch");
+    ////        $("#save_search_history").removeClass("save_search_history");
+    //    });
+
+
+    $(".removesrch").click(function() {
+        var $this = $(this);
+        $this.find(".fa-heart-o").hide();
+        $this.find(".fa-spinner").show();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
+            success: function (msg) {
+                alert('Removed history successfully');
+                if (msg == "removed") {
+                    $this.find(".fa-spinner").hide();
+                    $('.removesrch').addClass('hide');
+                    $('.save_search_history').removeClass('hide');
+                }
+
             }
-        }
-    })
-}
-});
+        })
 
-//    $(".search-me").click(function() {
-//        $(".saveIt").css("background-color", "#fff");
-//        $(".saveIt").css("color", "#666");
-//        $("#saveSpan").html("");
-//        $("#saveSpan").html("Save");
-////        $("#saveSpan").removeClass("removesrch");
-////        $("#save_search_history").removeClass("save_search_history");
-//    });
-
-
-$(".removesrch").click(function() {
-var $this = $(this);
-$this.find(".fa-heart-o").hide();
-$this.find(".fa-spinner").show();
-$.ajax({
-    type: "POST",
-    url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
-    success: function (msg) {
-       // alert('Removed history successfully');
-        if (msg == "removed") {
-            $this.find(".fa-spinner").hide();
-            $('.removesrch').addClass('hide');
-            $('.save_search_history').removeClass('hide');
-        }
-
-    }
-})
-
-});
-
-
-
-
+    });
 
 
     $(".del_this_one").click(function() {
@@ -1184,8 +1242,3 @@ $.ajax({
 
 
 </script>
-<style>
-    .hide {
-    display: none;
-    }
-</style>

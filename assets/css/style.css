@@ -12342,3 +12342,8 @@ button.btn.remove_search_ {
 input[type="number"]{
 	-moz-appearance: textfield;
 }
+#renew_membership .modal-content {
+	padding: 30px;
+	border-radius: 0;
+	text-align: center;
+}

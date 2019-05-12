@@ -282,6 +282,37 @@ if (!function_exists('volgo_get_random_string')) {
 	}
 }
 
+if (!function_exists('volgo_get_selected_parent_cat_id')) {
+    function volgo_get_selected_parent_cat_id()
+    {
+        $ci = volgo_get_ci_object();
+        $is_cat_page = strtolower($ci->uri->segment(1)) === 'category' ? true : false;
+
+        if ($is_cat_page) {
+            $cat_slug = strtolower($ci->uri->segment(2));
+
+            $ci->db->select('id, parent_ids');
+            $ci->db->from('categories');
+            $ci->db->where('slug', $cat_slug);
+            $result = $ci->db->get()->row();
+
+            if (!empty($result) && is_object($result)) {
+                if ($result->parent_ids === 'uncategorised')
+                    $cat_id = $result->id;
+                else {
+                    $cat_id = $result->parent_ids;
+                }
+            }else {
+                $cat_id = 0;
+            }
+        } else {
+            $cat_id = !empty($ci->input->get('parent_cat_select')) ? $ci->input->get('parent_cat_select') : 0;
+        }
+
+        return $cat_id;
+    }
+}
+
 if (!function_exists('volgo_get_current_category_id')) {
 	function volgo_get_current_category_id()
 	{

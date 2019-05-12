@@ -1179,15 +1179,22 @@ class Listing extends CI_Controller
 		if(!empty($loged_in_user_id)){
 			$data = $this->Listings_Model->user_membership_check($loged_in_user_id);
 			if(!empty($data)){
-				if($data[0]->available_connect != 0){
-					$this->Listings_Model->update_connects($data[0]->id,$data[0]->packages_id,$data[0]->available_connect);
-					$response = [
-						'success' => true,
-					];
+				if(strtotime(date("Y-m-d h:i:sa")) < strtotime("+1 year",strtotime($data[0]->order_date))){
+					if($data[0]->available_connect != 0){
+						$this->Listings_Model->update_connects($data[0]->id,$data[0]->packages_id,$data[0]->available_connect);
+						$response = [
+							'success' => true,
+						];
+					}else{
+						$response = [
+							'success' => 3,
+							'msg' => '<h5>Your membership connects per day limits has been reached</h5><a href="'.base_url('payment-plans').'" class="btn">Upgrade membership</a>'
+						];
+					}
 				}else{
 					$response = [
 						'success' => 3,
-						'msg' => 'Your membership connects per day limits has been reached'
+						'msg' => '<h5>Your membership has been expired</h5><a href="'.base_url('payment-plans').'" class="btn">Re-subscibe membership</a>'
 					];
 				}
 			}else{

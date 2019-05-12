@@ -113,7 +113,7 @@ class Users_Model extends CI_Model
 			'username' => $username,
 			'firstname' => $firstname,
 			'lastname ' => $lastname,
-			'email' => $email,
+			'email' => strtolower($email),
 			'password' => password_hash($password, PASSWORD_BCRYPT),
 			'is_deleted' => '0',
 			'created_at' => date("Y-m-d H:i:s"),
@@ -185,7 +185,7 @@ class Users_Model extends CI_Model
 
 	public function verfiy_user_login($data)
 	{
-		$condition = "email=" . "'" . $data['form_data']['user_email'] . "'";
+		$condition = "lower(email)=" . "'" . strtolower($data['form_data']['user_email']) . "'";
 		$password = $data['form_data']['user_password'];
 
 //		$this->db->cache_on();
@@ -203,7 +203,21 @@ class Users_Model extends CI_Model
 		if (empty($row))
 			return false;
 
-		if ($row->email === $data['form_data']['user_email'] && password_verify($password, $row->password))
+		// @Management Decision - Discuss with Mobeen
+        // Do not check verification email if its old record.
+		if (intval($row->id) > 1700){
+            // check if user is verified by email
+            $status_row = $this->db->select('meta_value')->from('b2b_user_meta')->where('meta_key', 'status')->where('user_id', $row->id)->get()->row();
+
+            if (empty($status_row))
+                return false;
+
+            if (strtolower($status_row->meta_value) !== 'verified')
+                return false;
+        }
+
+
+		if (strtolower($row->email) === strtolower($data['form_data']['user_email']) && password_verify($password, $row->password))
 			return true;
 
 		return false;
