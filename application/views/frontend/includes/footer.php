@@ -357,7 +357,7 @@ foreach ($footer_block as $key => $value) {
     /////////////////////////////////////////////////////////////////////
 
     $(".country_select_child").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-		$('.search-loader').show();
+        $('.search-loader').show();
         $(".state_selected").empty();
         var dataString = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
         $.ajax({/* THEN THE AJAX CALL */
@@ -373,7 +373,7 @@ foreach ($footer_block as $key => $value) {
                     $(".state_selected").append("<option value=" + JSON.stringify(result[index].id).replace(/^"(. * )"$/, '$1') + ">" + JSON.stringify(result[index].name).replace(/^"(.*)"$/, '$1') + "</option>");
 
                 });
-				$('.search-loader').hide();
+                $('.search-loader').hide();
 
             },
             error: function (request, status, error) {
@@ -381,7 +381,7 @@ foreach ($footer_block as $key => $value) {
                 var val = request.responseText;
                 console.log("error" + val);
 
-				$('.search-loader').hide();
+                $('.search-loader').hide();
             }
 
         });
@@ -395,7 +395,7 @@ foreach ($footer_block as $key => $value) {
 
     $("#state_selected").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
 
-		$('.search-loader').show();
+        $('.search-loader').show();
 
         $("#city_selection").empty();
         var state_select = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
@@ -415,7 +415,7 @@ foreach ($footer_block as $key => $value) {
 
 
                     $("#city_selection").append("<option value=" + JSON.stringify(result[index].id).replace(/^"(. * )"$/, '$1') + ">" + JSON.stringify(result[index].name).replace(/^"(.*)"$/, '$1') + "</option>");
-					$('.search-loader').hide();
+                    $('.search-loader').hide();
                 });
 
             }
@@ -428,7 +428,7 @@ foreach ($footer_block as $key => $value) {
     /////////////////////////////////////////////////////////////////////
 
     $(".cat_select_child").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-		$('.search-loader').show();
+        $('.search-loader').show();
 
         $(".show_child_cat").empty();
         var cat_select_child = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
@@ -450,7 +450,7 @@ foreach ($footer_block as $key => $value) {
 
                 });
 
-				$('.search-loader').hide();
+                $('.search-loader').hide();
 
             }
         });
@@ -466,7 +466,7 @@ foreach ($footer_block as $key => $value) {
 
     $(".show_child_cat").change(function () { /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
 
-		$('.search-loader').show();
+        $('.search-loader').show();
 
         $(".made_append").empty();
 
@@ -477,17 +477,17 @@ foreach ($footer_block as $key => $value) {
             data: {subcat_id: $(this).val()}, /* THE DATA WE WILL BE PASSING */
             success: function (result) { /* GET THE TO BE RETURNED DATA */
 
-            	if (result.length < 1){
-					$('.search-loader').hide();
-					return;
-				}
+                if (result.length < 1){
+                    $('.search-loader').hide();
+                    return;
+                }
 
                 var all_form = result[0];
 
-				// let return_result = JSON.parse(result);
+                // let return_result = JSON.parse(result);
                 $(".made_append").append("<div class='htmlforms_appended'>" + all_form.meta_value + "</div>");
 
-				$('.search-loader').hide();
+                $('.search-loader').hide();
             }
         });
     });
@@ -538,10 +538,10 @@ foreach ($footer_block as $key => $value) {
             data: {subcat_id: dataString}, /* THE DATA WE WILL BE PASSING */
             success: function (result) { /* GET THE TO BE RETURNED DATA */
 
-            	if (result.length < 1){
+                if (result.length < 1){
 
-					return;
-				}
+                    return;
+                }
 
 
                 var all_form = result[0];
@@ -812,7 +812,7 @@ foreach ($footer_block as $key => $value) {
         var $this = $(this);
         $this.find(".fa-spinner").show();
 
-            var listing_id = $this.data('lisitngid'); //getter
+        var listing_id = $this.data('lisitngid'); //getter
         var userid = $this.data("user_id");
 
         $.ajax({/* THEN THE AJAX CALL */
@@ -862,7 +862,7 @@ foreach ($footer_block as $key => $value) {
                 console.log(result);
 
                 if (result == 'nolog') {
-                    window.location.reload("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
                 }
                 if (result == 'follow_added') {
 
@@ -944,7 +944,7 @@ foreach ($footer_block as $key => $value) {
 
         });
     }
-    
+
 
     // trade show detail page listing detail style start
     if ($("#adListing").length > 0) {
@@ -977,83 +977,160 @@ foreach ($footer_block as $key => $value) {
     });
 
 
-	// categories value
-//  $('.parent_cat_name_').val($('.parent_cat').data('parent'));
- if($('.child_cat').length > 0){
-    $('.child_cat_name_').val($('.child_cat').data('parent'));
-    $('.child_cat').attr('disabled',false);
- }
- 
+    // categories value
+    //  $('.parent_cat_name_').val($('.parent_cat').data('parent'));
+    if($('.child_cat').length > 0){
+        $('.child_cat_name_').val($('.child_cat').data('parent'));
+        $('.child_cat').attr('disabled',false);
+    }
 
-//  reset search
- $('.reset_search_').on('click',function(e){
-	 e.preventDefault();
-	 window.location.href= $(this).data('href'); 
- });
-// sorting
-$('.sorting_select').on('change',function(e){
-	e.preventDefault();
-	$('.sorting').val($(this).find(":selected").val());
-	$('.sorting').attr('disabled',false)
-	$('.sorting').closest('form').submit();
-});
 
-// Save search button
-$(".save_search_").click(function (e) {
-    e.preventDefault();
-    var search_query = $(this).closest('form').find('input[name="search_query"]');
-    var message = $('.msg');
-    if(search_query.val() != ''){
+    //  reset search
+    $('.reset_search_').on('click',function(e){
+        e.preventDefault();
+        window.location.href= $(this).data('href');
+    });
+    // sorting
+    $('.sorting_select').on('change',function(e){
+        e.preventDefault();
+        $('.sorting').val($(this).find(":selected").val());
+        $('.sorting').attr('disabled',false)
+        $('.sorting').closest('form').submit();
+    });
+
+        
+    $('input[name="search_query"]').on('keyup',function(){
+        var cookie = $.cookie('query');
+        if(cookie != $(this).val()){
+            $('.save_search_').show();
+            $('.remove_search_').hide();
+        }
+        $(this).css('border','1px solid #999');
+        $(this).siblings('.error').remove();
+    })
+    // Save search button
+    $(".save_search_").click(function (e) {
+        e.preventDefault();
+        var search_query = $(this).closest('form').find('input[name="search_query"]');
+        var message = $('.msg');
+        var that = $(this);
+        var form = $(this).closest('form');
+
+        // save cookie
+        $.cookie('query', search_query);
+
+        if(search_query.val() != ''){
+            form.find('.spinner-loader-wrapper').show();
+            $.ajax({/* THEN THE AJAX CALL */
+                type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+                dataType: "json",
+                url: "<?php echo base_url('listing/savesearch'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+                data: {data: $(this).closest('form').serialize() }, /* THE DATA WE WILL BE PASSING */
+
+                success: function (result) { /* GET THE TO BE RETURNED DATA */
+                    if(result.success == true){
+                        that.hide();
+                        that.siblings('.remove_search_').show();
+                    }else if(result.success == false && result.redirect == 1){
+                        window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                    }else if(result.success == false){
+                        message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                    }
+                    form.find('.spinner-loader-wrapper').hide();
+                }
+                
+            });
+        }else{
+            search_query.css('border','1px solid red');
+            search_query.siblings('.error').remove();
+            search_query.parent().append('<span class="error">Search query required</span>');
+        }
+    });
+
+    // remove search button
+    $(".remove_search_").click(function (e) {
+        e.preventDefault();
+        var search_query = $(this).closest('form').find('input[name="search_query"]');
+        var message = $('.msg');
+        var that = $(this);
+        var form = $(this).closest('form');
+        
+        form.find('.spinner-loader-wrapper').show();
         $.ajax({/* THEN THE AJAX CALL */
             type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
             dataType: "json",
-            url: "<?php echo base_url('listing/savesearch'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+            url: "<?php echo base_url('listing/removesearch'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
             data: {data: $(this).closest('form').serialize() }, /* THE DATA WE WILL BE PASSING */
 
             success: function (result) { /* GET THE TO BE RETURNED DATA */
-                console.log(result);
                 if(result.success == true){
-                    message.hide().removeClass('error').removeClass('success').addClass('success').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-                }else if(result.success == false && result.redirect == 1){
-                    window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+                    that.hide();
+                    that.siblings('.save_search_').show();
                 }else if(result.success == false){
                     message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
                 }
-            }
+                form.find('.spinner-loader-wrapper').hide();
+            } 
         });
-    }else{
-        search_query.css('border','1px solid red');
-        message.hide().removeClass('error').removeClass('success').addClass('error').text('Please fill enter query').fadeIn('slow').delay(5000).fadeOut('slow');
-    }
-});
-// user membership check
-$(".show_leads_details").click(function (e) {
-    e.preventDefault();
-    var that = $(this);
-    var message = $('.msg');
-    var userid = $(this).data("user_id");
-    if (userid == 0) {
-        window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-    } else {
-        $.ajax({/* THEN THE AJAX CALL */
-            type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-            dataType: "json",
-            url: "<?php echo base_url('listing/user_membership_check'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
-            data: {user_id: userid }, /* THE DATA WE WILL BE PASSING */
+    });
+    // user membership check
+    $(".show_leads_details").click(function (e) {
+        e.preventDefault();
+        var that = $(this);
+        var message = $('.msg');
+        var userid = $(this).data("user_id");
+        if (userid == 0) {
+            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+        } else {
+            $.ajax({/* THEN THE AJAX CALL */
+                type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
+                dataType: "json",
+                url: "<?php echo base_url('listing/user_membership_check'); ?>", /* PAGE WHERE WE WILL PASS THE DATA */
+                data: {user_id: userid }, /* THE DATA WE WILL BE PASSING */
 
-            success: function (result) { /* GET THE TO BE RETURNED DATA */
-                if(result.success == true ){
-                    $('.leads_block_d .user_details').slideDown();
-                    that.hide();
-                }else if(result.success == false && result.redirect == 1){
-                    window.location.href = "payment-plans";
-                }else if(result.success == 3){
-                    message.hide().removeClass('error').removeClass('success').addClass('error').text(result.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                success: function (result) { /* GET THE TO BE RETURNED DATA */
+                    if(result.success == true ){
+                        $('.leads_block_d .user_details').slideDown();
+                        that.hide();
+                    }else if(result.success == false && result.redirect == 1){
+                        window.location.href = "payment-plans";
+                    }else if(result.success == 3){
+                        $('#renew_membership .modal-content .html').html(result.msg)
+                        $('#renew_membership').modal('show');
+                    }
                 }
-            }
-        });
+            });
+        }
+    });
+
+    // ---------------------- Auto populate sidebar search fields using jquery -----------------------------------------
+
+    function getUrlParameter() {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            //let input = $(document).find('#' + sParameterName[0]);
+
+            //console.log($(input));
+
+            var current_id = $("#" + sParameterName[0]);
+            $(current_id).val(decodeURIComponent(sParameterName[1]));
+            /*if($(current_id).is("select")) {
+                $(current_id).val(decodeURIComponent(sParameterName[1]));
+            }else if($(current_id).is("input")) {
+
+            }*/
+        }
     }
-});
+
+    getUrlParameter();
+
+    // ---------------------- Auto populate sidebar search fields using jquery - Ends -----------------------------------------
 
 
 </script>
@@ -1062,23 +1139,36 @@ $(".show_leads_details").click(function (e) {
     // save search history start
 
     $(".save_search_history").click(function(e) {
-
+        e.preventDefault();
         var $this = $(this);
+        var str = window.location.href;
+        var array = str.split("?");
+        
         var userid = $this.data("user_id");
         $this.find(".fa-spinner").show();
-        if (userid == 0) {
-            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
-            // location.reload();
-        } else {
+
+        // window.location=str;
+       
+        
+        // if (userid == 0) {
+         var  uri = escape(str);  
+    
+        // } else {
+            if (userid == 0) {
+
+                window.location.replace("<?php echo base_url('login?redirected_to=')?>" + unescape(uri));            
+                 } 
+                 else {
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url('dashboard/save_search_history'); ?>",
                 success: function (msg) {
+
 //                alert(msg);
                     var obj = JSON.parse(msg);
                     var resultArray = new Array();
                     for (var i in obj)
-                        resultArray[i] = obj[i];
+                        resultArray[i] = obj[i];  
 
                     if (resultArray['insert_id']) {
                         //alert('Search saved successfully');
@@ -1090,6 +1180,10 @@ $(".show_leads_details").click(function (e) {
             })
         }
     });
+
+
+
+
 
     //    $(".search-me").click(function() {
     //        $(".saveIt").css("background-color", "#fff");
@@ -1109,7 +1203,7 @@ $(".show_leads_details").click(function (e) {
             type: "POST",
             url: "<?php echo base_url('dashboard/remove_search_history'); ?>",
             success: function (msg) {
-                //alert('Removed history successfully');
+                alert('Removed history successfully');
                 if (msg == "removed") {
                     $this.find(".fa-spinner").hide();
                     $('.removesrch').addClass('hide');
@@ -1133,7 +1227,7 @@ $(".show_leads_details").click(function (e) {
                 del_id: del_id,
             },
             success: function (msg) {
-                //alert('Removed history successfully');
+                alert('Removed history successfully');
                 if (msg == "removed") {
                     $('#del_this_one_' + del_id).hide();
                     $("#trash_"  + del_id).hide();

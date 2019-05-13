@@ -24,7 +24,7 @@
                 <?php 
                     if(!empty($nearby)):
                         foreach($nearby as $item): ?>
-                            <li><a href="<?php echo base_url().$item->slug; ?>"><?php echo substr($item->title,1,35).'...'; ?></a></li>
+                            <li><a href="<?php echo base_url().$item->slug; ?>"><?php echo substr($item->title,0,35).'...'; ?></a></li>
                 <?php 
                         endforeach;
                     else:

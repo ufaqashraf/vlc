@@ -39,7 +39,7 @@
                                 <?php
                                 $user_id = volgo_get_logged_in_user_id();
 
-                                if (($user_id)) {
+                                if (isset($user_id)) {
                                     $user_id = $user_id;
                                 } else {
                                     $user_id = 0;
@@ -230,7 +230,7 @@
 
                                 foreach ($listing_by_cat_recommended as $listing_by_category_single):
 
-                                    $listing_no_image = volgo_get_no_image_url();
+                                    $listing_no_recommended_image = volgo_get_no_image_url();
 
                                     foreach ($listing_by_category_single['metas'] as $singlemeta):
 
@@ -308,7 +308,7 @@
 
                                                         <img
 
-                                                                src="<?php echo (empty($listing_image)) ? $listing_no_image : $listing_image; ?>"
+                                                                src="<?php echo (empty($listing_image)) ? $listing_no_recommended_image : $listing_image; ?>"
 
                                                                 class="img-fluid" alt="image">
 
@@ -601,7 +601,7 @@
 
                                         if ($singlemeta['meta_key'] == 'price' && !empty($singlemeta['meta_value'])) {
 
-                                            $price = number_format(intval($singlemeta['meta_value']));
+                                            $featured_price = number_format(intval($singlemeta['meta_value']));
 
                                         }
 
@@ -631,16 +631,17 @@
 
                                         }
 
-                                        if ($singlemeta['meta_key'] === 'images_from') {
-
+                                        if ($singlemeta['meta_key'] == 'images_from') {
                                             $singleimage = $singlemeta['meta_value'];
                                             $unserialized_image = unserialize($singleimage);
-                                            if (!empty($unserialized_image)) {
+
+                                            if (is_array($unserialized_image))
                                                 $total_images = count($unserialized_image);
-                                                $listing_image = isset($unserialized_image[0]) ? $unserialized_image[0] : '';
-                                                $listing_image = UPLOADS_URL . '/listing_images/' . ($listing_image);
-                                            } else
-                                                $listing_no_image;
+                                            else
+                                                $total_images = "";
+
+                                            if (isset($unserialized_image[0]))
+                                                $listing_featured_image = UPLOADS_URL . '/listing_images/' . $unserialized_image[0];
                                         }
 
                                         if ($singlemeta['meta_key'] == 'make' && !empty($singlemeta['meta_value'])) {
@@ -750,11 +751,11 @@
                                                 <span class="priceTag">
                                                     <span class="currency-code">
                                                     <?php
-                                                    if (isset($price) && !empty($price)){
+                                                    if (isset($featured_price) && !empty($featured_price)){
                                                     echo (!empty($currency_code)) ? strtoupper($currency_code) : strtoupper(B2B_CURRENCY_UNIT); ?>
                                                     </span>
                                                     <span class="detail-price">
-                                                        <?php echo $price;
+                                                        <?php echo $featured_price;
                                                         } else {
                                                             echo 'N/A';
                                                         } ?>
@@ -778,11 +779,7 @@
 
                                                         } ?>" class="lisViewtCatLink">
 
-                                                            <img
-
-                                                                    src="<?php echo (empty($listing_image)) ? $listing_no_image : $listing_image; ?>"
-
-                                                                    alt="img">
+                                                            <img src="<?php echo (empty($listing_featured_image)) ? $listing_no_image : $listing_featured_image; ?>" alt="img">
 
                                                         </a>
 
@@ -1323,11 +1320,11 @@
                                                 <span class="priceTag">
                                                     <span class="currency-code">
                                                     <?php
-                                                    if (isset($price) && !empty($price)){
+                                                    if (isset($featured_price) && !empty($featured_price)){
                                                     echo (!empty($currency_code)) ? strtoupper($currency_code) : strtoupper(B2B_CURRENCY_UNIT); ?>
                                                     </span>
                                                     <span class="detail-price">
-                                                        <?php echo $price;
+                                                        <?php echo $featured_price;
                                                         } else {
                                                             echo 'N/A';
                                                         } ?>
@@ -1353,7 +1350,7 @@
 
                                                             <img
 
-                                                                    src="<?php echo (empty($listing_image)) ? $listing_no_image : $listing_image; ?>"
+                                                                    src="<?php echo (empty($listing_featured_image)) ? $listing_no_image : $listing_featured_image; ?>"
 
                                                                     alt="img">
 

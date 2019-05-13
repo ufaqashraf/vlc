@@ -59,25 +59,10 @@
                                 <div class="iconHolder spl">
                                     <select class="selectpicker " multiple data-live-search="true" name="time[]" data-actions-box="true">
                                      <!-- <option value="">Please select</option> -->
-                                     <?php 
-                                        if(isset($_GET['time'])):
-                                            foreach($_GET['time'] as $time):
-                                                if($time == 'day'){
-                                                    $day = 'day';
-                                                }else if($time == 'week'){
-                                                    $week = 'day';
-                                                }else if($time == 'month'){
-                                                    $month = 'month';
-                                                }else{
-                                                    $year = 'year';
-                                                }
-                                            endforeach;
-                                        endif;
-                                     ?>
-                                        <option <?php if(isset($day)){ echo 'selected';} ?> value="day">Day</option>
-                                        <option <?php if(isset($week)){ echo 'selected';} ?> value="week">Week</option>
-                                        <option <?php if(isset($month)){ echo 'selected';} ?> value="month">Month</option>
-                                        <option <?php if(isset($year)){ echo 'selected';} ?> value="year">Year</option>
+                                        <option <?php if(!empty($_GET['time']) && in_array('day',$_GET['time'])){ echo 'selected';} ?> value="day">Day</option>
+                                        <option <?php if(!empty($_GET['time']) && in_array('week',$_GET['time'])){ echo 'selected';} ?> value="week">Week</option>
+                                        <option <?php if(!empty($_GET['time']) && in_array('month',$_GET['time'])){ echo 'selected';} ?> value="month">Month</option>
+                                        <option <?php if(!empty($_GET['time']) && in_array('year',$_GET['time'])){ echo 'selected';} ?> value="year">Year</option>
                                     </select>
                                 </div>
                             </div>
@@ -114,12 +99,22 @@
                         </div>
                         <div class="col-md-3">
                             <div class="searchStack"><span class="sidebarTitle"> Your Amenities:</span>
-                                <div class="iconHolder">
-                                    <select class="form-control selectpicker" name="amenities">
-                                        <option value="">Please select</option>
-                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'air-conditioning'){echo 'selected';} ?> value="air-conditioning">Air Conditioning</option>
-                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'abc'){echo 'selected';} ?> value="abc">Abc</option>
-                                        <option <?php if(!empty($_GET['amenities']) && $_GET['amenities'] == 'abcd'){echo 'selected';} ?> value="abcd">abcd</option>
+                                <div class="iconHolder spl">
+                                    <select class="form-control selectpicker" multiple data-live-search="true" name="amenities[]"  data-actions-box="true">
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('air-conditioning',$_GET['amenities'])){echo 'selected';} ?> value="air-conditioning">Air Conditioning</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('heating',$_GET['amenities'])){echo 'selected';} ?> value="heating">Heating</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('balcony',$_GET['amenities'])){echo 'selected';} ?> value="balcony">Balcony</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('elevator',$_GET['amenities'])){echo 'selected';} ?> value="elevator">Elevator</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('garden',$_GET['amenities'])){echo 'selected';} ?> value="garden">Garden</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('garage-garking',$_GET['amenities'])){echo 'selected';} ?> value="garage-garking">Garage/Parking</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('maid-room',$_GET['amenities'])){echo 'selected';} ?> value="maid-room">Maid Room</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('laundry-room',$_GET['amenities'])){echo 'selected';} ?> value="laundry-room">Laundry Room</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('nearby-facilities',$_GET['amenities'])){echo 'selected';} ?> value="nearby-facilities">Nearby Facilities</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('security',$_GET['amenities'])){echo 'selected';} ?> value="security">Security</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('built-in-wardrobes',$_GET['amenities'])){echo 'selected';} ?> value="built-in-wardrobes">Built in Wardrobes</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('swimming-pool',$_GET['amenities'])){echo 'selected';} ?> value="swimming-pool">Swimming Pool</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('solar-panels',$_GET['amenities'])){echo 'selected';} ?> value="solar-panels">Solar Panels</option>
+                                        <option <?php if(!empty($_GET['amenities']) && in_array('doublepane-windows',$_GET['amenities'])){echo 'selected';} ?> value="doublepane-windows">Doublepane Windows</option>
                                     </select>
                                 </div>
                             </div>
@@ -168,11 +163,15 @@
                         <div class="col-md-3 col-lg-2">
                             <div class="textField searchBtnsAction">
                                 <button class="btn save_search_"> <i class="fa fa-heart-o" aria-hidden="true"></i> save search </button>
+                                <button class="btn remove_search_" style="display:none"> <i class="fa fa-heart" aria-hidden="true"></i> remove search </button>
                             </div>
                         </div>
                         <div class="col-md-3 col-lg-6"> <span class="advnc-search"><a id="advnce-ser1" data-toggle="collapse" aria-expanded="false" href="#"><i class="fa fa-plus-circle"></i>Advance Search</a></span> </div>
                     </div>
         </fieldset>
+            <div class="spinner-loader-wrapper loader-wrapper" style="display: none;">
+                <div class="spinner-loader fa fa-spinner fa-spin fa-2x fa-fw"></div>
+            </div>
         </form>
         </div>
     </div>

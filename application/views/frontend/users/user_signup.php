@@ -1,4 +1,4 @@
-	<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -49,10 +49,7 @@
                     </div>
                 </div>
                 <p class="custome-signupTxt">or Sign up with your email</p>
-                    <?php if (isset($validation_errors) && !empty($validation_errors)) :
-                        print_r($validation_errors);
-
-                        ?>
+                    <?php if (isset($validation_errors) && !empty($validation_errors)) : ?>
                         <div class="alert alert-danger">
                             <p><?php echo $validation_errors; ?></p>
                         </div>
