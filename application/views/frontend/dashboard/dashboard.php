@@ -1,4 +1,4 @@
-﻿﻿<?php include_once realpath(__DIR__ . '/..') . '/includes/top_header.php'; ?>
+﻿<?php include_once realpath(__DIR__ . '/..') . '/includes/top_header.php'; ?>
 <?php include_once realpath(__DIR__ . '/..') . '/includes/header.php'; ?>
 
 <style>
@@ -109,7 +109,7 @@
 										<div class="cv-form">
 
 											<div class="col-md-12 padding-lr">
-
+												
 
 												<div class="row">
 													<div class="col-md-6 col-sm-6 col-xs-12">
@@ -197,10 +197,10 @@
 																			}
 																		}
 																		?>
-																		>
+																	>
 																		<?php echo $single_country->name ?>
 																	</option>
-																	<?php
+																<?php
 																endforeach;
 																?>
 															</select>
@@ -700,7 +700,7 @@
 														</div>
 													</div>
 
-													<?php
+												<?php
 												endforeach;
 											else:
 												echo "No add Posted Yet";
@@ -710,155 +710,155 @@
 
 										</div>
 
-									</div>
 								</div>
-								<div id="favourite_ads" class="tab-pane fade">
+							</div>
+							<div id="favourite_ads" class="tab-pane fade">
 
-									<div class="col-md-12">
+								<div class="col-md-12">
 
-										<div class="adds">
-											<h4 class="pull-left">Your Favourite ADs List</h4>
+									<div class="adds">
+										<h4 class="pull-left">Your Favourite ADs List</h4>
 
-											<div class="pull-right">
+										<div class="pull-right">
 
-												<!--												<span class="pull-left mr-2">select Catgory</span>-->
-												<!--												<div class="form-group pull-left" style="width: 120px">-->
-												<!--													<select class="form-control select_cat_dash">-->
-												<!--														<option value=''>---Select category---</option>-->
-												<!--														--><?php //foreach ($all_cats as $single_cat): ?>
-												<!---->
-												<!--															<option-->
-												<!--																value="-->
-												<?php //echo $single_cat->id; ?><!--">-->
-												<?php //echo $single_cat->name; ?><!--</option>-->
-												<!---->
-												<!--														--><?php //endforeach; ?>
-												<!--													</select>-->
-												<!--												</div>-->
-											</div>
+											<!--												<span class="pull-left mr-2">select Catgory</span>-->
+											<!--												<div class="form-group pull-left" style="width: 120px">-->
+											<!--													<select class="form-control select_cat_dash">-->
+											<!--														<option value=''>---Select category---</option>-->
+											<!--														--><?php //foreach ($all_cats as $single_cat): ?>
+											<!---->
+											<!--															<option-->
+											<!--																value="-->
+											<?php //echo $single_cat->id; ?><!--">-->
+											<?php //echo $single_cat->name; ?><!--</option>-->
+											<!---->
+											<!--														--><?php //endforeach; ?>
+											<!--													</select>-->
+											<!--												</div>-->
 										</div>
 									</div>
-									<div class="spinner-loader-wrapper" style="display: none;">
-										<div class="spinner-loader fa fa-spinner fa-spin fa-2x fa-fw"></div>
-									</div>
-									<?php
+								</div>
+								<div class="spinner-loader-wrapper" style="display: none;">
+									<div class="spinner-loader fa fa-spinner fa-spin fa-2x fa-fw"></div>
+								</div>
+								<?php
 
-									if ($fav_adds != "nolisitng"):
-										foreach ($fav_adds as $single_listing): ?>
-											<?php
+								if ($fav_adds != "nolisitng"):
+									foreach ($fav_adds as $single_listing): ?>
+										<?php
 
-											if (is_array($single_listing['metas']) && (!empty($single_listing['metas']))) {
-												foreach ($single_listing['metas'] as $metas_fetch) {
-
-
-													if ($metas_fetch->meta_key == 'images_from') {
-														$singleimage = $metas_fetch->meta_value;
-														$unserialized_image = unserialize($singleimage);
-														$total_iamges = count($unserialized_image);
-														$listing_image = $unserialized_image[0];
-													}
-
-													if ($metas_fetch->meta_key == 'price') {
-														$price = $metas_fetch->meta_value;
-													}
-													if ($metas_fetch->meta_key == 'currency_code') {
-														$currnecy_code = $metas_fetch->meta_value;
-													}
-													if ($metas_fetch->meta_key == 'phone') {
-														$phone = $metas_fetch->meta_value;
-													}
+										if (is_array($single_listing['metas']) && (!empty($single_listing['metas']))) {
+											foreach ($single_listing['metas'] as $metas_fetch) {
 
 
+												if ($metas_fetch->meta_key == 'images_from') {
+													$singleimage = $metas_fetch->meta_value;
+													$unserialized_image = unserialize($singleimage);
+													$total_iamges = count($unserialized_image);
+													$listing_image = $unserialized_image[0];
 												}
+
+												if ($metas_fetch->meta_key == 'price') {
+													$price = $metas_fetch->meta_value;
+												}
+												if ($metas_fetch->meta_key == 'currency_code') {
+													$currnecy_code = $metas_fetch->meta_value;
+												}
+												if ($metas_fetch->meta_key == 'phone') {
+													$phone = $metas_fetch->meta_value;
+												}
+
+
 											}
-											?>
+										}
+										?>
 
-											<div class="maindiv">
-												<div class="col-md-12">
-													<div class="holder sec-holder">
-														<div class="lisViewtCatHolder fvt-add clearfix">
+										<div class="maindiv">
+											<div class="col-md-12">
+												<div class="holder sec-holder">
+													<div class="lisViewtCatHolder fvt-add clearfix">
 
 
-															<div class="lisViewtCatCol col-md-4 col-sm-6 col-xs-12">
-																<a href="#" class="lisViewtCatLink">
-																	<img src="<?php
-																	echo UPLOADS_URL . '/listing_images/' . $listing_image;
-																	?>" alt="Car">
-																</a>
-																<a href="javascript:void(0)" class="totalCat">
+														<div class="lisViewtCatCol col-md-4 col-sm-6 col-xs-12">
+															<a href="#" class="lisViewtCatLink">
+																<img src="<?php
+																echo UPLOADS_URL . '/listing_images/' . $listing_image;
+																?>" alt="Car">
+															</a>
+															<a href="javascript:void(0)" class="totalCat">
 
-																	<?php if (isset($total_iamges)) {
-																		echo $total_iamges;
+																<?php if (isset($total_iamges)) {
+																	echo $total_iamges;
+
+																} ?>
+
+																<i class="fa fa-camera" aria-hidden="true"></i>
+															</a>
+														</div>
+														<div
+															class="lisViewtCatDetail col-md-8 col-sm-12 col-xs-12 myads">
+															<div class="row">
+																<h4 class="col-md-8 col-sm-6 col-xs-12">
+																	<a href="<?php
+
+																	if (isset($single_listing['title'])) {
+																		echo base_url() . volgo_make_slug($single_listing['title']);
+																	}
+
+																	?>">
+																		<?php if (isset($single_listing['title'])) {
+																			echo $single_listing['title'];
+																		} ?>
+																	</a>
+																</h4>
+																<h5 class="col-md-4 col-sm-6 col-xs-12 text-right">
+																	<?php if (isset($price)) {
+																		echo number_format($price);
 
 																	} ?>
-
-																	<i class="fa fa-camera" aria-hidden="true"></i>
-																</a>
-															</div>
-															<div
-																class="lisViewtCatDetail col-md-8 col-sm-12 col-xs-12 myads">
-																<div class="row">
-																	<h4 class="col-md-8 col-sm-6 col-xs-12">
-																		<a href="<?php
-
-																		if (isset($single_listing['title'])) {
-																			echo base_url() . volgo_make_slug($single_listing['title']);
-																		}
-
-																		?>">
-																			<?php if (isset($single_listing['title'])) {
-																				echo $single_listing['title'];
-																			} ?>
-																		</a>
-																	</h4>
-																	<h5 class="col-md-4 col-sm-6 col-xs-12 text-right">
-																		<?php if (isset($price)) {
-																			echo number_format($price);
-
-																		} ?>
-																		<span>
+																	<span>
 																		<?php if (isset($currnecy_code)) {
 																			echo $currnecy_code;
 
 																		} ?>
 																	</span></h5>
-																</div>
-																<p class="text-muted">
-																	<?php if (isset($single_listing['city_name'])) {
-																		echo $single_listing['city_name'];
-																	} ?>
-																	,
-																	<?php if (isset($single_listing['state_name'])) {
-																		echo $single_listing['state_name'];
-																	} ?>
-																	,
-																	<?php if (isset($single_listing['country_name'])) {
-																		echo $single_listing['country_name'];
-																	} ?>
+															</div>
+															<p class="text-muted">
+																<?php if (isset($single_listing['city_name'])) {
+																	echo $single_listing['city_name'];
+																} ?>
+																,
+																<?php if (isset($single_listing['state_name'])) {
+																	echo $single_listing['state_name'];
+																} ?>
+																,
+																<?php if (isset($single_listing['country_name'])) {
+																	echo $single_listing['country_name'];
+																} ?>
 
-																</p>
-																<ul class="list-unstyled listBread clearfix">
-																	<li>
-																		<a href="javascript:void(0)">
-																			<?php if (isset($single_listing['cat_name'])) {
-																				echo $single_listing['cat_name'];
-																			} ?>
+															</p>
+															<ul class="list-unstyled listBread clearfix">
+																<li>
+																	<a href="javascript:void(0)">
+																		<?php if (isset($single_listing['cat_name'])) {
+																			echo $single_listing['cat_name'];
+																		} ?>
 
-																		</a>
-																	</li>
-																	<li>
-																		<a href="javascript:void(0)">
+																	</a>
+																</li>
+																<li>
+																	<a href="javascript:void(0)">
 
-																			<?php if (isset($single_listing['sub_cat_name'])) {
-																				echo $single_listing['sub_cat_name'];
-																			} ?>
-																		</a>
-																	</li>
+																		<?php if (isset($single_listing['sub_cat_name'])) {
+																			echo $single_listing['sub_cat_name'];
+																		} ?>
+																	</a>
+																</li>
 
-																</ul>
-																<ul class="edit1 call-now">
+															</ul>
+															<ul class="edit1 call-now">
 
-																	<li>
+																<li>
 																<span class="number" data-last="
 																<?php if (isset($phone)) {
 																	echo $phone;
@@ -869,42 +869,42 @@
 																			class="fa fa-phone" aria-hidden="true"></i> <span
 																			class="calls">Call Now </span> </a></span>
 																</span>
-																	</li>
-																	<?php if (isset($single_listing['id'])) {
-																		$id_of_lisiting = $single_listing['id'];
-																	} else {
-																		$id_of_lisiting = "";
-																	} ?>
-																	<?php if (isset($single_listing['title'])) {
-																		$slug = volgo_make_slug($single_listing['title']);
-																	} else {
-																		$slug = "";
-																	} ?>
-																	<li>
-																		<a href="<?php echo base_url('Dashboard/remove_fav_add/') . $id_of_lisiting . '/Dashboard' ?>"><i
-																				class="fa fa-heart"></i><span
-																				class="savit">remove</span>
-																		</a></li>
-																	<li class="rep"><a href="#"><i
-																				class="fa fa-flag"></i><span
-																				class="savit">Report Now</span> </a>
-																	</li>
-																</ul>
-															</div>
+																</li>
+																<?php if (isset($single_listing['id'])) {
+																	$id_of_lisiting = $single_listing['id'];
+																} else {
+																	$id_of_lisiting = "";
+																} ?>
+																<?php if (isset($single_listing['title'])) {
+																	$slug = volgo_make_slug($single_listing['title']);
+																} else {
+																	$slug = "";
+																} ?>
+																<li>
+																	<a href="<?php echo base_url('Dashboard/remove_fav_add/') . $id_of_lisiting . '/Dashboard' ?>"><i
+																			class="fa fa-heart"></i><span
+																			class="savit">remove</span>
+																	</a></li>
+																<li class="rep"><a href="#"><i
+																			class="fa fa-flag"></i><span
+																			class="savit">Report Now</span> </a>
+																</li>
+															</ul>
 														</div>
 													</div>
 												</div>
 											</div>
+										</div>
 
-											<?php
-										endforeach;
-									else:
-										echo "No add Saved Yet";
-									endif;
-									?>
+									<?php
+									endforeach;
+								else:
+									echo "No add Saved Yet";
+								endif;
+								?>
 
 
-								</div>
+							</div>
 
 								<div id="saved_searches" class="tab-pane fade">
 
@@ -953,53 +953,61 @@
 																	echo "#";
 																?>"><span style="text-transform: capitalize !important;">
 																	<?php
-																	if(!isset($searched_row['link']['cat_name'])){
-																		echo $searched_row['link']['parent_cat_select'];
-																		if(isset($searched_row['link']['child_cats']))
-																			echo '|'.$searched_row['link']['child_cats'];
-																	}else
-																		echo $searched_row['link']['cat_name'];
+																		if(!isset($searched_row['link']['cat_name'])){
+																			echo $searched_row['link']['parent_cat_select'];
+																			if(isset($searched_row['link']['child_cats']))
+																				echo '|'.$searched_row['link']['child_cats'];
+																		}else
+																			echo $searched_row['link']['cat_name'];
 																	?>
 																		</span>
-																</a></h3>
+																	</a></h3>
 															<h4><?php
-																if(isset($searched_row['link']['country_search']))
-																{
-																	echo $searched_row['link']['country_search'];
-																}
-																if(isset($searched_row['link']['select_state']))
-																	echo '|'.$searched_row['link']['select_state'];
-																if(isset($searched_row['link']['selected_city']))
-																	echo '|'.$searched_row['link']['selected_city'];
-																else echo "All Cities";
-																?></h4>
+																	if(isset($searched_row['link']['country_search']))
+																	{
+																		echo $searched_row['link']['country_search'];
+																	}
+																	if(isset($searched_row['link']['select_state']))
+																		echo ('|'.$searched_row['link']['select_state']);
+																		if(isset($searched_row['link']['selected_city']))
+																		echo ('|'.$searched_row['link']['selected_city']);
+																			else echo " | All Cities";
+																	?></h4>
 
 															<ul>
-																<li> <?php
+															<li> <?php
 																	if(isset($searched_row['link']['make']))
-																		echo '|'.$searched_row['link']['make'];
-																	else echo "";
+																	echo $searched_row['link']['make'];
+																	else echo "";	
 																	?>
-																	<?php
+															</li>
+															<li>		
+																<?php
 																	if(isset($searched_row['link']['model']))
-																		echo '|'.$searched_row['link']['model'];
-																	else echo "";
-																	?>
-																	<?php
+																	echo $searched_row['link']['model'];
+																		else echo "";	
+																?>
+															</li>
+															<li>	
+																<?php
 																	if(isset($searched_row['link']['yearfrom']))
-																		echo '|'.$searched_row['link']['yearfrom'].' - ';
+																	echo '|'.$searched_row['link']['yearfrom'].'-';
+																
+																	
 																	if(isset($searched_row['link']['yearto']))
-																		echo $searched_row['link']['yearto'].'|';
-																	else echo" ";
-																	?>
-																	<?php
+																	echo ($searched_row['link']['yearto']);
+																		else echo" ";	
+																?>
+															</li>
+															<li>	
+																<?php
 																	if(isset($searched_row['link']['condition']))
-																		echo '|'.$searched_row['link']['condition'].'|';
-																	else echo "";
-																	?>
-
-																</li>
-
+																	echo $searched_row['link']['condition'];
+																		else echo "";	
+																?>
+															
+															</li>
+																
 																<!-- <li>Used</li> -->
 															</ul>
 														</div>
@@ -1025,154 +1033,154 @@
 
 								</div>
 
-								<div id="membership" class="tab-pane fade">
+							<div id="membership" class="tab-pane fade">
 
-								</div>
-
-								<div id="followers" class="tab-pane fade">
-									<div class="border no-border">
-										<div class="row">
-											<?php if (!empty($followers)): ?>
-												<?php foreach ($followers as $single_follower): ?>
-													<div class="col-lg-4 col-sm-6">
-
-														<div class="card hovercard">
-
-
-															<div class="avatar">
-																<img src="images/img-m.jpg" alt="">
-															</div>
-															<div class="info">
-																<div class="title follow">
-																	<a target="_blank" href="#"><?php
-																		echo $single_follower['name']; ?></a>
-																	<p class="text-muted"><?php echo $single_follower['postcount']; ?>
-																		Posts</p>
-																</div>
-
-															</div>
-															<div class="bottom">
-																<a href="<?php echo base_url('Dashboard/unfollow_dashboard/') . $single_follower['id'] ?>"
-																   tabindex="0"
-																   class="btn bg-blue-ui white read">Block</a>
-															</div>
-
-
-														</div>
-
-													</div>
-												<?php endforeach; ?>
-											<?php endif; ?>
-										</div>
-									</div>
-
-
-								</div>
-
-								<div id="following" class="tab-pane fade">
-
-
-									<div class="border no-border">
-										<div class="row">
-											<?php if (!empty($following)): ?>
-												<?php foreach ($following as $single_follower): ?>
-													<div class="col-lg-4 col-sm-6">
-
-														<div class="card hovercard">
-
-
-															<div class="avatar">
-																<img src="images/img-m.jpg" alt="">
-															</div>
-															<div class="info">
-																<div class="title follow">
-																	<a target="_blank" href="#"><?php
-																		echo $single_follower['name']; ?></a>
-																	<p class="text-muted"><?php echo $single_follower['postcount']; ?>
-																		Posts</p>
-																</div>
-
-															</div>
-															<div class="bottom">
-																<a href="<?php echo base_url('Dashboard/unfollowing_dashboard/') . $single_follower['id'] ?>"
-																   tabindex="0"
-																   class="btn bg-blue-ui white read">UNFollow</a>
-															</div>
-
-
-														</div>
-
-													</div>
-												<?php endforeach; ?>
-											<?php endif; ?>
-
-
-										</div>
-									</div>
-
-								</div>
-								<div id="settings" class="tab-pane fade">
-									<div class="row form-fill">
-										<div class="row">
-											<div class="col-md-6 col-sm-6 col-xs-12">
-												<div class="row">
-													<div class="col-md-12 col-sm-12 col-xs-12">
-														<div class="form-group">
-															<label>First Name</label>
-															<input type="text"
-																   value="<?php echo ucwords($single_detail->firstname); ?>"
-																   class="text_label form-control"
-																   name="firstname" contenteditable="true">
-
-
-														</div>
-														<div class="form-group">
-															<label>Last Name</label>
-															<input type="text"
-																   value="<?php echo ucwords($single_detail->lastname); ?>"
-																   class="text_label form-control "
-																   name="lastname" contenteditable="true">
-
-
-														</div>
-														<div class="form-group">
-															<label>Email</label>
-															<input type="text"
-																   value="<?php echo $single_detail->email; ?>"
-																   class="text_label form-control "
-																   name="lastname" contenteditable="true">
-
-
-														</div>
-													</div>
-													<div class="col-md-12 col-sm-12 col-xs-12 clas-z">
-
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-6 col-xs-12">
-												<div class="row">
-
-													<div class="col-md-12 col-sm-12 col-xs-12">
-														<a class="btn btn-custom btn-lg btn-block"
-														   href="<?php echo base_url('dashboard/deactivateacuton/') . $single_detail->id; ?>">
-															Deactivate My Account</a>
-
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-
-								</div>
 							</div>
 
-							<?php endforeach; ?>
+							<div id="followers" class="tab-pane fade">
+								<div class="border no-border">
+									<div class="row">
+										<?php if (!empty($followers)): ?>
+											<?php foreach ($followers as $single_follower): ?>
+												<div class="col-lg-4 col-sm-6">
+
+													<div class="card hovercard">
+
+
+														<div class="avatar">
+															<img src="images/img-m.jpg" alt="">
+														</div>
+														<div class="info">
+															<div class="title follow">
+																<a target="_blank" href="#"><?php
+																	echo $single_follower['name']; ?></a>
+																<p class="text-muted"><?php echo $single_follower['postcount']; ?>
+																	Posts</p>
+															</div>
+
+														</div>
+														<div class="bottom">
+															<a href="<?php echo base_url('Dashboard/unfollow_dashboard/') . $single_follower['id'] ?>"
+															   tabindex="0"
+															   class="btn bg-blue-ui white read">Block</a>
+														</div>
+
+
+													</div>
+
+												</div>
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</div>
+								</div>
+
+
+							</div>
+
+							<div id="following" class="tab-pane fade">
+
+
+								<div class="border no-border">
+									<div class="row">
+										<?php if (!empty($following)): ?>
+											<?php foreach ($following as $single_follower): ?>
+												<div class="col-lg-4 col-sm-6">
+
+													<div class="card hovercard">
+
+
+														<div class="avatar">
+															<img src="images/img-m.jpg" alt="">
+														</div>
+														<div class="info">
+															<div class="title follow">
+																<a target="_blank" href="#"><?php
+																	echo $single_follower['name']; ?></a>
+																<p class="text-muted"><?php echo $single_follower['postcount']; ?>
+																	Posts</p>
+															</div>
+
+														</div>
+														<div class="bottom">
+															<a href="<?php echo base_url('Dashboard/unfollowing_dashboard/') . $single_follower['id'] ?>"
+															   tabindex="0"
+															   class="btn bg-blue-ui white read">UNFollow</a>
+														</div>
+
+
+													</div>
+
+												</div>
+											<?php endforeach; ?>
+										<?php endif; ?>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div id="settings" class="tab-pane fade">
+								<div class="row form-fill">
+									<div class="row">
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<div class="form-group">
+														<label>First Name</label>
+														<input type="text"
+															   value="<?php echo ucwords($single_detail->firstname); ?>"
+															   class="text_label form-control"
+															   name="firstname" contenteditable="true">
+
+
+													</div>
+													<div class="form-group">
+														<label>Last Name</label>
+														<input type="text"
+															   value="<?php echo ucwords($single_detail->lastname); ?>"
+															   class="text_label form-control "
+															   name="lastname" contenteditable="true">
+
+
+													</div>
+													<div class="form-group">
+														<label>Email</label>
+														<input type="text"
+															   value="<?php echo $single_detail->email; ?>"
+															   class="text_label form-control "
+															   name="lastname" contenteditable="true">
+
+
+													</div>
+												</div>
+												<div class="col-md-12 col-sm-12 col-xs-12 clas-z">
+
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="row">
+
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<a class="btn btn-custom btn-lg btn-block"
+													   href="<?php echo base_url('dashboard/deactivateacuton/') . $single_detail->id; ?>">
+														Deactivate My Account</a>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
 						</div>
+
+						<?php endforeach; ?>
 					</div>
 				</div>
+			</div>
 				<div class="add-baner text-center">
 					<div class="container">
 						<div class="row">
@@ -1184,9 +1192,9 @@
 					</div>
 
 				</div>
-			</div>
 		</div>
 	</div>
+</div>
 
 
-	<?php include_once realpath(__DIR__ . '/..') . '/includes/footer.php'; ?>
+<?php include_once realpath(__DIR__ . '/..') . '/includes/footer.php'; ?>

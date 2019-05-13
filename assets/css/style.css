@@ -11509,8 +11509,6 @@ background-position: right;
 background-image: url(../assets/images/sidebar-form-drop-angle.png);
 background-repeat: no-repeat;
 padding: 0 30px 0 25px;
-border-radius: 0;
-border-color: #999;
 }
 
 .qty .plus {
@@ -12332,18 +12330,4 @@ li.auto:hover .social-icon i{
 	color: #007BDC;
 	font-size: 14px;
 	font-weight: 600;
-}
-.remove_search_ i {
-	color: red;
-}
-button.btn.remove_search_ {
-	width: 180px!important;
-}
-input[type="number"]{
-	-moz-appearance: textfield;
-}
-#renew_membership .modal-content {
-	padding: 30px;
-	border-radius: 0;
-	text-align: center;
 }

@@ -143,11 +143,11 @@ class Dashboard extends CI_Controller
 							$state_cat_id = $get_array['select_state'];
 							$state_cat_name =$this->Categories_Model->get_state_by_id($state_cat_id);
 							$get_array['select_state']=$state_cat_name[0]->name;
-							//						print_r($get_array);exit;
+	//						print_r($get_array);exit;
 							$country_cat_id = $get_array['country_search'];
 							$country_cat_name =$this->Categories_Model->get_country_by_id($country_cat_id);
 							$get_array['country_search']=$country_cat_name[0]->name;
-
+						
 							$city_cat_id = $get_array['selected_city'];
 							$city_cat_name =$this->Categories_Model->get_city_by_id($city_cat_id);
 							$get_array['selected_city']=$city_cat_name[0]->name;
@@ -593,12 +593,6 @@ class Dashboard extends CI_Controller
 
 		$loged_in_user_id = volgo_get_logged_in_user_id();
 		$url = $this->agent->referrer();
-
-		// $loged_in_userid = volgo_get_logged_in_user_id();
-		// if (empty($loged_in_userid)) {
-		// 	redirect('login?redirected_to=' . base_url($url));
-		// }
-
 		$link = str_replace(base_url(), '', $url);
 		$meta_array = [
 			'link' => $link,
@@ -609,8 +603,8 @@ class Dashboard extends CI_Controller
 		$insert_id = $this->Dashboard_Model->save_search($loged_in_user_id, $meta_value);
 		$this->session->set_userdata('search_history_id',$insert_id);
 		$data = [
+			'loged_in_user_id' => $loged_in_user_id,
 			'insert_id' => $insert_id,
-			'link' => $link,
 		];
 		echo json_encode($data);
 		exit();
@@ -662,11 +656,11 @@ class Dashboard extends CI_Controller
 						$country_cat_id = $get_array['country_search'];
 						$country_cat_name =$this->Categories_Model->get_country_by_id($country_cat_id);
 						$get_array['country_search']=$country_cat_name[0]->name;
-
+					
 						$city_cat_id = $get_array['selected_city'];
 						$city_cat_name =$this->Categories_Model->get_city_by_id($city_cat_id);
 						$get_array['selected_city']=$city_cat_name[0]->name;
-
+					
 
 
 					}
@@ -691,7 +685,7 @@ class Dashboard extends CI_Controller
 
 			}
 			print_r($responseArray);
-			exit;
+						exit;
 
 		}
 	}

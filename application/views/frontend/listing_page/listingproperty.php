@@ -85,6 +85,7 @@
 							<div class="bestSeller-field">
 								<span class="sortBy">Sort by:</span>
 								<select class="form-control selectpicker sorting_select" name="sorting" >
+                                    <option value="default">Choose sort</option>
                                     <option <?php if(!empty($_GET['sorting']) && $_GET['sorting'] == 'desc'){echo 'selected';} ?> value="desc">Newest to Oldest</option>
                                     <option <?php if(!empty($_GET['sorting']) && $_GET['sorting'] == 'asc'){echo 'selected';} ?> value="asc">Oldest to Newest</option>
                                     <option <?php if(!empty($_GET['sorting']) && $_GET['sorting'] == 'price-desc'){echo 'selected';} ?> value="price-desc">Price Highest to Lowest</option>
@@ -180,8 +181,7 @@
 
                             $count = 0;
 
-                            foreach ($listing_by_cat_recommended as $k => $listing_by_category_single):
-                                if($k < 2):
+                            foreach ($listing_by_cat_recommended as $listing_by_category_single):
                                 $listing_no_image = volgo_get_no_image_url();
                                 foreach ($listing_by_category_single['metas'] as $singlemeta):
 
@@ -330,7 +330,6 @@
                                 </div>
 
                             <?php
-                            endif;
                             endforeach;
                             ?>
 
