@@ -84,7 +84,7 @@ class Listingsearch extends CI_Controller
 
 		$config = array();
 		$config['page_query_string'] = TRUE;
-		$config["base_url"] = base_url('/listingsearch/sidebar/' . $per_page_limit . '/?' . $query_string);
+		$config["base_url"] = base_url('/listingsearch/sidebar?').http_build_query(array_merge($_GET));
 
 		$config['display_pages'] = TRUE;
 		$config["total_rows"] = $totalcounts;

@@ -1139,39 +1139,25 @@ foreach ($footer_block as $key => $value) {
     // save search history start
 
     $(".save_search_history").click(function(e) {
-        e.preventDefault();
+
         var $this = $(this);
-        var str = window.location.href;
-        var array = str.split("?");
-        
         var userid = $this.data("user_id");
         $this.find(".fa-spinner").show();
-
-        // window.location=str;
-       
-        
-        // if (userid == 0) {
-         var  uri = escape(str);  
-    
-        // } else {
-            if (userid == 0) {
-
-                window.location.replace("<?php echo base_url('login?redirected_to=')?>" + unescape(uri));            
-                 } 
-                 else {
+        if (userid == 0) {
+            window.location.replace("<?php echo base_url('login?redirected_to=') . base_url() . uri_string(); ?>");
+        } else {
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url('dashboard/save_search_history'); ?>",
                 success: function (msg) {
-
 //                alert(msg);
                     var obj = JSON.parse(msg);
                     var resultArray = new Array();
                     for (var i in obj)
-                        resultArray[i] = obj[i];  
+                        resultArray[i] = obj[i];
 
                     if (resultArray['insert_id']) {
-                        //alert('Search saved successfully');
+                        alert('Search saved successfully');
                         $this.find(".fa-spinner").hide();
                         $('.removesrch').removeClass('hide');
                         $('.save_search_history').addClass('hide');
@@ -1180,10 +1166,6 @@ foreach ($footer_block as $key => $value) {
             })
         }
     });
-
-
-
-
 
     //    $(".search-me").click(function() {
     //        $(".saveIt").css("background-color", "#fff");

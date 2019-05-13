@@ -46,7 +46,8 @@
         if ($metas->meta_key === 'currency_code') {
             $currency_code = $metas->meta_value;
         }
-        if ($user_meta_data->meta_key === 'user_image') {
+
+        if (!empty($user_meta_data) && $user_meta_data->meta_key === 'user_image') {
             $user_img = $user_meta_data->meta_value;
         }
         if ($metas->meta_key === 'ad_extras') {

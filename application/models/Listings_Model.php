@@ -611,7 +611,7 @@ class Listings_Model extends CI_Model
         unset($metas['price_only']);
         unset($metas['photo_only']);
         unset($metas['listing_type']);
-
+        unset($metas['per_page']);
         // =============================================================================
 //==========================================ENDS======================================================================================
 
@@ -689,7 +689,7 @@ class Listings_Model extends CI_Model
 					{$per_page_limit};";
 
         //echo $query; exit;
-
+        // var_dump($query);die;
         $this->db->cache_on();
 
         $result = $this->db->query($query);
@@ -1756,14 +1756,17 @@ class Listings_Model extends CI_Model
 
     // check membership
 	public function user_membership_check($user_id){
-        $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id,o.order_date
-        from b2b_users u
-        left join orders o on o.user_id = u.id
-        left join orders_meta om on om.order_id = o.id
-        where u.id = {$user_id} and o.status = 'paid' order by o.order_date DESC limit 1";
-        $this->db->cache_off();
-        $result = $this->db->query($query);
-        return $result->result(); 
+        if($user_id > 0){
+            $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id,o.order_date
+            from b2b_users u
+            left join orders o on o.user_id = u.id
+            left join orders_meta om on om.order_id = o.id
+            where u.id = {$user_id} and o.status = 'paid' order by o.order_date DESC limit 1";
+            $this->db->cache_off();
+            $result = $this->db->query($query);
+            return $result->result(); 
+        }
+        
     }
 
     public function update_connects($id,$package_id,$connects){
