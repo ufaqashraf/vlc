@@ -132,8 +132,7 @@ class Orders_Model extends Packages_Model
 			'status' => 'pending',
 			'payment_method' => $payment_method,
 			'order_date' => date("Y-m-d H:i:s"),
-			'created_date' => date("Y-m-d H:i:s"),
-			'available_connect' => $available_connect
+			'created_date' => date("Y-m-d H:i:s")
 		);
 
 		$this->db->set($data);
@@ -142,7 +141,20 @@ class Orders_Model extends Packages_Model
 			$this->orders_table
 		);
 
+		$order_id = $this->db->insert_id();
+
+
 		if ($is_inserted) {
+			// order meta insert
+			$order_meta = [
+				'order_id' => $this->db->insert_id(),
+				'meta_key' => 'available_connect',
+				'meta_value' => $available_connect,
+				'orders_id' => $order_id
+			];
+			$this->db->set($order_meta);
+			$this->db->insert('orders_meta');
+
 			return [
 				'is_inserted' => 'yes',
 				'amount' => $amount,
@@ -150,7 +162,7 @@ class Orders_Model extends Packages_Model
 				'payment_method' => $payment_method,
 				'package_title' => $package_title,
 				'aed_amount' => $package_data['amount'],
-				'order_id' => $this->db->insert_id(),
+				'order_id' => $order_id,
 				'package_id' => $package_id,
 				'package_user' => $package_user
 			];
@@ -174,14 +186,14 @@ class Orders_Model extends Packages_Model
 			'status' => $payment_status,
 			'payment_method' => $payment_gateway
 		);
-
+		
 		$this->db->set($data);
 		$this->db->where('id', $order_id);
 
 		$is_updated = $this->db->update(
 			$this->orders_table
 		);
-
+		
 		return $is_updated;
 
 	}

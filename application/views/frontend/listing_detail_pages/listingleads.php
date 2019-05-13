@@ -29,10 +29,7 @@
                             if(!empty(($listing_detail['info'][0]))):
                                 echo $listing_detail['info'][0]->description;
                                 echo '<p>Kindly contact us for further details</p>';
-                                
-
-                                if(isset($user_membership)):
-                                    echo '<div class="msg"></div>';
+                                if(!empty($user_membership) && $user_membership[0]->available_connect != 0):
                                     echo '<ul class="user_details" style="display:none">';
                                     if($listing_detail['metas'][4]->meta_key == 'fname' && !empty($listing_detail['metas'][4]->meta_value)){
                                         echo '<li><span><i class="fa fa-user"></i>Contact: </span>'.$listing_detail['metas'][4]->meta_value.' '.$listing_detail['metas'][5]->meta_value.'</li>';
@@ -47,7 +44,11 @@
                                 endif;
                             endif;
                         ?>
-                        <button type="button" class="btn leads_btn show_leads_details" data-user_id="<?php echo $user_id; ?>">Contact the buyer</button>
+                        <?php if($parent_cat_name == 'buying-leads'): ?>
+                            <button type="button" class="btn leads_btn show_leads_details" data-user_id="<?php echo $user_id; ?>">Contact the buyer</button>
+                        <?php else: ?>
+                            <button type="button" class="btn leads_btn show_leads_details" data-user_id="<?php echo $user_id; ?>">Contact the seller</button>
+                        <?php endif; ?>
                     </div>
                 </div>
 			</div>
@@ -58,7 +59,44 @@
 		</div>
 	</div>
 </section>
+<?php if(!empty($user_membership)):?>
+    <div id="renew_membership" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="html"></div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 <style>
+#renew_membership .modal-content {
+    padding: 30px;
+    border-radius: 0;
+}
+#renew_membership .modal-content button.close {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    z-index: 9999;
+}
+#renew_membership .modal-content a.btn {
+    display: inline-block;
+    background-image: linear-gradient(to bottom, #F16529, #E44D26);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+#renew_membership .modal-content h5 {
+    text-align: center;
+    color: #000;
+    font-size: 16px;
+    line-height: 25px;
+    margin: 0;
+    margin-bottom: 20px;
+}
 button.btn.leads_btn {
     background-color: #f44336;
     color: #fff;

@@ -106,7 +106,7 @@
 
 									<?php if ($single_cat->parent_ids === 'uncategorised'): ?>
 
-										<option <?php echo (volgo_get_current_category_id() === $single_cat->id) ? 'selected' : ''; ?>
+										<option <?php echo (volgo_get_selected_parent_cat_id() === $single_cat->id) ? 'selected' : ''; ?>
 											value="<?php echo $single_cat->id; ?>"><?php echo $single_cat->name; ?></option>
 									<?php endif; ?>
 								<?php endforeach; ?>
@@ -117,8 +117,12 @@
 							<select id="show_child_cat" class="show_child_cat form-control get_from_db"
 									name="child_cats">
 								<option value=''>Select Sub-Category</option>
-								<?php $subcats = volgo_get_sub_categories_by_parent_cat_id();
-								$selected_sub_cat_id = volgo_get_current_sub_category_id();
+								<?php $subcats = volgo_get_sub_categories_by_parent_cat_id(volgo_get_selected_parent_cat_id());
+
+								if (empty($this->input->get('child_cats')))
+								    $selected_sub_cat_id = volgo_get_current_category_id();
+								else
+                                    $selected_sub_cat_id = volgo_get_current_sub_category_id();
 
 								foreach ($subcats as $subcat): ?>
 
@@ -275,20 +279,6 @@
 			padding: 2px 1px 5px 4px;
 		}
 
-		.saveBtn>li>a.saveli {
-			cursor: pointer;
-			color: #007cdc;
-			border: 1px solid #999;
-			width: calc(160% - 5px);
-			float: right;
-			background: #fff;
-			font-size: 15px;
-			color: #666;
-			box-shadow: none !important;
-			text-transform: capitalize;
-			padding-left: 5px;
-			padding: 2px 1px 5px 4px;
-		}
 		.saveBtn>li>a.saveIt:hover {
 			color: #666;
 			background-color: #eee;
