@@ -353,7 +353,7 @@ class Listingquery_Model extends CI_Model
 		} else {
 			$per_page_limit = "";
 		}
-
+	
 		if (intval($limit) < 1)
 			$limit = 1;
 		
@@ -362,18 +362,18 @@ class Listingquery_Model extends CI_Model
 		$cache_key = 'listing_ids_of_type_' . $type . '_limit_' . $meta_limit . '_records_cat_id_' . $id;
 		if (! $listing_ids = $this->cache->get($cache_key)){
 			// Query
-			$result_data = $this->db->query(
-				"select
-				  distinct lm.listings_id
+			$query = "select
+					distinct lm.listings_id
 				from listings_meta lm
-				  join listings l on l.id = lm.listings_id
+					join listings l on l.id = lm.listings_id
 				where (
-				  lm.meta_key = 'listing_type' and lm.meta_value  = 'featured'
+					lm.meta_key = 'listing_type' and lm.meta_value  = 'featured'
 				)
 				and l.country_id = {$country_id} and  l.status = 'enabled' and (l.category_id =  {$id} or l.sub_category_id = {$id})
 				order by lm.listings_id desc
-				limit 10;"
-			);
+				{$per_page_limit}";
+				
+			$result_data = $this->db->query($query);
 			
 			$ids_arr = $result_data->result();
 			
@@ -384,7 +384,7 @@ class Listingquery_Model extends CI_Model
 			$listing_ids = implode(',', $ids);
 			
 			// Save Data
-			$this->cache->save($cache_key, $listing_ids, MAX_CACHE_TTL_VALUE);
+			// $this->cache->save($cache_key, $listing_ids, MAX_CACHE_TTL_VALUE);
 		}
 
 		if(empty($listing_ids))
@@ -396,31 +396,31 @@ class Listingquery_Model extends CI_Model
 		$cache_key = 'listing_data_of_type_' . $type . '_limit_' . $meta_limit . '_records_cat_id_' . $id;
 		if (! $listing_data = $this->cache->get($cache_key)){
 			// Query
-			$result = $this->db->query("
-					select l.id, l.title , l.created_at , l.category_id, l.sub_category_id ,
-						   l.country_id , l.state_id , l.city_id, l.slug ,cat.id as listingcatid, cat.name as catgory_name,
-						   l.sub_category_id as listingsubcatid,  sub_cat.name as subcategoryname ,
-						   cntry.name as country_name, cntry.id as country_id ,
-						   cites.name as city_name, cites.id as city_id ,
-						   stats.name as state_name, stats.id as state_id
-					from listings l
-			
-				   inner join b2b_countries cntry on cntry.id = l.country_id
-				   LEFT JOIN b2b_cities cites on cites.id = l.city_id
-			
-				   LEFT JOIN categories sub_cat on sub_cat.id = l.sub_category_id
-				   LEFT join categories cat on cat.id = l.category_id
-				   LEFT join b2b_states stats on stats.id = l.state_id
-			
-					where l.country_id = {$country_id} and  l.status = 'enabled' and (l.category_id =  {$id} or l.sub_category_id = {$id})
-					AND l.id in ({$listing_ids})
-					order by l.id desc
-					{$per_page_limit}
-			");
+			$query_q = "select l.id, l.title , l.created_at , l.category_id, l.sub_category_id ,
+						l.country_id , l.state_id , l.city_id, l.slug ,cat.id as listingcatid, cat.name as catgory_name,
+						l.sub_category_id as listingsubcatid,  sub_cat.name as subcategoryname ,
+						cntry.name as country_name, cntry.id as country_id ,
+						cites.name as city_name, cites.id as city_id ,
+						stats.name as state_name, stats.id as state_id
+			from listings l
+
+				inner join b2b_countries cntry on cntry.id = l.country_id
+				LEFT JOIN b2b_cities cites on cites.id = l.city_id
+
+				LEFT JOIN categories sub_cat on sub_cat.id = l.sub_category_id
+				LEFT join categories cat on cat.id = l.category_id
+				LEFT join b2b_states stats on stats.id = l.state_id
+
+			where l.country_id = {$country_id} and  l.status = 'enabled' and (l.category_id =  {$id} or l.sub_category_id = {$id})
+			AND l.id in ({$listing_ids})
+			order by l.id desc
+			limit 10";
+			// var_dump($query_q);die;
+			$result = $this->db->query($query_q);
 			$listing_data = $result->result();
 			
 			// Save Data
-			$this->cache->save($cache_key, $listing_data, MAX_CACHE_TTL_VALUE); // save for 72 hours
+			// $this->cache->save($cache_key, $listing_data, MAX_CACHE_TTL_VALUE); // save for 72 hours
 			
 		}
 
@@ -437,7 +437,7 @@ class Listingquery_Model extends CI_Model
 				$meta_data = $result->result();
 				
 				// Save Data
-				$this->cache->save($cache_key, $meta_data, MAX_CACHE_TTL_VALUE); // save for 72 hours
+				// $this->cache->save($cache_key, $meta_data, MAX_CACHE_TTL_VALUE); // save for 72 hours
 				
 			}
 			$anewarr[] = [

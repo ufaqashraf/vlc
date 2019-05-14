@@ -593,12 +593,6 @@ class Dashboard extends CI_Controller
 
 		$loged_in_user_id = volgo_get_logged_in_user_id();
 		$url = $this->agent->referrer();
-
-		// $loged_in_userid = volgo_get_logged_in_user_id();
-		// if (empty($loged_in_userid)) {
-		// 	redirect('login?redirected_to=' . base_url($url));
-		// }
-
 		$link = str_replace(base_url(), '', $url);
 		$meta_array = [
 			'link' => $link,
@@ -609,8 +603,8 @@ class Dashboard extends CI_Controller
 		$insert_id = $this->Dashboard_Model->save_search($loged_in_user_id, $meta_value);
 		$this->session->set_userdata('search_history_id',$insert_id);
 		$data = [
+			'loged_in_user_id' => $loged_in_user_id,
 			'insert_id' => $insert_id,
-			'link' => $link,
 		];
 		echo json_encode($data);
 		exit();

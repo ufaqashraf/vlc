@@ -15,7 +15,10 @@
 							<div class="position-relative d-flex tradeshow-<?php echo $tradeshow['post_info']['post_id']; ?>">
 								<div class="text-uppercase purple event-date"><?php echo date('d M Y', strtotime($tradeshow['post_info']['create_date'])); ?></div>
 								<img class="img-fluid event-img"
-									 src="<?php echo (empty($tradeshow['post_info']['featured_image'])) ? volgo_get_no_image_url() : UPLOADS_URL . '/tradeshows/' . unserialize($tradeshow['post_info']['featured_image']); ?>" alt="trade-show">
+									 src="<?php
+                                     $trade_image = $tradeshow['post_info']['featured_image'];
+                                     echo (empty($tradeshow['post_info']['featured_image'])) ? volgo_get_no_image_url() : UPLOADS_URL . '/tradeshows/' . volgo_maybe_unserialize($trade_image);
+                                     ?>" alt="trade-show">
 							</div>
 							<div class="content">
 								<h1 class="title"><?php echo $tradeshow['post_info']['title']; ?></h1>

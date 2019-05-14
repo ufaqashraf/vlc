@@ -257,7 +257,7 @@
 							</div>
 						</div>
 					</div>
-
+					<input type="hidden" name="sorting" class="sorting" disabled value="">
 			</form>
 		</div>
 

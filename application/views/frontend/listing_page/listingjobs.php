@@ -447,12 +447,12 @@
 
 													<li>
 
-														<a href="javascript:void(0)" class="reportNow">
+														<a href="mailto:no-reply@volgopoint.com" class="reportNow">
 
 															<i class="fa fa-flag" aria-hidden="true"></i>
 
 
-															<span>Apply now</span>
+                                                            <span>Apply now</span>
 
 														</a>
 

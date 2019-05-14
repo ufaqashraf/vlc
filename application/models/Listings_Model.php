@@ -310,16 +310,43 @@ class Listings_Model extends CI_Model
         if (!empty($search_query))
             $extra_where .= ' and l.title like \'%' . $search_query . '%\' ';
 
-
+        // sorting
+        if(isset($metas['sorting']) && !empty($metas['sorting'])){
+            if($metas['sorting'] == 'asc'){
+                $sorting = 'order by l.id ASC';
+                $distict = 'DISTINCT listings_id';
+                $starting_where = 'WHERE';
+            }else if($metas['sorting'] == 'desc' || $metas['sorting'] == 'default'){
+                $sorting = 'order by l.id DESC';
+                $distict = 'DISTINCT listings_id';
+                $starting_where = 'WHERE';
+            }else if($metas['sorting'] == 'price-desc'){
+                $sorting = 'order by CAST(lm.meta_value AS SIGNED INTEGER) DESC';
+                $where_metas = "WHERE (lm.meta_key = 'price')";
+                $distict = '*';
+                $starting_where = ' AND';
+            }else if($metas['sorting'] == 'price-asc'){
+                $sorting = 'order by CAST(lm.meta_value AS SIGNED INTEGER) ASC';
+                $where_metas = "WHERE (lm.meta_key = 'price')";
+                $distict = '*';
+                $starting_where = ' AND';
+                // unset($metas);
+            }
+        }else{
+            $sorting = 'order by l.id DESC';
+            $distict = 'DISTINCT listings_id';
+            $starting_where = 'WHERE';
+        }
+        unset($metas['sorting']);
         // Price Range
         if (isset($metas['pricefrom'], $metas['priceto']) && !empty($metas['pricefrom']) && !empty($metas['priceto'])) {
-            $where_metas .= "WHERE (lm.meta_key = 'price' and lm.meta_value BETWEEN ({$metas['pricefrom']}*1) and ({$metas['priceto']} * 1) )";
+            $where_metas .= "{$starting_where} (lm.meta_key = 'price' and lm.meta_value BETWEEN ({$metas['pricefrom']}*1) and ({$metas['priceto']} * 1) )";
             $counter++;
         } else if (isset($metas['pricefrom']) && !empty($metas['pricefrom'])) {
-            $where_metas .= "WHERE (lm.meta_key = 'price' and lm.meta_value >= ({$metas['pricefrom']}*1) )";
+            $where_metas .= "{$starting_where} (lm.meta_key = 'price' and lm.meta_value >= ({$metas['pricefrom']}*1) )";
             $counter++;
         } else if (isset($metas['priceto']) && !empty($metas['priceto'])) {
-            $where_metas .= "WHERE (lm.meta_key = 'price' and lm.meta_value <= ({$metas['priceto']}*1) )";
+            $where_metas .= "{$starting_where} (lm.meta_key = 'price' and lm.meta_value <= ({$metas['priceto']}*1) )";
             $counter++;
         }
         unset($metas['pricefrom']);
@@ -611,7 +638,7 @@ class Listings_Model extends CI_Model
         unset($metas['price_only']);
         unset($metas['photo_only']);
         unset($metas['listing_type']);
-
+        unset($metas['per_page']);
         // =============================================================================
 //==========================================ENDS======================================================================================
 
@@ -641,7 +668,7 @@ class Listings_Model extends CI_Model
         if ($use_inner_join === true && !isset($inner_join_query)){
             // Inner Join
             $inner_join_query = "select
-						  distinct listings_id
+						  {$distict}
 						from listings_meta lm
 						{$where_metas}  ) lm on lm.listings_id = l.id";
         }
@@ -685,11 +712,11 @@ class Listings_Model extends CI_Model
 					
 					  where cc.category_type = 'category' and l.status = 'enabled' and l.country_id = {$country_id}
 					   {$extra_where}
-					  order by l.id desc
+					  {$sorting}
 					{$per_page_limit};";
 
         //echo $query; exit;
-
+        // var_dump($query);die;
         $this->db->cache_on();
 
         $result = $this->db->query($query);
@@ -735,7 +762,7 @@ class Listings_Model extends CI_Model
 						{$inner_join_query}
 					  where cc.category_type = 'category' and l.status = 'enabled' and l.country_id = {$country_id}
 					   {$extra_where}
-					  order by l.id desc
+					  {$sorting}
 					";
         $total_records = $this->db->query($total_records);
 
@@ -1245,7 +1272,6 @@ class Listings_Model extends CI_Model
 			$page = 1;
 
 		$use_inner_join = true;
-		$search_query = '%' . $search_query . '%';
 		$limit = $per_page_limit;
 		$offset = (intval($per_page_limit) * intval(($page - 1))) ;
 		$country_id = empty($country_id) ? volgo_get_country_id_from_session() : intval($this->country_info['country_id']);
@@ -1290,11 +1316,12 @@ class Listings_Model extends CI_Model
 			$extra_where .= ' and l.category_id = ' . intval($parent_cat);
 
 		if (!empty($child_cat))
-			$extra_where .= ' and l.sub_category_id = ' . intval($child_cat);
-
-		if (!empty($search_query))
+            $extra_where .= ' and l.sub_category_id = ' . intval($child_cat);
+            
+        if (!empty($search_query)){
+            $search_query = '%' . $search_query . '%';
 			$extra_where .= ' and l.title like \'' . $search_query . '\' ';
-
+        }
 		if(isset($year) && !empty($year)){
 			$extra_where .= ' and l.created_at >= DATE(NOW()) - INTERVAL 365 DAY ';
 		}else if(isset($month) && !empty($month)){
@@ -1756,14 +1783,17 @@ class Listings_Model extends CI_Model
 
     // check membership
 	public function user_membership_check($user_id){
-        $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id,o.order_date
-        from b2b_users u
-        left join orders o on o.user_id = u.id
-        left join orders_meta om on om.order_id = o.id
-        where u.id = {$user_id} and o.status = 'paid' order by o.order_date DESC limit 1";
-        $this->db->cache_off();
-        $result = $this->db->query($query);
-        return $result->result(); 
+        if($user_id > 0){
+            $query = "select o.id as id,u.id as user_id,om.meta_value as available_connect,o.packages_id,o.order_date
+            from b2b_users u
+            left join orders o on o.user_id = u.id
+            left join orders_meta om on om.order_id = o.id
+            where u.id = {$user_id} and o.status = 'paid' order by o.order_date DESC limit 1";
+            $this->db->cache_off();
+            $result = $this->db->query($query);
+            return $result->result(); 
+        }
+        
     }
 
     public function update_connects($id,$package_id,$connects){

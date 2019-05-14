@@ -118,7 +118,7 @@
                     <h1><?php echo $data['post_info']['title'];?></h1>
                     <div class="inner-detailBox">
                         <div class="single_box">
-                            <img src="<?php echo (empty($data['post_info']['featured_image'])) ? volgo_get_no_image_url() : UPLOADS_URL . '/tradeshows/' . $data['post_info']['featured_image']; ?>" alt="img">
+                            <img src="<?php echo (empty($data['post_info']['featured_image'])) ? volgo_get_no_image_url() : UPLOADS_URL . '/tradeshows/' . volgo_maybe_unserialize($data['post_info']['featured_image']); ?>" alt="img">
                         </div>
 
                         <div class="tradeshow-detail detailAd-section mt-2">

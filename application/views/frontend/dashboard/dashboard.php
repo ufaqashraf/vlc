@@ -948,57 +948,65 @@
 														<div class="col-md-6 col-sm-6 col-xs-12">
 															<h3><a href="<?php
 																if($searched_row && $searched_row['full_url'])
-																	echo $searched_row['full_url'];
-																else
-																	echo "#";
-																?>"><span style="text-transform: capitalize !important;">
-																	<?php
+																echo $searched_row['full_url'];
+															else
+																echo "#";
+															?>"><span style="text-transform: capitalize !important;">
+																<?php
 																	if(!isset($searched_row['link']['cat_name'])){
 																		echo $searched_row['link']['parent_cat_select'];
 																		if(isset($searched_row['link']['child_cats']))
 																			echo '|'.$searched_row['link']['child_cats'];
 																	}else
 																		echo $searched_row['link']['cat_name'];
-																	?>
-																		</span>
+																?>
+																	</span>
 																</a></h3>
-															<h4><?php
+														<h4><?php
 																if(isset($searched_row['link']['country_search']))
 																{
 																	echo $searched_row['link']['country_search'];
 																}
 																if(isset($searched_row['link']['select_state']))
-																	echo '|'.$searched_row['link']['select_state'];
-																if(isset($searched_row['link']['selected_city']))
-																	echo '|'.$searched_row['link']['selected_city'];
-																else echo "All Cities";
+																	echo ('|'.$searched_row['link']['select_state']);
+																	if(isset($searched_row['link']['selected_city']))
+																	echo ('|'.$searched_row['link']['selected_city']);
+																		else echo " | All Cities |";
 																?></h4>
 
-															<ul>
-																<li> <?php
-																	if(isset($searched_row['link']['make']))
-																		echo '|'.$searched_row['link']['make'];
-																	else echo "";
-																	?>
-																	<?php
-																	if(isset($searched_row['link']['model']))
-																		echo '|'.$searched_row['link']['model'];
-																	else echo "";
-																	?>
-																	<?php
-																	if(isset($searched_row['link']['yearfrom']))
-																		echo '|'.$searched_row['link']['yearfrom'].' - ';
-																	if(isset($searched_row['link']['yearto']))
-																		echo $searched_row['link']['yearto'].'|';
-																	else echo" ";
-																	?>
-																	<?php
-																	if(isset($searched_row['link']['condition']))
-																		echo '|'.$searched_row['link']['condition'].'|';
-																	else echo "";
-																	?>
-
-																</li>
+														<ul>
+														<li> <?php
+																if(isset($searched_row['link']['make']))
+																echo $searched_row['link']['make'];
+																else echo "";	
+																?>
+														</li>
+														<li>		
+															<?php
+																if(isset($searched_row['link']['model']))
+																echo $searched_row['link']['model'];
+																	else echo "";	
+															?>
+														</li>
+														<li>	
+															<?php
+																if(isset($searched_row['link']['yearfrom']))
+																echo '|'.$searched_row['link']['yearfrom'].'-';
+															
+																
+																if(isset($searched_row['link']['yearto']))
+																echo ($searched_row['link']['yearto']);
+																	else echo" ";	
+															?>
+														</li>
+														<li>	
+															<?php
+																if(isset($searched_row['link']['condition']))
+																echo $searched_row['link']['condition'];
+																	else echo "";	
+															?>
+														
+														</li>
 
 																<!-- <li>Used</li> -->
 															</ul>

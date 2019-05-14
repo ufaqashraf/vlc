@@ -148,8 +148,8 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="parent_cat" class="parent_cat_name_" value="<?php echo $cat_name; ?>">
-                    <input type="hidden" name="child_cats" class="child_cat_name_" disabled value="">
+                    <input type="hidden" name="parent_cat" class="parent_cat_name_" value="<?php if(!empty($parent_cat_name)){ echo $parent_cat_name;}else{ echo $cat_name;} ?>">
+                    <input type="hidden" name="child_cats" class="child_cat_name_"  value="<?php if(!empty($parent_cat_name)){ echo $cat_name;} ?>">
                     <input type="hidden" name="sorting" class="sorting" disabled value="">
                     <div class="row manage-icons">
                         <div class="search-btn col-md-3 col-lg-2">
